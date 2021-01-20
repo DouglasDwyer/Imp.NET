@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "DKUMCI260xLeshjqGMQp/RUombfztj2SVaghgsJHLOlkcS0wNkb4u3cLzA3HpZTBTvmraNX+N+8eks7n1A50/A==",
+  "success": true,
+  "projectFilePath": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Douglas\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Douglas\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
+    "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.7.0\\system.reflection.emit.ilgeneration.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

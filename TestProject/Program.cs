@@ -6,9 +6,9 @@ using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using DouglasDwyer.Knetworking;
-using DouglasDwyer.Knetworking.Serialization;
-using DouglasDwyer.Knetworking.Messages;
+using DouglasDwyer.Imp;
+using DouglasDwyer.Imp.Serialization;
+using DouglasDwyer.Imp.Messages;
 
 //[assembly: ShareAs(typeof(int[]), typeof(IList<int>))]
 
@@ -60,7 +60,7 @@ namespace TestProject
     }
 
     [Shared]
-    public partial class TicTacToeServer : KnetworkingServer<ITicTacToeClient>
+    public partial class TicTacToeServer : ImpServer<ITicTacToeClient>
     {
         public bool IsClientTurn { get; set; } = true;
 
@@ -78,6 +78,6 @@ namespace TestProject
     }
 
     [Shared]
-    public partial class TicTacToeClient : KnetworkingClient<ITicTacToeServer> {
+    public partial class TicTacToeClient : ImpClient<ITicTacToeServer> {
     }
 }

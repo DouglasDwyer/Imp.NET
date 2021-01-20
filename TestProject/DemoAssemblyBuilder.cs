@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
-using DouglasDwyer.Knetworking;
+using DouglasDwyer.Imp;
 
 namespace TestProject
 {
@@ -30,7 +30,7 @@ namespace TestProject
 
         public static T MakeProxyOf<T>()
         {
-            AssemblyName aName = new AssemblyName("DouglasDwyer.Knetworking.Proxy." + Guid.NewGuid().ToString().Replace("-", ""));
+            AssemblyName aName = new AssemblyName("DouglasDwyer.Imp.Proxy." + Guid.NewGuid().ToString().Replace("-", ""));
             AssemblyBuilder ab = AssemblyBuilder.DefineDynamicAssembly(aName, AssemblyBuilderAccess.Run);
             ModuleBuilder mb =
                 ab.DefineDynamicModule(aName.Name);

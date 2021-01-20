@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KnetworkingGenerator\KnetworkingGenerator.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
-    <ProjectReference Include="..\Knetworking\Knetworking.csproj" />
+    <ProjectReference Include="..\ImpGenerator\ImpGenerator.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    <ProjectReference Include="..\Imp\Imp.csproj" />
   </ItemGroup>
 
 </Project>

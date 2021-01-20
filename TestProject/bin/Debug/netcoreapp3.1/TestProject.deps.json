@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": {
       "TestProject/1.0.0": {
         "dependencies": {
-          "Knetworking": "1.0.0"
+          "Imp": "1.0.0"
         },
         "runtime": {
           "TestProject.dll": {}
         }
       },
       "System.Reflection.Emit/4.7.0": {},
-      "Knetworking/1.0.0": {
+      "Imp/1.0.0": {
         "dependencies": {
           "System.Reflection.Emit": "4.7.0"
         },
         "runtime": {
-          "Knetworking.dll": {}
+          "Imp.dll": {}
         }
       }
     }
@@ -38,7 +38,7 @@
       "path": "system.reflection.emit/4.7.0",
       "hashPath": "system.reflection.emit.4.7.0.nupkg.sha512"
     },
-    "Knetworking/1.0.0": {
+    "Imp/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Knetworking\\TestProject\\TestProject.csproj": {}
+    "D:\\Projects\\Imp.NET\\TestProject\\TestProject.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Knetworking\\Knetworking\\Knetworking.csproj": {
+    "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Knetworking\\Knetworking\\Knetworking.csproj",
-        "projectName": "Knetworking",
-        "projectPath": "D:\\Projects\\Knetworking\\Knetworking\\Knetworking.csproj",
+        "projectUniqueName": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj",
+        "projectName": "Imp",
+        "projectPath": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj",
         "packagesPath": "C:\\Users\\Douglas\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Knetworking\\Knetworking\\obj\\",
+        "outputPath": "D:\\Projects\\Imp.NET\\Imp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -71,14 +71,14 @@
         }
       }
     },
-    "D:\\Projects\\Knetworking\\TestProject\\TestProject.csproj": {
+    "D:\\Projects\\Imp.NET\\TestProject\\TestProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Knetworking\\TestProject\\TestProject.csproj",
+        "projectUniqueName": "D:\\Projects\\Imp.NET\\TestProject\\TestProject.csproj",
         "projectName": "TestProject",
-        "projectPath": "D:\\Projects\\Knetworking\\TestProject\\TestProject.csproj",
+        "projectPath": "D:\\Projects\\Imp.NET\\TestProject\\TestProject.csproj",
         "packagesPath": "C:\\Users\\Douglas\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Knetworking\\TestProject\\obj\\",
+        "outputPath": "D:\\Projects\\Imp.NET\\TestProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -101,8 +101,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Projects\\Knetworking\\Knetworking\\Knetworking.csproj": {
-                "projectPath": "D:\\Projects\\Knetworking\\Knetworking\\Knetworking.csproj"
+              "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj": {
+                "projectPath": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj"
               }
             }
           }
