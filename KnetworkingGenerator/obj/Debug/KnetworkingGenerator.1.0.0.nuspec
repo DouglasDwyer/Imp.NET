@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>KnetworkingGenerator</id>
+    <version>1.0.0</version>
+    <authors>KnetworkingGenerator</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Knetworking" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\Projects\Knetworking\KnetworkingGenerator\bin\Debug\netstandard2.0\KnetworkingGenerator.dll" target="lib\netstandard2.0\KnetworkingGenerator.dll" />
+  </files>
+</package>

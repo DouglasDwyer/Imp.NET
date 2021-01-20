@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "h2aK0fUnv7GOAY9HzXAr74j8pqfoM4ZHk8QuXJ6H+rtEcXvSUFv1FAxnEYeV+Xp/QaiOqwAm2jWhZ7dWC82eKg==",
+  "success": true,
+  "projectFilePath": "D:\\Projects\\Knetworking\\TestProject\\TestProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

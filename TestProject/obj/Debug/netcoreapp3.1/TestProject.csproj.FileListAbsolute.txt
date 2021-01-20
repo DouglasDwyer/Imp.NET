@@ -1,0 +1,16 @@
+D:\Projects\Knetworking\TestProject\bin\Debug\netcoreapp3.1\TestProject.exe
+D:\Projects\Knetworking\TestProject\bin\Debug\netcoreapp3.1\TestProject.deps.json
+D:\Projects\Knetworking\TestProject\bin\Debug\netcoreapp3.1\TestProject.runtimeconfig.json
+D:\Projects\Knetworking\TestProject\bin\Debug\netcoreapp3.1\TestProject.runtimeconfig.dev.json
+D:\Projects\Knetworking\TestProject\bin\Debug\netcoreapp3.1\TestProject.dll
+D:\Projects\Knetworking\TestProject\bin\Debug\netcoreapp3.1\TestProject.pdb
+D:\Projects\Knetworking\TestProject\bin\Debug\netcoreapp3.1\Knetworking.dll
+D:\Projects\Knetworking\TestProject\bin\Debug\netcoreapp3.1\Knetworking.pdb
+D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.AssemblyInfoInputs.cache
+D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.AssemblyInfo.cs
+D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.csproj.CoreCompileInputs.cache
+D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.csproj.CopyComplete
+D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.dll
+D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.pdb
+D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.genruntimeconfig.cache
+D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.csprojAssemblyReference.cache

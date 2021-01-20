@@ -1,0 +1,13 @@
+D:\Projects\Knetworking\KnetworkingGenerator\bin\Debug\netstandard2.0\KnetworkingGenerator.deps.json
+D:\Projects\Knetworking\KnetworkingGenerator\bin\Debug\netstandard2.0\KnetworkingGenerator.dll
+D:\Projects\Knetworking\KnetworkingGenerator\bin\Debug\netstandard2.0\KnetworkingGenerator.pdb
+D:\Projects\Knetworking\KnetworkingGenerator\bin\Debug\netstandard2.0\Knetworking.dll
+D:\Projects\Knetworking\KnetworkingGenerator\bin\Debug\netstandard2.0\Knetworking.pdb
+D:\Projects\Knetworking\KnetworkingGenerator\obj\Debug\netstandard2.0\KnetworkingGenerator.csprojAssemblyReference.cache
+D:\Projects\Knetworking\KnetworkingGenerator\obj\Debug\netstandard2.0\KnetworkingGenerator.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\Knetworking\KnetworkingGenerator\obj\Debug\netstandard2.0\KnetworkingGenerator.AssemblyInfoInputs.cache
+D:\Projects\Knetworking\KnetworkingGenerator\obj\Debug\netstandard2.0\KnetworkingGenerator.AssemblyInfo.cs
+D:\Projects\Knetworking\KnetworkingGenerator\obj\Debug\netstandard2.0\KnetworkingGenerator.csproj.CoreCompileInputs.cache
+D:\Projects\Knetworking\KnetworkingGenerator\obj\Debug\netstandard2.0\KnetworkingGenerator.csproj.CopyComplete
+D:\Projects\Knetworking\KnetworkingGenerator\obj\Debug\netstandard2.0\KnetworkingGenerator.dll
+D:\Projects\Knetworking\KnetworkingGenerator\obj\Debug\netstandard2.0\KnetworkingGenerator.pdb

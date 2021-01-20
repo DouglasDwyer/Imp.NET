@@ -1,0 +1,9 @@
+D:\Projects\Knetworking\Knetworking\bin\Debug\netstandard2.0\Knetworking.deps.json
+D:\Projects\Knetworking\Knetworking\bin\Debug\netstandard2.0\Knetworking.dll
+D:\Projects\Knetworking\Knetworking\bin\Debug\netstandard2.0\Knetworking.pdb
+D:\Projects\Knetworking\Knetworking\obj\Debug\netstandard2.0\Knetworking.AssemblyInfoInputs.cache
+D:\Projects\Knetworking\Knetworking\obj\Debug\netstandard2.0\Knetworking.AssemblyInfo.cs
+D:\Projects\Knetworking\Knetworking\obj\Debug\netstandard2.0\Knetworking.csproj.CoreCompileInputs.cache
+D:\Projects\Knetworking\Knetworking\obj\Debug\netstandard2.0\Knetworking.dll
+D:\Projects\Knetworking\Knetworking\obj\Debug\netstandard2.0\Knetworking.pdb
+D:\Projects\Knetworking\Knetworking\obj\Debug\netstandard2.0\Knetworking.csprojAssemblyReference.cache
