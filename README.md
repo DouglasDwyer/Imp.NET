@@ -1,2 +1,2 @@
 # Imp.NET
-Imp.NET is a fast, high-level, object-oriented C# networking library that supports the invocation of methods on proxy interfaces.
+Imp.NET is a fast, high-level, object-oriented C# networking library that supports the invocation of remote methods through proxy interface objects.
