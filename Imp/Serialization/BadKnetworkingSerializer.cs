@@ -94,7 +94,7 @@ namespace DouglasDwyer.Imp.Serialization
             {
                 return x => new SharedObjectPath(x.ReadUInt16(), x.ReadUInt16());
             }
-            else if (ProxyBinder.Instance.GetRemoteClass(type) != null)
+            else if (BadProxyBinder.Instance.GetRemoteClass(type) != null)
             {
                 return DeserializeSharedObject;
             }
@@ -195,7 +195,7 @@ namespace DouglasDwyer.Imp.Serialization
                 Action<BinaryWriter, object> pathSerializer = CreateSerializerForType(typeof(SharedObjectPath));
                 return (x, y) => { pathSerializer(x, ((RemoteSharedObject)y).Location); x.Write(type.FullName); };
             }
-            else if (ShareAsAttribute.SharedTypes.ContainsKey(type) || ProxyBinder.Instance.GetRemoteClass(type) != null)
+            else if (ShareAsAttribute.SharedTypes.ContainsKey(type) || BadProxyBinder.Instance.GetRemoteClass(type) != null)
             {
                 return SerializeLocalSharedObject;
             }
@@ -213,7 +213,7 @@ namespace DouglasDwyer.Imp.Serialization
                         Type oType = obj.GetType();
                         if (typeof(RemoteSharedObject).IsAssignableFrom(oType))
                         {
-                            x.Write(ProxyBinder.Instance.GetProxyInterface(oType).AssemblyQualifiedName);
+                            x.Write(BadProxyBinder.Instance.GetProxyInterface(oType).AssemblyQualifiedName);
                         }
                         else if(ShareAsAttribute.SharedTypes.ContainsKey(oType))
                         {

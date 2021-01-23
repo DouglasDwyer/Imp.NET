@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using DouglasDwyer.Imp;
+using DouglasDwyer.Imp.Messages;
 using DouglasDwyer.Imp.Serialization;
 
 [assembly: ShareAs(typeof(ImpServer<>), typeof(IImpServer))]
@@ -18,21 +19,30 @@ namespace DouglasDwyer.Imp
     public class ImpServer : IImpServer
     {
         public IEnumerable<IImpClient> ConnectedClients => ActiveClients.Values;
-        public ImpClientSerializer DefaultSerializer { get; }
-        public TaskScheduler DefaultRemoteTaskScheduler { get; }
+        public IProxyBinder DefaultProxyBinder { get; set; }
+        public ImpClientSerializer DefaultSerializer { get; set; }
+        public TaskScheduler DefaultRemoteTaskScheduler { get; set; }
 
         private IdentifiedCollection<IImpClient> ActiveClients = new IdentifiedCollection<IImpClient>();
         private TcpListener Listener;
 
-        public ImpServer(IPAddress binding, int port) : this(binding, port, new ImpClientSerializer((ImpClient)null))
+        public ImpServer(IPAddress binding, int port) : this(binding, port, new ImpClientSerializer((ImpClient)null), RuntimeProxyBinder.CreateAndBind())
         {
         }
 
-        public ImpServer(IPAddress binding, int port, ImpClientSerializer defaultSerializer)
+        public ImpServer(IPAddress binding, int port, ImpClientSerializer defaultSerializer, IProxyBinder binder)
         {
             Listener = new TcpListener(binding, port);
             DefaultSerializer = defaultSerializer;
-            DefaultRemoteTaskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
+            DefaultProxyBinder = binder;
+            if (SynchronizationContext.Current is null)
+            {
+                DefaultRemoteTaskScheduler = TaskScheduler.Current;
+            }
+            else
+            {
+                DefaultRemoteTaskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
+            }
         }
 
         public void Start()
@@ -55,15 +65,17 @@ namespace DouglasDwyer.Imp
             TcpClient client = Listener.EndAcceptTcpClient(result);
             BinaryWriter writer = new BinaryWriter(client.GetStream());
             BinaryReader reader = new BinaryReader(client.GetStream());
-            Type remoteTypeToInstantiate = ProxyBinder.Instance.GetRemoteClass(ShareAsAttribute.ProxyIndex[reader.ReadUInt16()]);
+            Type remoteTypeToInstantiate = DefaultProxyBinder.GetRemoteType(Type.GetType(reader.ReadString())); //BadProxyBinder.Instance.GetRemoteClass(ShareAsAttribute.ProxyIndex[reader.ReadUInt16()]);
             ushort networkID = 0;
+            ImpClient kClient = null;
             ActiveClients.Add(x => {
                 networkID = (ushort)(x + 1);
                 ImpClientSerializer serializer = (ImpClientSerializer)DefaultSerializer.Clone();
-                ImpClient kClient = new ImpClient(client, this, 0, serializer);
+                kClient = new ImpClient(client, this, 0, DefaultProxyBinder, serializer, DefaultRemoteTaskScheduler);
                 serializer.Client = kClient;
                 return (IImpClient)Activator.CreateInstance(remoteTypeToInstantiate, new SharedObjectPath(networkID, 0), kClient); });
             writer.Write(networkID);
+            kClient.SendImpMessage(new SetProxyBinderMessage(DefaultProxyBinder.GetProxyTypes().Select(x => x.AssemblyQualifiedName).ToArray()));
         }
     }
 

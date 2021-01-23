@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace DouglasDwyer.Imp
 {
-    public class ProxyBinder
+    [Obsolete("This class has been replaced with DouglasDwyer.Imp.IProxyBinder", false)]
+    public class BadProxyBinder
     {
-        public static ProxyBinder Instance { get; private set; }
+        public static BadProxyBinder Instance { get; private set; }
 
         private Dictionary<Type, Type> RemoteClassToInterface = new Dictionary<Type, Type>();
         private Dictionary<Type, Type> RemoteInterfaceToClass = new Dictionary<Type, Type>();
@@ -24,7 +25,7 @@ namespace DouglasDwyer.Imp
         private static readonly MethodInfo ImpClientCallRemoteMethod;
         private static readonly MethodInfo ImpClientCallRemoteMethodAsync;
 
-        static ProxyBinder() {
+        static BadProxyBinder() {
             Type RSO = typeof(RemoteSharedObject);
             Type KC = typeof(ImpClient);
             RemoteSharedObjectConstructor = RSO.GetConstructor(new[] { typeof(SharedObjectPath), typeof(ImpClient) });
@@ -36,10 +37,10 @@ namespace DouglasDwyer.Imp
             ImpClientSetRemoteIndexerMethod = KC.GetMethod("SetRemoteIndexer");
             ImpClientCallRemoteMethod = KC.GetMethod("CallRemoteMethod");
             ImpClientCallRemoteMethodAsync = KC.GetMethod("CallRemoteMethodAsync");
-            Instance = new ProxyBinder();
+            Instance = new BadProxyBinder();
         }
 
-        private ProxyBinder()
+        private BadProxyBinder()
         {
             GenerateAllProxies();
         }

@@ -2,7 +2,9 @@
 using DouglasDwyer.Imp.Messages;
 using DouglasDwyer.Imp.Serialization;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -46,6 +48,7 @@ namespace DouglasDwyer.Imp
 
         public ImpSerializer Serializer { get; }
 
+        public IProxyBinder SharedTypeBinder { get; internal set; }
         /// <summary>
         /// The remote server reference.
         /// </summary>
@@ -54,7 +57,7 @@ namespace DouglasDwyer.Imp
         /// <summary>
         /// Whether this object is a local, independent client or a server-owned object representing a connection to a remote host.
         /// </summary>
-        public readonly bool Local;
+        public bool Local { get; }
         /// <summary>
         /// The unique network ID of this client, used to identify this client from others connected to a <see cref="ImpServer"/>. This ID is always 0 for server-owned objects.
         /// </summary>
@@ -68,13 +71,13 @@ namespace DouglasDwyer.Imp
         /// An ID-indexed collection of the objects that the remote endpoint can reference.
         /// </summary>
         private IdentifiedCollection<object> HeldObjects = new IdentifiedCollection<object>();
+        private ConcurrentDictionary<ushort, CountedObject<object>> HeldObjectsData = new ConcurrentDictionary<ushort, CountedObject<object>>();
         /// <summary>
         /// An ID-indexed collection of the current asynchronous operations being performed by the client, like invoking a remote method.
         /// </summary>
         private IdentifiedCollection<AsynchronousNetworkOperation> CurrentNetworkOperations = new IdentifiedCollection<AsynchronousNetworkOperation>();
 
-        private Dictionary<SharedObjectPath, WeakReference<RemoteSharedObject>> RemoteSharedObjects = new Dictionary<SharedObjectPath, WeakReference<RemoteSharedObject>>();
-
+        private ConcurrentDictionary<SharedObjectPath, CountedObject<WeakReference<RemoteSharedObject>>> RemoteSharedObjects = new ConcurrentDictionary<SharedObjectPath, CountedObject<WeakReference<RemoteSharedObject>>>();
 
         private Dictionary<Type, MethodInfo> MessageCallbacks = new Dictionary<Type, MethodInfo>();
         /// <summary>
@@ -90,10 +93,17 @@ namespace DouglasDwyer.Imp
         public ImpClient() {
             LoadMethodCallbacks();
             Serializer = new ImpClientSerializer(this);
-            RemoteTaskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
+            if (SynchronizationContext.Current is null)
+            {
+                RemoteTaskScheduler = TaskScheduler.Current;
+            }
+            else
+            {
+                RemoteTaskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
+            }
             Local = true;
         }
-
+        /*
         /// <summary>
         /// Creates a new server-owned <see cref="ImpClient"/>.
         /// </summary>
@@ -114,7 +124,7 @@ namespace DouglasDwyer.Imp
             ListenerThread = new Thread(RunCommunications);
             ListenerThread.IsBackground = true;
             ListenerThread.Start();
-        }
+        }*/
 
         /// <summary>
         /// Creates a new server-owned <see cref="ImpClient"/>.
@@ -122,10 +132,12 @@ namespace DouglasDwyer.Imp
         /// <param name="client">The TCP connection this client is using to communicate.</param>
         /// <param name="server">The server that owns this client.</param>
         /// <param name="networkID">The network ID of this client.</param>
-        internal ImpClient(TcpClient client, ImpServer server, ushort networkID, ImpSerializer serializer)
+        internal ImpClient(TcpClient client, ImpServer server, ushort networkID, IProxyBinder proxyBinder, ImpSerializer serializer, TaskScheduler scheduler)
         {
             LoadMethodCallbacks();
             Serializer = serializer;
+            RemoteTaskScheduler = scheduler;
+            SharedTypeBinder = proxyBinder;
             Local = false;
             Server = server;
             NetworkID = networkID;
@@ -150,7 +162,7 @@ namespace DouglasDwyer.Imp
                 InternalClient.NoDelay = true;
                 InternalClient.Connect(ip, port);
                 MessageWriter = new BinaryWriter(InternalClient.GetStream());
-                MessageWriter.Write(ShareAsAttribute.ProxyIndex[ShareAsAttribute.SharedTypes[GetType()]]);
+                MessageWriter.Write(AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetCustomAttributes<ShareAsAttribute>()).Where(x => x.TypeToShare == GetType()).First().InterfaceBinding.AssemblyQualifiedName);
                 ListenerThread = new Thread(RunCommunications);
                 ListenerThread.IsBackground = true;
                 BinaryReader networkReader = new BinaryReader(InternalClient.GetStream());
@@ -172,6 +184,7 @@ namespace DouglasDwyer.Imp
 
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public T CallRemoteMethod<T>(SharedObjectPath obj, object[] arguments, ushort methodID)
         {
             try
@@ -191,6 +204,7 @@ namespace DouglasDwyer.Imp
             }
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Task<T> CallRemoteMethodAsync<T>(SharedObjectPath obj, object[] arguments, ushort methodID)
         {
             AsynchronousNetworkOperation<T> operation = CreateNewAsynchronousNetworkOperation<T>();
@@ -198,6 +212,7 @@ namespace DouglasDwyer.Imp
             return operation.Operation;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public T GetRemoteProperty<T>(SharedObjectPath obj, [CallerMemberName] string propertyName = null)
         {
             try {
@@ -216,6 +231,7 @@ namespace DouglasDwyer.Imp
             }
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Task<T> GetRemotePropertyAsync<T>(SharedObjectPath obj, [CallerMemberName] string propertyName = null)
         {
             AsynchronousNetworkOperation<T> operation = CreateNewAsynchronousNetworkOperation<T>();
@@ -223,6 +239,7 @@ namespace DouglasDwyer.Imp
             return operation.Operation;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void SetRemoteProperty<T>(SharedObjectPath obj, T toSet, [CallerMemberName] string propertyName = null)
         {
             try {
@@ -242,6 +259,7 @@ namespace DouglasDwyer.Imp
             }
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public async Task SetRemotePropertyAsync<T>(SharedObjectPath obj, T toSet, [CallerMemberName] string propertyName = null)
         {
             AsynchronousNetworkOperation<object> operation = CreateNewAsynchronousNetworkOperation<object>();
@@ -249,11 +267,13 @@ namespace DouglasDwyer.Imp
             await operation.Operation;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public T GetRemoteIndexer<T>(SharedObjectPath obj, object[] arguments, [CallerMemberName] string propertyName = null)
         {
             return default;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public T SetRemoteIndexer<T>(SharedObjectPath obj, T toSet, object[] arguments, [CallerMemberName] string propertyName = null)
         {
             return toSet;
@@ -261,10 +281,7 @@ namespace DouglasDwyer.Imp
 
         public void SendImpMessage(ImpMessage message)
         {
-            DateTime d = DateTime.Now;
             byte[] toSend = Serializer.Serialize(message);
-            DateTime x = DateTime.Now;
-            Console.WriteLine("PL:" + toSend.Length + ",ST:" + (x - d).TotalMilliseconds);
             MessageWriter.Write(toSend.Length);
             MessageWriter.Write(toSend);
         }
@@ -272,34 +289,40 @@ namespace DouglasDwyer.Imp
         internal bool SerializeSharedObject(ImpSerializer serializer, BinaryWriter writer, object obj)
         {
             Type objType = obj.GetType();
-
-            if(obj is RemoteSharedObject remote)
+            ushort? id = SharedTypeBinder.GetIDForRemoteType(objType);
+            if(id != null)
             {
                 writer.Write(true);
-                writer.Write(ShareAsAttribute.ProxyIndex[ProxyBinder.Instance.GetProxyInterface(objType)]);
-                serializer.SerializationRuleset[serializer.SerializationTypes[typeof(SharedObjectPath)]].Serializer(serializer, writer, remote.Location);
-                return true;
-            }
-            else if(ShareAsAttribute.SharedTypes.ContainsKey(objType))
-            {
-                writer.Write(true);
-                writer.Write(ShareAsAttribute.ProxyIndex[ShareAsAttribute.SharedTypes[objType]]);
-                SharedObjectPath path;
-                if (HeldObjects.ContainsValue(obj))
-                {
-                    path = new SharedObjectPath(NetworkID, HeldObjects[obj]);
-                }
-                else
-                {
-                    path = new SharedObjectPath(NetworkID, HeldObjects.Add(obj));
-                }
-                serializer.SerializationRuleset[serializer.SerializationTypes[typeof(SharedObjectPath)]].Serializer(serializer, writer, path);
+                writer.Write(id.Value);
+                serializer.SerializationRuleset[serializer.SerializationTypes[typeof(SharedObjectPath)]].Serializer(serializer, writer, ((RemoteSharedObject)obj).Location);
                 return true;
             }
             else
             {
-                writer.Write(false);
-                return false;
+                id = SharedTypeBinder.GetIDForLocalType(objType);
+                if(id != null)
+                {
+                    writer.Write(true);
+                    writer.Write(id.Value);
+                    SharedObjectPath path;
+                    if (HeldObjects.ContainsValue(obj))
+                    {
+                        path = new SharedObjectPath(NetworkID, HeldObjects[obj]);
+                        HeldObjectsData[path.ObjectID]++;
+                    }
+                    else
+                    {
+                        path = new SharedObjectPath(NetworkID, HeldObjects.Add(obj));
+                        HeldObjectsData[path.ObjectID] = new CountedObject<object>(obj);
+                    }
+                    serializer.SerializationRuleset[serializer.SerializationTypes[typeof(SharedObjectPath)]].Serializer(serializer, writer, path);
+                    return true;
+                }
+                else
+                {
+                    writer.Write(false);
+                    return false;
+                }
             }
         }
 
@@ -315,16 +338,25 @@ namespace DouglasDwyer.Imp
                 if (RemoteSharedObjects.ContainsKey(path))
                 {
                     RemoteSharedObject obj = null;
-                    RemoteSharedObjects[path].TryGetTarget(out obj);
+                    CountedObject<WeakReference<RemoteSharedObject>> counter = RemoteSharedObjects[path];
+                    counter++;
+                    counter.ReferencedObject.TryGetTarget(out obj);
                     return obj;
                 }
                 else
                 {
-                    RemoteSharedObject toReturn = (RemoteSharedObject)Activator.CreateInstance(ProxyBinder.Instance.GetRemoteClass(ShareAsAttribute.ProxyIndex[typeID]), path, this);
-                    RemoteSharedObjects[path] = new WeakReference<RemoteSharedObject>(toReturn);
+                    RemoteSharedObject toReturn = (RemoteSharedObject)Activator.CreateInstance(SharedTypeBinder.GetRemoteType(typeID), path, this);
+                    RemoteSharedObjects[path] = new CountedObject<WeakReference<RemoteSharedObject>>(new WeakReference<RemoteSharedObject>(toReturn));
                     return toReturn;
                 }
             }
+        }
+
+        internal void ReleaseRemoteSharedObject(SharedObjectPath path)
+        {
+            CountedObject<WeakReference<RemoteSharedObject>> sharedObject;
+            RemoteSharedObjects.TryRemove(path, out sharedObject);
+            SendImpMessage(new RemoteSharedObjectReleasedMessage(sharedObject.Count, path));
         }
 
         protected AsynchronousNetworkOperation<T> CreateNewAsynchronousNetworkOperation<T>()
@@ -335,22 +367,31 @@ namespace DouglasDwyer.Imp
         }
 
         [MessageCallback]
-        protected void GetRemoteServerObjectCallback(GetRemoteServerObjectMessage message)
+        protected virtual void SetProxyBinderCallback(SetProxyBinderMessage message)
+        {
+            if(Local)
+            {
+                SharedTypeBinder = PredefinedProxyBinder.CreateAndBind(message.Interfaces);
+            }
+        }
+
+        [MessageCallback]
+        protected virtual void GetRemoteServerObjectCallback(GetRemoteServerObjectMessage message)
         {
             SendImpMessage(new ReturnRemoteServerObjectMessage(Server));
         }
 
         [MessageCallback]
-        protected void ReturnRemoteServerObjectCallback(ReturnRemoteServerObjectMessage message)
+        protected virtual void ReturnRemoteServerObjectCallback(ReturnRemoteServerObjectMessage message)
         {
-            if(RemoteServer is null)
+            if(Local && RemoteServer is null)
             {
                 RemoteServer = (IImpServer)message.Server;
             }
         }
 
         [MessageCallback]
-        protected async Task CallRemoteMethodCallbackAsync(CallRemoteMethodMessage message)
+        protected virtual async Task CallRemoteMethodCallbackAsync(CallRemoteMethodMessage message)
         {
             object toInvoke = HeldObjects[message.InvocationTarget.ObjectID];
             if (toInvoke is null)
@@ -363,7 +404,7 @@ namespace DouglasDwyer.Imp
                 {
                     try
                     {
-                        SendImpMessage(new ReturnRemoteMethodMessage(message.OperationID, await new RemoteMethodInvoker(ShareAsAttribute.ProxyData[ShareAsAttribute.ProxyIndex[ShareAsAttribute.SharedTypes[toInvoke.GetType()]]].Methods[message.MethodID]).Invoke(toInvoke, message.Parameters), null));
+                        SendImpMessage(new ReturnRemoteMethodMessage(message.OperationID, await new RemoteMethodInvoker(SharedTypeBinder.GetDataForSharedType(toInvoke.GetType()).Methods[message.MethodID]).Invoke(toInvoke, message.Parameters), null));
                     }
                     catch (Exception e)
                     {
@@ -379,7 +420,7 @@ namespace DouglasDwyer.Imp
         }
 
         [MessageCallback]
-        protected void ReturnRemoteMethodCallback(ReturnRemoteMethodMessage message)
+        protected virtual void ReturnRemoteMethodCallback(ReturnRemoteMethodMessage message)
         {
             if (message.ExceptionResult is null)
             {
@@ -392,7 +433,7 @@ namespace DouglasDwyer.Imp
         }
 
         [MessageCallback]
-        protected async Task GetRemotePropertyCallbackAsync(GetRemotePropertyMessage message)
+        protected virtual async Task GetRemotePropertyCallbackAsync(GetRemotePropertyMessage message)
         {
             object toInvoke = HeldObjects[message.InvocationTarget.ObjectID];
             if (toInvoke is null)
@@ -423,7 +464,7 @@ namespace DouglasDwyer.Imp
         }
 
         [MessageCallback]
-        protected void ReturnRemotePropertyCallback(ReturnRemotePropertyMessage message)
+        protected virtual void ReturnRemotePropertyCallback(ReturnRemotePropertyMessage message)
         {
             if (message.ExceptionResult is null)
             {
@@ -436,7 +477,7 @@ namespace DouglasDwyer.Imp
         }
 
         [MessageCallback]
-        protected async Task SetRemotePropertyCallbackAsync(SetRemotePropertyMessage message)
+        protected virtual async Task SetRemotePropertyCallbackAsync(SetRemotePropertyMessage message)
         {
             object toInvoke = HeldObjects[message.InvocationTarget.ObjectID];
             if (toInvoke is null)
@@ -465,7 +506,7 @@ namespace DouglasDwyer.Imp
         }
 
         [MessageCallback]
-        protected async Task GetRemoteIndexerCallbackAsync(GetRemoteIndexerMessage message)
+        protected virtual async Task GetRemoteIndexerCallbackAsync(GetRemoteIndexerMessage message)
         {
             object toInvoke = HeldObjects[message.InvocationTarget.ObjectID];
             if (toInvoke is null)
@@ -496,7 +537,7 @@ namespace DouglasDwyer.Imp
         }
 
         [MessageCallback]
-        protected void ReturnRemoteIndexerCallback(ReturnRemoteIndexerMessage message)
+        protected virtual void ReturnRemoteIndexerCallback(ReturnRemoteIndexerMessage message)
         {
             if (message.ExceptionResult is null)
             {

@@ -1,5 +1,8 @@
-﻿namespace DouglasDwyer.Imp
+﻿using System;
+
+namespace DouglasDwyer.Imp
 {
+    [Obsolete("SharedObjectPath has been deprecated in favor of client-specific object IDs.", true)]
     public readonly struct SharedObjectPath
     {
         public readonly ushort OwnerID;

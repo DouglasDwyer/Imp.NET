@@ -8,14 +8,14 @@
     ".NETCoreApp,Version=v3.1": {
       "TestProject/1.0.0": {
         "dependencies": {
-          "Imp": "1.0.0"
+          "Imp.NET": "0.1.0"
         },
         "runtime": {
           "TestProject.dll": {}
         }
       },
       "System.Reflection.Emit/4.7.0": {},
-      "Imp/1.0.0": {
+      "Imp.NET/0.1.0": {
         "dependencies": {
           "System.Reflection.Emit": "4.7.0"
         },
@@ -38,7 +38,7 @@
       "path": "system.reflection.emit/4.7.0",
       "hashPath": "system.reflection.emit.4.7.0.nupkg.sha512"
     },
-    "Imp/1.0.0": {
+    "Imp.NET/0.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

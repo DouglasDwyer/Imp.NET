@@ -17,14 +17,7 @@ namespace DouglasDwyer.Imp
 
         static ShareAsAttribute()
         {
-            foreach (ShareAsAttribute attribute in AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetCustomAttributes(typeof(ShareAsAttribute))))
-            {
-                SharedTypes[attribute.TypeToShare] = attribute.InterfaceBinding;
-            }
-            foreach(Type type in SharedTypes.Values.Distinct())
-            {
-                ProxyData.Add(new ProxyType(ProxyIndex.Add(type), type));
-            }
+            
         }
 
         public ShareAsAttribute(Type typeToShare, Type interfaceBinding)

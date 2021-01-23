@@ -769,17 +769,17 @@
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
-      "Imp/1.0.0": {
+      "Imp.NET/0.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "System.Reflection.Emit": "4.7.0"
         },
         "compile": {
-          "bin/placeholder/Imp.dll": {}
+          "bin/placeholder/Imp.NET.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Imp.dll": {}
+          "bin/placeholder/Imp.NET.dll": {}
         }
       }
     }
@@ -3019,7 +3019,7 @@
         "version.txt"
       ]
     },
-    "Imp/1.0.0": {
+    "Imp.NET/0.1.0": {
       "type": "project",
       "path": "../Imp/Imp.csproj",
       "msbuildProject": "../Imp/Imp.csproj"
@@ -3027,7 +3027,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Imp >= 1.0.0",
+      "Imp.NET >= 0.1.0",
       "Microsoft.CodeAnalysis.Analyzers >= 3.3.2",
       "Microsoft.CodeAnalysis.CSharp.Workspaces >= 3.8.0",
       "NETStandard.Library >= 2.0.3"

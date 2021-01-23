@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Imp/1.0.0": {
+      "Imp/0.1.0.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
           "System.Reflection.Emit": "4.7.0"
@@ -44,7 +44,7 @@
     }
   },
   "libraries": {
-    "Imp/1.0.0": {
+    "Imp/0.1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

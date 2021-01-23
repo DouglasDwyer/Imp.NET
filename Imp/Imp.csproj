@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>DouglasDwyer.Imp</RootNamespace>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Douglas Dwyer</Authors>
+    <Company>Douglas Dwyer</Company>
+    <PackageId>Imp.NET</PackageId>
+    <Product>Imp.NET</Product>
+    <Description>Imp.NET is a fast, high-level, object-oriented C# networking library that supports the invocation of remote methods through proxy interface objects.</Description>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Version>0.1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -21,18 +21,6 @@ namespace TestProject
 
     class Program
     {
-        public static Action<int> KEKKERS = x => { };
-
-        static void a(int i)
-        {
-            Action a = () => { };
-        }
-
-        static void a()
-        {
-            Action a = () => { };
-        }
-
         static void Main(string[] args)
         {
             Console.WriteLine("Type S for server or press any other key for client.");

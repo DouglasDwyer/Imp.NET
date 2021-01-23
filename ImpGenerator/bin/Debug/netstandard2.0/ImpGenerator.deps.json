@@ -9,7 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "ImpGenerator/1.0.0": {
         "dependencies": {
-          "Imp": "1.0.0",
+          "Imp.NET": "0.1.0",
           "Microsoft.CodeAnalysis.Analyzers": "3.3.2",
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "3.8.0",
           "NETStandard.Library": "2.0.3"
@@ -667,7 +667,7 @@
           }
         }
       },
-      "Imp/1.0.0": {
+      "Imp.NET/0.1.0": {
         "dependencies": {
           "System.Reflection.Emit": "4.7.0"
         },
@@ -998,7 +998,7 @@
       "path": "system.threading.tasks.extensions/4.5.4",
       "hashPath": "system.threading.tasks.extensions.4.5.4.nupkg.sha512"
     },
-    "Imp/1.0.0": {
+    "Imp.NET/0.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

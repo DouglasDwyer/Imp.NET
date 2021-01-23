@@ -25,6 +25,7 @@ namespace DouglasDwyer.Imp
             typeof(ReturnRemotePropertyMessage),
             typeof(GetRemoteIndexerMessage),
             typeof(ReturnRemoteIndexerMessage),
+            typeof(SetProxyBinderMessage),
             typeof(SetRemotePropertyMessage) })
         {
             Client = client;

@@ -14,5 +14,14 @@ namespace DouglasDwyer.Imp
             Location = path;
             HostClient = host;
         }
+
+        ~RemoteSharedObject()
+        {
+            try
+            {
+                HostClient.ReleaseRemoteSharedObject(Location);
+            }
+            catch(Exception e) { Console.WriteLine(e); }
+        }
     }
 }

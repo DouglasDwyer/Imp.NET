@@ -5,10 +5,10 @@
   },
   "projects": {
     "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj": {
-      "version": "1.0.0",
+      "version": "0.1.0",
       "restore": {
         "projectUniqueName": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj",
-        "projectName": "Imp",
+        "projectName": "Imp.NET",
         "projectPath": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj",
         "packagesPath": "C:\\Users\\Douglas\\.nuget\\packages\\",
         "outputPath": "D:\\Projects\\Imp.NET\\Imp\\obj\\",
