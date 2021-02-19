@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace DouglasDwyer.Imp
 {
-    public sealed class CountedObject<T>
+    internal sealed class CountedObject<T>
     {
         public T ReferencedObject { get; }
         public int Count => InnerCount;
@@ -17,6 +17,11 @@ namespace DouglasDwyer.Imp
         {
             ReferencedObject = obj;
             InnerCount = initialCount;
+        }
+
+        public void SetCount(int count)
+        {
+            InnerCount = count;
         }
 
         public static CountedObject<T> operator ++(CountedObject<T> obj)

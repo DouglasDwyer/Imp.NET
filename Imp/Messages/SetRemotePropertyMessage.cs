@@ -6,12 +6,12 @@ namespace DouglasDwyer.Imp.Messages
 {
     public class SetRemotePropertyMessage : ImpMessage
     {
-        public SharedObjectPath InvocationTarget;
+        public ushort InvocationTarget;
         public string PropertyName;
         public ushort OperationID;
         public object Value;
 
-        public SetRemotePropertyMessage(SharedObjectPath invocationTarget, string methodName, object value, ushort operationID)
+        public SetRemotePropertyMessage(ushort invocationTarget, string methodName, object value, ushort operationID)
         {
             InvocationTarget = invocationTarget;
             PropertyName = methodName;

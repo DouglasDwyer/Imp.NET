@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ImpGenerator</id>
+    <version>1.0.0</version>
+    <authors>ImpGenerator</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Imp.NET" version="0.1.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\Projects\Imp.NET\ImpGenerator\bin\Release\netstandard2.0\ImpGenerator.dll" target="lib\netstandard2.0\ImpGenerator.dll" />
+  </files>
+</package>

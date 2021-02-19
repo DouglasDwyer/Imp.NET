@@ -12,13 +12,14 @@ namespace DouglasDwyer.Imp
     {
         private static readonly ConstructorInfo RemoteSharedObjectConstructor;
         private static readonly MethodInfo RemoteSharedObjectHostGetterMethod;
-        private static readonly FieldInfo RemoteSharedObjectLocationField;
+        private static readonly MethodInfo RemoteSharedObjectLocationField;
         private static readonly MethodInfo ImpClientGetRemotePropertyMethod;
         private static readonly MethodInfo ImpClientSetRemotePropertyMethod;
         private static readonly MethodInfo ImpClientGetRemoteIndexerMethod;
         private static readonly MethodInfo ImpClientSetRemoteIndexerMethod;
         private static readonly MethodInfo ImpClientCallRemoteMethod;
         private static readonly MethodInfo ImpClientCallRemoteMethodAsync;
+        private static readonly MethodInfo ImpClientCallRemoteUnreliableMethod;
 
         protected IdentifiedCollection<Type> ProxyIndex = new IdentifiedCollection<Type>();
         protected List<ProxyType> ProxyData = new List<ProxyType>();
@@ -30,15 +31,16 @@ namespace DouglasDwyer.Imp
         {
             Type RSO = typeof(RemoteSharedObject);
             Type KC = typeof(ImpClient);
-            RemoteSharedObjectConstructor = RSO.GetConstructor(new[] { typeof(SharedObjectPath), typeof(ImpClient) });
+            RemoteSharedObjectConstructor = RSO.GetConstructor(new[] { typeof(ushort), typeof(ImpClient) });
             RemoteSharedObjectHostGetterMethod = RSO.GetProperty("HostClient").GetMethod;
-            RemoteSharedObjectLocationField = RSO.GetField("Location");
+            RemoteSharedObjectLocationField = RSO.GetMethod("get_ObjectID");
             ImpClientGetRemotePropertyMethod = KC.GetMethod("GetRemoteProperty");
             ImpClientSetRemotePropertyMethod = KC.GetMethod("SetRemoteProperty");
             ImpClientGetRemoteIndexerMethod = KC.GetMethod("GetRemoteIndexer");
             ImpClientSetRemoteIndexerMethod = KC.GetMethod("SetRemoteIndexer");
             ImpClientCallRemoteMethod = KC.GetMethod("CallRemoteMethod");
             ImpClientCallRemoteMethodAsync = KC.GetMethod("CallRemoteMethodAsync");
+            ImpClientCallRemoteUnreliableMethod = KC.GetMethod("CallRemoteUnreliableMethod");
         }
 
         public virtual ProxyType GetDataForProxy(ushort id)
@@ -169,7 +171,7 @@ namespace DouglasDwyer.Imp
             }
             for (int i = 0; i < proxyData.Methods.Count; i++)
             {
-                GenerateMethod(builder, proxyData.Methods[i], i, true);
+                GenerateMethod(builder, proxyData.Methods[i].Method, i, true);
             }
             return builder;
         }
@@ -189,15 +191,50 @@ namespace DouglasDwyer.Imp
             return builder;
         }
 
+        private void CheckUnreliableMethodDeclaration(MethodInfo info)
+        {
+            if (info.ReturnType != typeof(void))
+            {
+                throw new ArgumentException("Return type of unreliable method " + info + " must be void.");
+            }
+            foreach (ParameterInfo para in info.GetParameters())
+            {
+                if (para.ParameterType.IsByRef)
+                {
+                    throw new ArgumentException("Unreliable method " + info + " cannot take in, out, or ref arguments.");
+                }
+                if (!IsTypeSafelyUnreliable(para.ParameterType))
+                {
+                    throw new ArgumentException("Unreliable method " + info + " cannot take reference types or value types that have reference-typed fields as arguments.");
+                }
+            }
+        }
+
+        private bool IsTypeSafelyUnreliable(Type type)
+        {
+            return type == typeof(string) || (type.IsValueType && (type.IsPrimitive || type.GetFields().Any(x => !x.IsStatic && IsTypeSafelyUnreliable(x.FieldType))));
+        }
+
         private MethodBuilder GenerateMethod(TypeBuilder type, MethodInfo info, int id, bool explicitDefinition)
         {
-            ParameterInfo[] parameters = info.GetParameters();
-            MethodBuilder builder = type.DefineMethod(explicitDefinition ? GetFriendlyName(info.DeclaringType) + "." + info.Name : info.Name, MethodAttributes.Public | MethodAttributes.HideBySig | MethodAttributes.NewSlot | MethodAttributes.Virtual, info.ReturnType, parameters.Select(x => x.ParameterType).ToArray());
+            MethodBuilder builder = type.DefineMethod(explicitDefinition ? GetFriendlyName(info.DeclaringType) + "." + info.Name : info.Name, MethodAttributes.Public | MethodAttributes.HideBySig | MethodAttributes.NewSlot | MethodAttributes.Virtual);
+            
+            Type[] genericParameters = info.GetGenericArguments();
+            GenericTypeParameterBuilder[] generic = builder.DefineGenericParameters(genericParameters.Select(x => x.Name).ToArray());
+            for (int i = 0; i < generic.Length; i++)
+            {
+                generic[i].SetBaseTypeConstraint(genericParameters[i].BaseType);
+                generic[i].SetInterfaceConstraints(genericParameters[i].GetInterfaces());
+                generic[i].SetGenericParameterAttributes(genericParameters[i].GenericParameterAttributes);
+            }            
+
+            Type[] parameters = info.GetParameters().Select(x => ObtainLocalizedType(x.ParameterType, builder)).ToArray();
+
             ILGenerator generator = builder.GetILGenerator();
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectHostGetterMethod);
             generator.Emit(OpCodes.Ldarg_0);
-            generator.Emit(OpCodes.Ldfld, RemoteSharedObjectLocationField);
+            generator.Emit(OpCodes.Call, RemoteSharedObjectLocationField);
             generator.Emit(OpCodes.Ldc_I4, parameters.Length);
             generator.Emit(OpCodes.Newarr, typeof(object));
             for (int i = 0; i < parameters.Length; i++)
@@ -205,14 +242,31 @@ namespace DouglasDwyer.Imp
                 generator.Emit(OpCodes.Dup);
                 generator.Emit(OpCodes.Ldc_I4, i);
                 generator.Emit(OpCodes.Ldarg, i + 1);
-                if (parameters[i].ParameterType.IsValueType)
+                if (parameters[i].IsValueType)
                 {
-                    generator.Emit(OpCodes.Box, parameters[i].ParameterType);
+                    generator.Emit(OpCodes.Box, parameters[i]);
                 }
                 generator.Emit(OpCodes.Stelem_Ref);
             }
+
+            if(info.IsGenericMethodDefinition)
+            {
+                generator.Emit(OpCodes.Newarr, typeof(Type));
+
+                
+            }
+            else
+            {
+                generator.Emit(OpCodes.Ldnull);
+            }
+
             generator.Emit(OpCodes.Ldc_I4, id);
-            if (info.ReturnType == typeof(Task))
+            if(info.GetCustomAttribute<UnreliableAttribute>() != null)
+            {
+                CheckUnreliableMethodDeclaration(info);
+                generator.Emit(OpCodes.Callvirt, ImpClientCallRemoteUnreliableMethod);
+            }
+            else if (info.ReturnType == typeof(Task))
             {
                 generator.Emit(OpCodes.Callvirt, ImpClientCallRemoteMethodAsync.MakeGenericMethod(typeof(object)));
             }
@@ -276,7 +330,7 @@ namespace DouglasDwyer.Imp
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectHostGetterMethod);
             generator.Emit(OpCodes.Ldarg_0);
-            generator.Emit(OpCodes.Ldfld, RemoteSharedObjectLocationField);
+            generator.Emit(OpCodes.Call, RemoteSharedObjectLocationField);
             generator.Emit(OpCodes.Ldstr, propertyName);
             generator.Emit(OpCodes.Callvirt, ImpClientGetRemoteIndexerMethod.MakeGenericMethod(getter.ReturnType));
             generator.Emit(OpCodes.Ret);
@@ -290,7 +344,7 @@ namespace DouglasDwyer.Imp
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectHostGetterMethod);
             generator.Emit(OpCodes.Ldarg_0);
-            generator.Emit(OpCodes.Ldfld, RemoteSharedObjectLocationField);
+            generator.Emit(OpCodes.Call, RemoteSharedObjectLocationField);
             generator.Emit(OpCodes.Ldarg_1);
             generator.Emit(OpCodes.Ldstr, propertyName);
             generator.Emit(OpCodes.Callvirt, ImpClientSetRemotePropertyMethod.MakeGenericMethod(getter.ReturnType));
@@ -305,7 +359,7 @@ namespace DouglasDwyer.Imp
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectHostGetterMethod);
             generator.Emit(OpCodes.Ldarg_0);
-            generator.Emit(OpCodes.Ldfld, RemoteSharedObjectLocationField);
+            generator.Emit(OpCodes.Call, RemoteSharedObjectLocationField);
             generator.Emit(OpCodes.Ldstr, propertyName);
             generator.Emit(OpCodes.Callvirt, ImpClientGetRemotePropertyMethod.MakeGenericMethod(getter.ReturnType));
             generator.Emit(OpCodes.Ret);
@@ -323,7 +377,7 @@ namespace DouglasDwyer.Imp
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectHostGetterMethod);
             generator.Emit(OpCodes.Ldarg_0);
-            generator.Emit(OpCodes.Ldfld, RemoteSharedObjectLocationField);
+            generator.Emit(OpCodes.Call, RemoteSharedObjectLocationField);
             generator.Emit(OpCodes.Ldarg_1);
             generator.Emit(OpCodes.Ldstr, propertyName);
             generator.Emit(OpCodes.Callvirt, ImpClientSetRemotePropertyMethod.MakeGenericMethod(setter.GetParameters()[0].ParameterType));
@@ -333,6 +387,36 @@ namespace DouglasDwyer.Imp
                 type.DefineMethodOverride(method, setter);
             }
             return method;
+        }
+
+        private Type ObtainLocalizedType(Type type, TypeBuilder newType)
+        {
+            return ObtainLocalizedType(type, newType, null);
+        }
+
+        private Type ObtainLocalizedType(Type type, MethodBuilder builder)
+        {
+            return ObtainLocalizedType(type, (TypeBuilder)builder.DeclaringType, builder);
+        }
+
+        private Type ObtainLocalizedType(Type type, TypeBuilder newType, MethodBuilder builder)
+        {
+            if(type.DeclaringMethod != null)
+            {
+                return builder.GetGenericArguments()[type.GenericParameterPosition];
+            }
+            else if(type.IsGenericParameter)
+            {
+                return newType.GetGenericArguments()[type.GenericParameterPosition];
+            }
+            else if(type.IsGenericType)
+            {
+                return type.GetGenericTypeDefinition().MakeGenericType(type.GetGenericArguments().Select(x => ObtainLocalizedType(x, builder)).ToArray());
+            }
+            else
+            {
+                return type;
+            }
         }
 
         private string GetFriendlyName(Type type)

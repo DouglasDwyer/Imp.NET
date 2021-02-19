@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DouglasDwyer.Imp.Serialization
 {
-    public class BadImpSerializer
+    /*public class BadImpSerializer
     {
         public Action<BinaryWriter, object> SerializeLocalSharedObject { get; set; }
         public Func<BinaryReader, object> DeserializeSharedObject { get; set; }
@@ -193,7 +193,7 @@ namespace DouglasDwyer.Imp.Serialization
             else if(typeof(RemoteSharedObject).IsAssignableFrom(type))
             {
                 Action<BinaryWriter, object> pathSerializer = CreateSerializerForType(typeof(SharedObjectPath));
-                return (x, y) => { pathSerializer(x, ((RemoteSharedObject)y).Location); x.Write(type.FullName); };
+                return (x, y) => { pathSerializer(x, ((RemoteSharedObject)y).ObjectID); x.Write(type.FullName); };
             }
             else if (ShareAsAttribute.SharedTypes.ContainsKey(type) || BadProxyBinder.Instance.GetRemoteClass(type) != null)
             {
@@ -264,5 +264,5 @@ namespace DouglasDwyer.Imp.Serialization
                 };
             }
         }
-    }
+    }*/
 }

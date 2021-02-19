@@ -14,6 +14,9 @@ D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.dll
 D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.pdb
 D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.genruntimeconfig.cache
 D:\Projects\Knetworking\TestProject\obj\Debug\netcoreapp3.1\TestProject.csprojAssemblyReference.cache
+D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.AssemblyInfoInputs.cache
+D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.AssemblyInfo.cs
+D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.csproj.CoreCompileInputs.cache
 D:\Projects\Imp.NET\TestProject\bin\Debug\netcoreapp3.1\TestProject.exe
 D:\Projects\Imp.NET\TestProject\bin\Debug\netcoreapp3.1\TestProject.deps.json
 D:\Projects\Imp.NET\TestProject\bin\Debug\netcoreapp3.1\TestProject.runtimeconfig.json
@@ -22,11 +25,10 @@ D:\Projects\Imp.NET\TestProject\bin\Debug\netcoreapp3.1\TestProject.dll
 D:\Projects\Imp.NET\TestProject\bin\Debug\netcoreapp3.1\TestProject.pdb
 D:\Projects\Imp.NET\TestProject\bin\Debug\netcoreapp3.1\Imp.dll
 D:\Projects\Imp.NET\TestProject\bin\Debug\netcoreapp3.1\Imp.pdb
-D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.csprojAssemblyReference.cache
-D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.AssemblyInfoInputs.cache
-D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.AssemblyInfo.cs
-D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.csproj.CoreCompileInputs.cache
 D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.csproj.CopyComplete
 D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.dll
 D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.pdb
 D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.genruntimeconfig.cache
+D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.csprojAssemblyReference.cache
+D:\Projects\Imp.NET\TestProject\bin\Debug\netcoreapp3.1\DouglasDwyer.PowerSerializer.dll
+D:\Projects\Imp.NET\TestProject\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll

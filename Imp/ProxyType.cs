@@ -9,13 +9,15 @@ namespace DouglasDwyer.Imp
     public sealed class ProxyType
     {
         public ushort InterfaceID { get; }
-        public IReadOnlyList<MethodInfo> Methods { get; }
+        public Type InterfaceType { get; }
+        public IReadOnlyList<RemoteMethodInvoker> Methods { get; }
         public IReadOnlyList<PropertyInfo> Properties { get; }
 
         public ProxyType(ushort id, Type mainType)
         {
             InterfaceID = id;
-            List<MethodInfo> methods = new List<MethodInfo>();
+            InterfaceType = mainType;
+            List<RemoteMethodInvoker> methods = new List<RemoteMethodInvoker>();
             List<PropertyInfo> properties = new List<PropertyInfo>();
             foreach (Type type in mainType.GetInterfaces().Concat(new[] { mainType }))
             {
@@ -34,7 +36,31 @@ namespace DouglasDwyer.Imp
                 }
                 foreach (MethodInfo method in type.GetMethods().Where(x => !accessorMethods.Contains(x)))
                 {
-                    methods.Add(method);
+                    int callingClientLocation = -1;
+                    int i = 0;
+                    foreach(ParameterInfo para in method.GetParameters())
+                    {
+                        if(para.GetCustomAttribute<CallingClientAttribute>() != null)
+                        {
+                            if(callingClientLocation > -1)
+                            {
+                                throw new ArgumentException("Method " + method + " has multiple parameters marked with [CallingClient], but only one parameter may act as a calling client parameter.");
+                            }
+                            else
+                            {
+                                callingClientLocation = i;
+                            }
+                        }
+                        i++;
+                    }
+                    if (callingClientLocation > -1)
+                    {
+                        methods.Add(new CallingClientMethodInvoker(method, callingClientLocation));
+                    }
+                    else
+                    {
+                        methods.Add(new RemoteMethodInvoker(method));
+                    }
                 }
             }
             Methods = methods.AsReadOnly();

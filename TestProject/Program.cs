@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using DouglasDwyer.Imp;
 using DouglasDwyer.Imp.Serialization;
 using DouglasDwyer.Imp.Messages;
+using System.Collections;
 
 //[assembly: ShareAs(typeof(int[]), typeof(IList<int>))]
 
@@ -21,51 +23,102 @@ namespace TestProject
 
     class Program
     {
+        public static void Bob<T>() where T : new() { }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Type S for server or press any other key for client.");
             if (Console.ReadKey().Key == ConsoleKey.S)
             {
-                TicTacToeServer server = new TicTacToeServer(IPAddress.Any, 4000);
+                ChatServer server = new ChatServer(IPAddress.Any, 4000);
                 server.Start();
-                while (server.ConnectedClients.Count == 0) { Thread.Sleep(1); }
-                Console.WriteLine("Client connected to server.");
                 Console.ReadKey();
             }
             else
             {
-                TicTacToeClient client = new TicTacToeClient();
-                client.Connect("localhost", 4000);
-                Console.WriteLine("Made a connection to the server");
-                ITicTacToeServer game = client.Server;
-                game.ThrowMe("kek").Result.SayHoi();
-                
-                Console.ReadKey();
+                ChatClient client = new ChatClient();
+                client.Connect("127.0.0.1", 4000);
+                IChatServer server = client.Server;
+                while(true)
+                {
+                    Task task = WaitSendM(server);
+                    try
+                    {
+                        task.Wait();
+                    }catch { }
+                    Console.ReadKey();
+                }
             }
+        }
 
-            Console.ReadLine();
+        public static async Task WaitSendM(IChatServer server)
+        {
+            await server.SendMessage(Console.ReadLine());
         }
     }
 
     [Shared]
-    public partial class TicTacToeServer : ImpServer<ITicTacToeClient>
+    public partial class ImDed<T> { }
+
+    [Shared]
+    public partial class ChatServer : ImpServer<IChatClient>
     {
-        public bool IsClientTurn { get; set; } = true;
-
-        public TicTacToeServer(IPAddress ip, int port) : base(ip, port) { }
-
-        public async Task<ITicTacToeServer> ThrowMe(string thrpwer)
+        public ChatServer(IPAddress binding, int port) : base(binding, port)
         {
-            return this;
         }
 
-        public async Task SayHoi()
+        public async Task SendMessage(string message, [CallingClient] IChatClient sender = null)
         {
-            Console.WriteLine("HOI");
+            throw new Exception("your mother homo");
+            SendMessageToEveryone("[" + sender.Name + "] " + message);            
+        }
+
+        protected override void OnClientConnected(IChatClient client)
+        {
+            SendMessageToEveryone("" + client.Name + " joined the chat.");
+        }
+
+        protected override void OnClientNetworkError(IChatClient client, Exception exception)
+        {
+            Console.WriteLine("Im having an aneurysm\n" + exception);
+        }
+
+        protected override void OnClientDisconnected(IChatClient client)
+        {
+            SendMessageToEveryone("Sombaby left the chat.");
+        }
+
+        private void SendMessageToEveryone(string message)
+        {
+            Console.WriteLine(message);
+            foreach (IChatClient client in ConnectedClients)
+            {
+                client.ReceiveMessage(message);
+            }
         }
     }
 
     [Shared]
-    public partial class TicTacToeClient : ImpClient<ITicTacToeServer> {
+    public partial class ChatClient : ImpClient<IChatServer>
+    {
+        public string Name { get; } = Guid.NewGuid().ToString();
+
+        public async Task ReceiveMessage(string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        protected override void OnDisconnected()
+        {
+            Console.WriteLine("The client was disconnected.");
+        }
+
+        protected override void OnNetworkError(Exception e)
+        {
+            Console.WriteLine("A network error occured, resulting in disconnection:\n" + e);
+        }
+
+        [Unreliable]
+        public void bob() { }
     }
 }

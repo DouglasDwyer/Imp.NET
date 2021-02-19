@@ -7,6 +7,6 @@ namespace DouglasDwyer.Imp
     [ProxyFor(typeof(IImpServer))]
     public class RemoteImpServer : RemoteSharedObject, IImpServer
     {
-        public RemoteImpServer(SharedObjectPath path, ImpClient host) : base(path, host) { }
+        public RemoteImpServer(ushort path, ImpClient host) : base(path, host) { }
     }
 }

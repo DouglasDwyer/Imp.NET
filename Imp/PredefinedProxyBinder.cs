@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace DouglasDwyer.Imp
 {
-    public class PredefinedProxyBinder : GeneratorProxyBinder
+    internal class PredefinedProxyBinder : GeneratorProxyBinder
     {
         private PredefinedProxyBinder() { }
 

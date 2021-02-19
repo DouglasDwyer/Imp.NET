@@ -9,9 +9,9 @@ namespace DouglasDwyer.Imp
     public class RemoteImpClient : RemoteSharedObject, IImpClient
     {
         public IImpServer Server { get; private set; }
-        public ushort NetworkID => Location.OwnerID;
+        public ushort NetworkID => throw new NotImplementedException();
 
-        public RemoteImpClient(SharedObjectPath path, ImpClient host) : base(path, host) {
+        public RemoteImpClient(ushort path, ImpClient host) : base(path, host) {
             Server = host.Server;
         }
 

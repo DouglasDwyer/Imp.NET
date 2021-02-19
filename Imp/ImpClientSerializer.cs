@@ -16,16 +16,17 @@ namespace DouglasDwyer.Imp
         }
 
         public ImpClientSerializer(ImpClient client) : base(new[] {
-            typeof(SharedObjectPath),
             typeof(CallRemoteMethodMessage),
+            typeof(CallRemoteUnreliableMethodMessage),
             typeof(GetRemoteServerObjectMessage),
             typeof(ReturnRemoteMethodMessage),
             typeof(ReturnRemoteServerObjectMessage),
             typeof(GetRemotePropertyMessage),
+            typeof(RemoteSharedObjectReleasedMessage),
             typeof(ReturnRemotePropertyMessage),
             typeof(GetRemoteIndexerMessage),
             typeof(ReturnRemoteIndexerMessage),
-            typeof(SetProxyBinderMessage),
+            typeof(SetConnectionDataMessage),
             typeof(SetRemotePropertyMessage) })
         {
             Client = client;
@@ -46,9 +47,10 @@ namespace DouglasDwyer.Imp
             {
                 return (s, x, y) =>
                 {
-                    if(!Client.SerializeSharedObject(s, x, y)) {
+                    throw new NotImplementedException("badd serializer");
+                    /*if (!Client.SerializeSharedObject(s, x, y)) {
                         baseSerializer(s, x, y);
-                    }
+                    }*/
                 };
             }
             else
@@ -67,7 +69,7 @@ namespace DouglasDwyer.Imp
                 {
                     if (x.ReadBoolean())
                     {
-                        return Client.DeserializeSharedObject(s, x);
+                        throw new NotImplementedException("badd serializer");
                     }
                     else
                     {

@@ -4,14 +4,28 @@ using System.Text;
 
 namespace DouglasDwyer.Imp
 {
+    /// <summary>
+    /// This is the base class for all interface implementations that represent an object on a remote host. Custom remote interface implementations should inherit from this class.
+    /// </summary>
     public class RemoteSharedObject
     {
-        public readonly SharedObjectPath Location;
-        public ImpClient HostClient { get; protected set; }
+        /// <summary>
+        /// The ID of this object used to identify on the remote host.
+        /// </summary>
+        public ushort ObjectID { get; internal set; }
+        /// <summary>
+        /// The client that owns this object.
+        /// </summary>
+        public ImpClient HostClient { get; internal set; }
 
-        public RemoteSharedObject(SharedObjectPath path, ImpClient host)
+        /// <summary>
+        /// Creates a new remote shared object with the given ID and host.
+        /// </summary>
+        /// <param name="path">The ID of the remote object.</param>
+        /// <param name="host">The client that owns this object.</param>
+        public RemoteSharedObject(ushort path, ImpClient host)
         {
-            Location = path;
+            ObjectID = path;
             HostClient = host;
         }
 
@@ -19,9 +33,11 @@ namespace DouglasDwyer.Imp
         {
             try
             {
-                HostClient.ReleaseRemoteSharedObject(Location);
+                HostClient.ReleaseRemoteSharedObject(ObjectID);
             }
-            catch(Exception e) { Console.WriteLine(e); }
+            catch(Exception e) {
+                Console.WriteLine(e);
+            }
         }
     }
 }

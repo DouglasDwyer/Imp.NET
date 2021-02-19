@@ -1,6 +1,4 @@
-﻿using DouglasDwyer.Imp.Messages;
-
-namespace DouglasDwyer.Imp
+﻿namespace DouglasDwyer.Imp.Messages
 {
     public class RemoteSharedObjectReleasedMessage : ImpMessage
     {

@@ -6,16 +6,18 @@ namespace DouglasDwyer.Imp.Messages
 {
     public class CallRemoteMethodMessage : ImpMessage
     {
-        public SharedObjectPath InvocationTarget;
+        public ushort InvocationTarget;
         public ushort MethodID;
         public ushort OperationID;
-        public object[] Parameters;
+        public object[] Arguments;
+        public Type[] GenericArguments;
 
-        public CallRemoteMethodMessage(SharedObjectPath invocationTarget, ushort methodID, object[] parameters, ushort operationID)
+        public CallRemoteMethodMessage(ushort invocationTarget, ushort methodID, object[] arguments, Type[] genericArguments, ushort operationID)
         {
             InvocationTarget = invocationTarget;
             MethodID = methodID;
-            Parameters = parameters;
+            Arguments = arguments;
+            GenericArguments = genericArguments;
             OperationID = operationID;
         }
     }

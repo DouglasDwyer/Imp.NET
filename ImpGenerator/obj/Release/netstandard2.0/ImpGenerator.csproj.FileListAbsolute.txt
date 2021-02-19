@@ -1,0 +1,13 @@
+D:\Projects\Imp.NET\ImpGenerator\bin\Release\netstandard2.0\ImpGenerator.deps.json
+D:\Projects\Imp.NET\ImpGenerator\bin\Release\netstandard2.0\ImpGenerator.dll
+D:\Projects\Imp.NET\ImpGenerator\bin\Release\netstandard2.0\ImpGenerator.pdb
+D:\Projects\Imp.NET\ImpGenerator\bin\Release\netstandard2.0\Imp.dll
+D:\Projects\Imp.NET\ImpGenerator\bin\Release\netstandard2.0\Imp.pdb
+D:\Projects\Imp.NET\ImpGenerator\obj\Release\netstandard2.0\ImpGenerator.csprojAssemblyReference.cache
+D:\Projects\Imp.NET\ImpGenerator\obj\Release\netstandard2.0\ImpGenerator.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\Imp.NET\ImpGenerator\obj\Release\netstandard2.0\ImpGenerator.AssemblyInfoInputs.cache
+D:\Projects\Imp.NET\ImpGenerator\obj\Release\netstandard2.0\ImpGenerator.AssemblyInfo.cs
+D:\Projects\Imp.NET\ImpGenerator\obj\Release\netstandard2.0\ImpGenerator.csproj.CoreCompileInputs.cache
+D:\Projects\Imp.NET\ImpGenerator\obj\Release\netstandard2.0\ImpGenerator.csproj.CopyComplete
+D:\Projects\Imp.NET\ImpGenerator\obj\Release\netstandard2.0\ImpGenerator.dll
+D:\Projects\Imp.NET\ImpGenerator\obj\Release\netstandard2.0\ImpGenerator.pdb

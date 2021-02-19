@@ -14,9 +14,29 @@
           "TestProject.dll": {}
         }
       },
+      "DouglasDwyer.PowerSerializer/1.0.0.2": {
+        "dependencies": {
+          "System.Collections.Immutable": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/DouglasDwyer.PowerSerializer.dll": {
+            "assemblyVersion": "1.0.0.2",
+            "fileVersion": "1.0.0.2"
+          }
+        }
+      },
+      "System.Collections.Immutable/5.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Collections.Immutable.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
       "System.Reflection.Emit/4.7.0": {},
       "Imp.NET/0.1.0": {
         "dependencies": {
+          "DouglasDwyer.PowerSerializer": "1.0.0.2",
           "System.Reflection.Emit": "4.7.0"
         },
         "runtime": {
@@ -30,6 +50,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "DouglasDwyer.PowerSerializer/1.0.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EAscVKP6W/BkujuMiTLgTpoG4TBCsW4hI21TopPoeg7N2BX7LkbYiq7r2dfgBvBRzZlCTPds/QaC9vx9F6oxdQ==",
+      "path": "douglasdwyer.powerserializer/1.0.0.2",
+      "hashPath": "douglasdwyer.powerserializer.1.0.0.2.nupkg.sha512"
+    },
+    "System.Collections.Immutable/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FXkLXiK0sVVewcso0imKQoOxjoPAj42R8HtjjbSjVPAzwDfzoyoznWxgA3c38LDbN9SJux1xXoXYAhz98j7r2g==",
+      "path": "system.collections.immutable/5.0.0",
+      "hashPath": "system.collections.immutable.5.0.0.nupkg.sha512"
     },
     "System.Reflection.Emit/4.7.0": {
       "type": "package",
