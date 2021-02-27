@@ -56,6 +56,7 @@ namespace DouglasDwyer.Imp
         /// <param name="localType">The shared class which implements the interface.</param>
         /// <returns>The shared interface.</returns>
         Type GetProxyForLocalType(Type localType);
+        bool IsSharedType(Type sharedType);
         /// <summary>
         /// Gets the type ID for the given proxy interface.
         /// </summary>

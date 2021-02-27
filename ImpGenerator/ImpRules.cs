@@ -47,6 +47,22 @@ namespace DouglasDwyer.ImpGenerator
                     "Parameter {1} of method {0} is marked as calling client, but {0} already has a calling client parameter.",
                     "DouglasDwyer.Imp",
                     DiagnosticSeverity.Error,
+                    true),
+            NestedSharedClassError =
+                new DiagnosticDescriptor(
+                    "IMP0006",
+                    "Nested shared class",
+                    "Class {0} is marked as shared, but it is a nested member of class {1}. Shared classes cannot be nested.",
+                    "DouglasDwyer.Imp",
+                    DiagnosticSeverity.Error,
+                    true),
+            InvalidTypeNameError =
+                new DiagnosticDescriptor(
+                    "IMP0007",
+                    "Invalid shared type name",
+                    "Class {0} is marked as shared, but its shared interface name '{1}' is not a valid C# type name.",
+                    "DouglasDwyer.Imp",
+                    DiagnosticSeverity.Error,
                     true);
 
     }

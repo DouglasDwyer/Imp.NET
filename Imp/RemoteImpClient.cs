@@ -6,10 +6,9 @@ using System.Text;
 namespace DouglasDwyer.Imp
 {
     [ProxyFor(typeof(IImpClient))]
-    public class RemoteImpClient : RemoteSharedObject, IImpClient
+    public abstract class RemoteImpClient : RemoteSharedObject, IImpClient
     {
         public IImpServer Server { get; private set; }
-        public ushort NetworkID => throw new NotImplementedException();
 
         public RemoteImpClient(ushort path, ImpClient host) : base(path, host) {
             Server = host.Server;
@@ -17,7 +16,7 @@ namespace DouglasDwyer.Imp
 
         public void Disconnect()
         {
-            if (NetworkID == HostClient.NetworkID)
+            if (ObjectID == 0)
             {
                 HostClient.Disconnect();
             }

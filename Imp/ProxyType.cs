@@ -10,13 +10,17 @@ namespace DouglasDwyer.Imp
     {
         public ushort InterfaceID { get; }
         public Type InterfaceType { get; }
+        public Type RemoteBaseType { get; }
         public IReadOnlyList<RemoteMethodInvoker> Methods { get; }
         public IReadOnlyList<PropertyInfo> Properties { get; }
 
-        public ProxyType(ushort id, Type mainType)
+        //public ProxyType(ushort id, Type mainType) : this(id, mainType, typeof(RemoteSharedObject)) { }
+
+        public ProxyType(ushort id, Type mainType, Type remoteBaseType)
         {
             InterfaceID = id;
             InterfaceType = mainType;
+            RemoteBaseType = remoteBaseType;
             List<RemoteMethodInvoker> methods = new List<RemoteMethodInvoker>();
             List<PropertyInfo> properties = new List<PropertyInfo>();
             foreach (Type type in mainType.GetInterfaces().Concat(new[] { mainType }))

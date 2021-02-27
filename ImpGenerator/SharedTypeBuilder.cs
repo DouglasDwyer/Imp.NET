@@ -29,9 +29,22 @@ namespace DouglasDwyer.ImpGenerator
 
         public virtual SyntaxTree GenerateInterfaceDefinition()
         {
+            if(Symbol.ContainingType != null)
+            {
+                Context.ReportDiagnostic(Diagnostic.Create(ImpRules.NestedSharedClassError, Symbol.Locations.FirstOrDefault(), Symbol.Name, Symbol.ContainingType.Name));
+            }
+
+            SyntaxTriviaList leadingTrivia = SyntaxFactory.TriviaList();
+
+            foreach (SyntaxReference reference in Symbol.DeclaringSyntaxReferences)
+            {
+                leadingTrivia = SyntaxFactory.TriviaList(leadingTrivia.Concat(reference.GetSyntax().GetLeadingTrivia()));
+            }
+
             SyntaxNode node = SyntaxFactory.InterfaceDeclaration(InterfaceName)
                 .WithTypeParameterList(GetTypeParameterList())
-                .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.PublicKeyword), SyntaxFactory.Token(SyntaxKind.PartialKeyword)));
+                .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.PublicKeyword), SyntaxFactory.Token(SyntaxKind.PartialKeyword)))
+                .WithLeadingTrivia(leadingTrivia);
             if (!string.IsNullOrEmpty(InterfaceNamespace))
             {
                 node = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.IdentifierName(InterfaceNamespace)).WithMembers(SyntaxFactory.SingletonList(node));
@@ -73,22 +86,65 @@ namespace DouglasDwyer.ImpGenerator
             {
                 s += "`" + Symbol.TypeParameters.Length;
             }
-            InterfaceSymbol = Model.Compilation.GetTypeByMetadataName(s);
+            InterfaceSymbol = GetTypeByMetadataNameReplacement(s, Model.Compilation.GlobalNamespace);
+        }
+
+        private INamedTypeSymbol GetTypeByMetadataNameReplacement(string name, INamespaceSymbol namespaceToSearch)
+        {
+            INamedTypeSymbol found = namespaceToSearch.GetTypeMembers().FirstOrDefault(x => GetMetadataNameOfType(x) == name);
+            if(found is null)
+            {
+                foreach(INamespaceSymbol newNamespace in namespaceToSearch.GetNamespaceMembers())
+                {
+                    found = GetTypeByMetadataNameReplacement(name, newNamespace);
+                    if(found != null)
+                    {
+                        return found;
+                    }
+                }
+                return null;
+            }
+            else
+            {
+                return found;
+            }
+        }
+
+        private string GetMetadataNameOfType(INamedTypeSymbol symbol)
+        {
+            string toRet = GetFullNameOfType(symbol).Replace("global::", "");
+            if(symbol.IsGenericType)
+            {
+                toRet += "`" + symbol.TypeParameters.Length;
+            }
+            return toRet;
         }
 
         protected virtual AttributeListSyntax GetShareAsAttributeSyntax()
         {
+            NameSyntax synt = GetSyntaxForType(Symbol);
+            if(synt is GenericNameSyntax gen)
+            {
+                synt = gen.WithTypeArgumentList(SyntaxFactory.TypeArgumentList(SyntaxFactory.SeparatedList<TypeSyntax>(Symbol.TypeParameters.Select(x => SyntaxFactory.OmittedTypeArgument()))));
+            }
+            NameSyntax name = GetSyntaxForType(InterfaceSymbol);
+            if (name is GenericNameSyntax gen2)
+            {
+                name = gen2.WithTypeArgumentList(SyntaxFactory.TypeArgumentList(SyntaxFactory.SeparatedList<TypeSyntax>(InterfaceSymbol.TypeParameters.Select(x => SyntaxFactory.OmittedTypeArgument()))));
+            }
+
             return SyntaxFactory.AttributeList(SyntaxFactory.SingletonSeparatedList(SyntaxFactory.Attribute(GetSyntaxForType(Model.Compilation.GetTypeByMetadataName("DouglasDwyer.Imp.ShareAsAttribute")))
                 .WithArgumentList(SyntaxFactory.AttributeArgumentList(
                         SyntaxFactory.SeparatedList<AttributeArgumentSyntax>(
                             new SyntaxNodeOrToken[]{
                                 SyntaxFactory.AttributeArgument(
                                     SyntaxFactory.TypeOfExpression(
-                                        GetSyntaxForType(Symbol))),
+                                        synt
+                                        )),
                                 SyntaxFactory.Token(SyntaxKind.CommaToken),
                                 SyntaxFactory.AttributeArgument(
                                     SyntaxFactory.TypeOfExpression(
-                                        SyntaxFactory.IdentifierName(FullInterfaceName)))})))))
+                                        name))})))))
                 .WithTarget(
                     SyntaxFactory.AttributeTargetSpecifier(
                     SyntaxFactory.Token(SyntaxKind.AssemblyKeyword)));
@@ -154,7 +210,7 @@ namespace DouglasDwyer.ImpGenerator
                 interfaces = GenerateInterfaceBaseListInternal(type.BaseType);
             }
             interfaces.AddRange(type.Interfaces);
-            return interfaces;
+            return interfaces.Distinct().ToList();
         }
 
         protected virtual TypeParameterListSyntax GetTypeParameterList()
@@ -184,7 +240,7 @@ namespace DouglasDwyer.ImpGenerator
             }
             else
             {
-                return SyntaxFactory.NamespaceDeclaration(SyntaxFactory.IdentifierName(Symbol.ContainingNamespace.Name)).WithMembers(SyntaxFactory.SingletonList(node));
+                return SyntaxFactory.NamespaceDeclaration(SyntaxFactory.IdentifierName(GetFullNamespaceName(Symbol.ContainingNamespace))).WithMembers(SyntaxFactory.SingletonList(node));
             }
         }
 
@@ -202,13 +258,11 @@ namespace DouglasDwyer.ImpGenerator
 
         protected virtual SyntaxList<SyntaxNode> GenerateMemberDeclarations(INamedTypeSymbol type)
         {
-            return SyntaxFactory.List(GenerateMemberDeclarationsInternal(type).Values);
+            return SyntaxFactory.List(GenerateMemberDeclarationsInternal(type, new Dictionary<string, MemberDeclarationSyntax>()).Values);
         }
 
-        private Dictionary<string,MemberDeclarationSyntax> GenerateMemberDeclarationsInternal(INamedTypeSymbol type)
+        private Dictionary<string,MemberDeclarationSyntax> GenerateMemberDeclarationsInternal(INamedTypeSymbol type, Dictionary<string,MemberDeclarationSyntax> members)
         {
-            Dictionary<string, MemberDeclarationSyntax> members = (type.BaseType.SpecialType == SpecialType.System_Object || type.BaseType.TypeKind != TypeKind.Class) ? new Dictionary<string, MemberDeclarationSyntax>() : GenerateMemberDeclarationsInternal(type.BaseType);
-
             INamedTypeSymbol attributeSymbol = Model.Compilation.GetTypeByMetadataName("DouglasDwyer.Imp.LocalAttribute");
             foreach (ISymbol memberSymbol in type.GetMembers())
             {
@@ -224,6 +278,10 @@ namespace DouglasDwyer.ImpGenerator
                         members.Add(property.Name, new PropertyBuilder(property, Model).GenerateProperty());
                     }
                 }
+            }
+            if(!(type.BaseType.SpecialType == SpecialType.System_Object || type.BaseType.TypeKind != TypeKind.Class))
+            {
+                GenerateMemberDeclarationsInternal(type.BaseType, members);
             }
             return members;
         }

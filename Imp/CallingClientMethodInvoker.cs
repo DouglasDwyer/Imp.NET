@@ -14,13 +14,13 @@ namespace DouglasDwyer.Imp
             ClientArgumentLocation = argumentLocation;
         }
 
-        public override Task<object> Invoke(IImpClient client, ImpClient caller, object target, object[] args)
+        public override Task<object> Invoke(IImpClient client, ImpClient caller, object target, object[] args, Type[] genericArguments)
         {
             if (client is RemoteSharedObject rem)
             {
                 args[ClientArgumentLocation] = ((ImpServer)rem.HostClient.Server).GetCallingClientData(client);
             }
-            return base.Invoke(client, caller, target, args);
+            return base.Invoke(client, caller, target, args, genericArguments);
         }
     }
 }

@@ -18,6 +18,7 @@ namespace DouglasDwyer.Imp
 
         private void Generate(IList<string> types)
         {
+            throw new NotImplementedException();
             Dictionary<Type, Type> shareAsTypes = new Dictionary<Type, Type>();
             foreach (ShareAsAttribute attribute in AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetCustomAttributes(typeof(ShareAsAttribute))))
             {
@@ -46,7 +47,7 @@ namespace DouglasDwyer.Imp
             }
             foreach (Type type in LocalClassToInterface.Values.Distinct())
             {
-                ProxyData.Add(new ProxyType(ProxyIndex.Add(type), type));
+                //ProxyData.Add(new ProxyType(ProxyIndex.Add(type), type));
             }
             GenerateProxies(ProxyIndex.Values);
         }

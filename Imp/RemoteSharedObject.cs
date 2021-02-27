@@ -7,7 +7,7 @@ namespace DouglasDwyer.Imp
     /// <summary>
     /// This is the base class for all interface implementations that represent an object on a remote host. Custom remote interface implementations should inherit from this class.
     /// </summary>
-    public class RemoteSharedObject
+    public abstract class RemoteSharedObject
     {
         /// <summary>
         /// The ID of this object used to identify on the remote host.
@@ -27,6 +27,16 @@ namespace DouglasDwyer.Imp
         {
             ObjectID = path;
             HostClient = host;
+        }
+
+        public override string ToString()
+        {
+            string name = GetType().Name;
+            if(name.Length > 16)
+            {
+                name = name.Remove(name.Length - 32);
+            }
+            return name + "(" + HostClient.NetworkID + "," + ObjectID + ")";
         }
 
         ~RemoteSharedObject()

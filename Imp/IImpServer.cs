@@ -7,4 +7,6 @@ namespace DouglasDwyer.Imp
     public interface IImpServer
     {
     }
+
+    public interface IImpServer<T> : IImpServer { }
 }

@@ -10,29 +10,64 @@ namespace DouglasDwyer.Imp
     public class RemoteMethodInvoker
     {
         public MethodInfo Method { get; }
-        protected Func<TaskScheduler, object, object[], Task<object>> GetResult { get; }
+        protected Func<TaskScheduler, object, object[], Type[], Task<object>> GetResult { get; }
 
         public RemoteMethodInvoker(MethodInfo method)
         {
             Method = method;
             if (method.ReturnType == typeof(Task))
             {
-                GetResult = async (scheduler, x, y) => { await Task.Factory.StartNew(() => (Task)Method.Invoke(x, y), CancellationToken.None, TaskCreationOptions.None, scheduler).Unwrap(); return null; };
+                GetResult = async (scheduler, x, y, gens) => {
+                    MethodInfo toInvoke;
+                    if(gens is null)
+                    {
+                        toInvoke = Method;
+                    }
+                    else
+                    {
+                        toInvoke = Method.MakeGenericMethod(gens);
+                    }
+                    await Task.Factory.StartNew(() => (Task)toInvoke.Invoke(x, y), CancellationToken.None, TaskCreationOptions.None, scheduler).Unwrap();
+                    return null;
+                };
             }
             else if (typeof(Task).IsAssignableFrom(method.ReturnType))
             {
-                PropertyInfo resultInfo = method.ReturnType.GetProperty(nameof(Task<object>.Result));
-                GetResult = async (scheduler, x, y) => resultInfo.GetValue(await Task.Factory.StartNew(() => Method.Invoke(x, y), CancellationToken.None, TaskCreationOptions.None, scheduler));
+                GetResult = async (scheduler, x, y, gens) => {
+                    MethodInfo toInvoke;
+                    if (gens is null)
+                    {
+                        toInvoke = Method;
+                    }
+                    else
+                    {
+                        toInvoke = Method.MakeGenericMethod(gens);
+                    }
+                    PropertyInfo resultInfo = toInvoke.ReturnType.GetProperty(nameof(Task<object>.Result));
+                    return resultInfo.GetValue(await Task.Factory.StartNew(() => toInvoke.Invoke(x, y), CancellationToken.None, TaskCreationOptions.None, scheduler));
+                };
             }
             else
             {
-                GetResult = (scheduler, x, y) => Task.Factory.StartNew(() => Method.Invoke(x, y), CancellationToken.None, TaskCreationOptions.None, scheduler);
+                GetResult = (scheduler, x, y, gens) =>
+                {
+                    MethodInfo toInvoke;
+                    if (gens is null)
+                    {
+                        toInvoke = Method;
+                    }
+                    else
+                    {
+                        toInvoke = Method.MakeGenericMethod(gens);
+                    }
+                    return Task.Factory.StartNew(() => toInvoke.Invoke(x, y), CancellationToken.None, TaskCreationOptions.None, scheduler);
+                };
             }
         }
 
-        public virtual Task<object> Invoke(IImpClient client, ImpClient caller, object target, object[] args)
+        public virtual Task<object> Invoke(IImpClient client, ImpClient caller, object target, object[] args, Type[] genericArguments)
         {
-            return GetResult(caller.RemoteTaskScheduler, target, args);
+            return GetResult(caller.RemoteTaskScheduler, target, args, genericArguments);
         }
     }
 }

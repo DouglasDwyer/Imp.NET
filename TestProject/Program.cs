@@ -11,22 +11,73 @@ using DouglasDwyer.Imp;
 using DouglasDwyer.Imp.Serialization;
 using DouglasDwyer.Imp.Messages;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 //[assembly: ShareAs(typeof(int[]), typeof(IList<int>))]
 
 namespace TestProject
 {
-    public interface IChad
+    public static class ConsoleWriter
     {
-        void Chadley(string i, object o, int k);
+        private static bool IsReading = false;
+        private static object Locker = new object();
+
+        public static void WriteLine(string text)
+        {
+            lock(Locker)
+            {
+                if (IsReading)
+                {
+                    int cursorLeft = Console.CursorLeft;
+                    Console.MoveBufferArea(0, Console.CursorTop, Console.BufferWidth, 1, 0, Console.CursorTop + 1);
+                    Console.CursorLeft = 0;
+                    Console.WriteLine(text);
+                    Console.CursorLeft = cursorLeft;
+                }
+                else
+                {
+                    Console.WriteLine(text);
+                }
+            }
+        }
+
+        public static string ReadLine()
+        {
+            lock (Locker)
+            {
+                IsReading = true;
+            }
+            string toReturn = Console.ReadLine();
+            lock (Locker)
+            {
+                Console.CursorTop--;
+                ClearCurrentConsoleLine();
+                IsReading = false;
+            }
+            return toReturn;
+        }
+
+        private static bool CheckIsReading() { lock(Locker) { return IsReading; } }
+
+        private static void ClearCurrentConsoleLine()
+        {
+            lock (Locker)
+            {
+                int currentLineCursor = Console.CursorTop;
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(0, currentLineCursor);
+            }
+        }
     }
 
     class Program
     {
-        public static void Bob<T>() where T : new() { }
-
         static void Main(string[] args)
         {
+            Server sewer = new Server();
+            sewer.RunTests().Wait();
+            return;
             Console.WriteLine("Type S for server or press any other key for client.");
             if (Console.ReadKey().Key == ConsoleKey.S)
             {
@@ -37,28 +88,22 @@ namespace TestProject
             else
             {
                 ChatClient client = new ChatClient();
+                ConsoleWriter.WriteLine("Please enter your name.");
+                client.Name = Console.ReadLine();
                 client.Connect("127.0.0.1", 4000);
                 IChatServer server = client.Server;
                 while(true)
                 {
                     Task task = WaitSendM(server);
-                    try
-                    {
-                        task.Wait();
-                    }catch { }
-                    Console.ReadKey();
                 }
             }
         }
 
         public static async Task WaitSendM(IChatServer server)
         {
-            await server.SendMessage(Console.ReadLine());
+            await server.SendMessage(ConsoleWriter.ReadLine());
         }
     }
-
-    [Shared]
-    public partial class ImDed<T> { }
 
     [Shared]
     public partial class ChatServer : ImpServer<IChatClient>
@@ -69,12 +114,12 @@ namespace TestProject
 
         public async Task SendMessage(string message, [CallingClient] IChatClient sender = null)
         {
-            throw new Exception("your mother homo");
             SendMessageToEveryone("[" + sender.Name + "] " + message);            
         }
 
-        protected override void OnClientConnected(IChatClient client)
+        protected override async void OnClientConnected(IChatClient client)
         {
+            await client.SetServersideName(await client.GetClientsideName());
             SendMessageToEveryone("" + client.Name + " joined the chat.");
         }
 
@@ -85,12 +130,12 @@ namespace TestProject
 
         protected override void OnClientDisconnected(IChatClient client)
         {
-            SendMessageToEveryone("Sombaby left the chat.");
+            SendMessageToEveryone(client.Name + " left the chat.");
         }
 
         private void SendMessageToEveryone(string message)
         {
-            Console.WriteLine(message);
+            ConsoleWriter.WriteLine(message);
             foreach (IChatClient client in ConnectedClients)
             {
                 client.ReceiveMessage(message);
@@ -101,24 +146,43 @@ namespace TestProject
     [Shared]
     public partial class ChatClient : ImpClient<IChatServer>
     {
-        public string Name { get; } = Guid.NewGuid().ToString();
+        public string Name { get; set; }
 
         public async Task ReceiveMessage(string message)
         {
-            Console.WriteLine(message);
+            ConsoleWriter.WriteLine(message);
+        }
+
+        public async Task SetServersideName(string name) => throw new NotImplementedException();
+
+        public async Task<string> GetClientsideName()
+        {
+            return Name;
         }
 
         protected override void OnDisconnected()
         {
-            Console.WriteLine("The client was disconnected.");
+            ConsoleWriter.WriteLine("The client was disconnected.");
         }
 
         protected override void OnNetworkError(Exception e)
         {
-            Console.WriteLine("A network error occured, resulting in disconnection:\n" + e);
+            ConsoleWriter.WriteLine("A network error occured, resulting in disconnection:\n" + e);
         }
+    }
 
-        [Unreliable]
-        public void bob() { }
+    [ProxyFor(typeof(IChatClient))]
+    public abstract class RemoteChatClient : RemoteImpClient, IChatClient
+    {
+        protected RemoteChatClient(ushort path, ImpClient host) : base(path, host) { }
+
+        public string Name { get; set; }
+
+        public abstract Task<string> GetClientsideName();
+        public abstract Task ReceiveMessage(string message);
+        public async Task SetServersideName(string name)
+        {
+            Name = name;
+        }
     }
 }

@@ -15,6 +15,10 @@ namespace DouglasDwyer.ImpGenerator
 
         public void OnVisitSyntaxNode(SyntaxNode syntaxNode)
         {
+            if(syntaxNode is XmlCommentSyntax xmlComment)
+            {
+                
+            }
             if(syntaxNode is ClassDeclarationSyntax syntax && syntax.AttributeLists.SelectMany(x => x.Attributes).Count() > 0)
             {
                 CandidateClasses.Add(syntax);

@@ -39,9 +39,29 @@ namespace DouglasDwyer.ImpGenerator
                     }
 
                     INamedTypeSymbol type = model.GetDeclaredSymbol(syntax);
-                    if (type.GetAttributes().Any(x => x.AttributeClass.Equals(attributeSymbol)))
+                    AttributeData attributeData = type.GetAttributes().FirstOrDefault(x => x.AttributeClass.Equals(attributeSymbol));
+                    if (attributeData != null)
                     {
-                        SharedTypeBuilder shared = new SharedTypeBuilder(type, model, context, "I" + type.Name, MemberBuilder.GetFullNamespaceName(type.ContainingNamespace));
+                        SharedTypeBuilder shared;
+                        if (attributeData.ConstructorArguments.Count() == 1)
+                        {
+                            string name = attributeData.ConstructorArguments[0].Value.ToString();
+                            if(name.StartsWith(".") || name.EndsWith("."))
+                            {
+                                context.ReportDiagnostic(Diagnostic.Create(ImpRules.InvalidTypeNameError, type.Locations.FirstOrDefault(), type.Name, name));
+                            }
+                            string nSpace = "";
+                            if(name.Contains("."))
+                            {
+                                nSpace = name.Remove(name.LastIndexOf("."));
+                                name = name.Substring(name.LastIndexOf(".") + 1);
+                            }
+                            shared = new SharedTypeBuilder(type, model, context, name, nSpace);
+                        }
+                        else
+                        {
+                            shared = new SharedTypeBuilder(type, model, context, "I" + type.Name, MemberBuilder.GetFullNamespaceName(type.ContainingNamespace));
+                        }
                         sharedTypes.Add(shared);
                         SyntaxTree tree = shared.GenerateInterfaceDefinition();
                         currentCompilation = currentCompilation.AddSyntaxTrees(tree);

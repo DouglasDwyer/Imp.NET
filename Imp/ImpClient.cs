@@ -17,7 +17,7 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 
-[assembly: ShareAs(typeof(ImpClient<>), typeof(IImpClient))]
+[assembly: ShareAs(typeof(ImpClient<>), typeof(IImpClient<>))]
 [assembly: ShareAs(typeof(ImpClient), typeof(IImpClient))]
 namespace DouglasDwyer.Imp
 {
@@ -60,6 +60,7 @@ namespace DouglasDwyer.Imp
         /// <summary>
         /// The unique network ID of this client, used to identify this client from others connected to a <see cref="ImpServer"/>. This ID is always 0 for server-owned objects.
         /// </summary>
+        [Local]
         public ushort NetworkID { get; private set; }
         /// <summary>
         /// Controls the scheduling of remote method/accessor calls. By default, this scheduler is created with the <see cref="SynchronizationContext"/> of the thread that creates the client.
@@ -134,7 +135,7 @@ namespace DouglasDwyer.Imp
         /// <param name="ip">The address to connect to.</param>
         /// <param name="port">The port to connect to.</param>
         [Local]
-        public void Connect(string ip, int port)
+        public virtual void Connect(string ip, int port)
         {
             Connect(IPAddress.Parse(ip), port);
         }
@@ -147,7 +148,28 @@ namespace DouglasDwyer.Imp
         [Local]
         public virtual void Connect(IPAddress ip, int port)
         {
-            ConnectAsync(ip, port).Wait();
+            if (Connected || InternalClient != null)
+            {
+                throw new InvalidOperationException("The ImpClient is currently in use.");
+            }
+            lock (Locker)
+            {
+                InternalClient = new TcpClient();
+            }
+            InternalClient.NoDelay = true;
+            InternalClient.Connect(ip, port);
+            lock (Locker)
+            {
+                MessageWriter = new BinaryWriter(InternalClient.GetStream());
+                ListenerThread = new Thread(RunCommunications);
+                ListenerThread.IsBackground = true;
+                BinaryReader networkReader = new BinaryReader(InternalClient.GetStream());
+
+                InitializeClientConnection();
+
+                Connected = true;
+                ListenerThread.Start();
+            }
         }
 
         [Local]
@@ -175,7 +197,6 @@ namespace DouglasDwyer.Imp
                 ListenerThread = new Thread(RunCommunications);
                 ListenerThread.IsBackground = true;
                 BinaryReader networkReader = new BinaryReader(InternalClient.GetStream());
-                NetworkID = networkReader.ReadUInt16();
 
                 InitializeClientConnection();
 
@@ -188,6 +209,7 @@ namespace DouglasDwyer.Imp
         {
             HeldObjectsData[HeldObjects.Add(this)] = new CountedObject<object>(this);
             BinaryReader reader = new BinaryReader(InternalClient.GetStream());
+            NetworkID = reader.ReadUInt16();
             Serializer.TypeResolver.WriteTypeID(MessageWriter, GetSharedInterfaceForType(GetType()));
             Server = (IImpServer)GetOrCreateRemoteSharedObject(0, Serializer.TypeResolver.ReadTypeID(reader));
 
@@ -204,6 +226,7 @@ namespace DouglasDwyer.Imp
 
         private void InitializeServerConnection()
         {
+            MessageWriter.Write(NetworkID);
             HeldObjectsData[HeldObjects.Add(Server)] = new CountedObject<object>(Server);
             BinaryReader reader = new BinaryReader(InternalClient.GetStream());
             Serializer.TypeResolver.WriteTypeID(MessageWriter, GetSharedInterfaceForType(Server.GetType()));
@@ -229,6 +252,7 @@ namespace DouglasDwyer.Imp
         /// <summary>
         /// Disconnects from the remote host, ending communication between the server and the client.
         /// </summary>
+        [Local]
         public virtual void Disconnect()
         {
             ProcessDisconnection();
@@ -517,10 +541,10 @@ namespace DouglasDwyer.Imp
         private void CallRemoteUnreliableMethodCallback(CallRemoteUnreliableMethodMessage message)
         {
             object toInvoke = HeldObjects[message.ObjectID];
-            SharedTypeBinder.GetDataForSharedType(toInvoke.GetType()).Methods[message.MethodID].Invoke(Local ? this : RemoteClient, this, toInvoke, message.Parameters);
+            SharedTypeBinder.GetDataForSharedType(toInvoke.GetType()).Methods[message.MethodID].Invoke(Local ? this : RemoteClient, this, toInvoke, message.Parameters, null);
         }
 
-        [MessageCallback]
+       /* [MessageCallback]
         private void GetRemoteServerObjectCallback(GetRemoteServerObjectMessage message)
         {
             SendImpMessage(new ReturnRemoteServerObjectMessage(Server));
@@ -533,26 +557,31 @@ namespace DouglasDwyer.Imp
             {
                 RemoteServer = (IImpServer)message.Server;
             }
-        }
+        }*/
 
         [MessageCallback]
         private async Task CallRemoteMethodCallbackAsync(CallRemoteMethodMessage message)
         {
-            object toInvoke = HeldObjects[message.InvocationTarget];
-            if (toInvoke is null)
+            object toInvoke;
+            lock (Locker)
             {
-                throw new SecurityException("Remote endpoint attempted to access remote object that it does not hold.");
+                if (HeldObjects.ContainsID(message.InvocationTarget))
+                {
+                    toInvoke = HeldObjects[message.InvocationTarget];
+                }
+                else
+                {
+                    SendImpMessage(new ReturnRemoteMethodMessage(message.OperationID, null, new RemoteException("Remote endpoint attempted to access remote object that it does not hold.", Environment.StackTrace)));
+                    return;
+                }
             }
-            else
+            try
             {
-                try
-                {
-                    SendImpMessage(new ReturnRemoteMethodMessage(message.OperationID, await SharedTypeBinder.GetDataForSharedType(toInvoke.GetType()).Methods[message.MethodID].Invoke(Local ? this : RemoteClient, this, toInvoke, message.Arguments), null));
-                }
-                catch (Exception e)
-                {
-                    SendImpMessage(new ReturnRemoteMethodMessage(message.OperationID, null, new RemoteException(e.GetType().FullName + ": " + e.Message, e.StackTrace, e.Source)));
-                }
+                SendImpMessage(new ReturnRemoteMethodMessage(message.OperationID, await SharedTypeBinder.GetDataForSharedType(toInvoke.GetType()).Methods[message.MethodID].Invoke(Local ? this : RemoteClient, this, toInvoke, message.Arguments, message.GenericArguments), null));
+            }
+            catch (Exception e)
+            {
+                SendImpMessage(new ReturnRemoteMethodMessage(message.OperationID, null, new RemoteException(e.GetType().FullName + ": " + e.Message, e.StackTrace, e.Source)));
             }
         }
 
@@ -561,36 +590,41 @@ namespace DouglasDwyer.Imp
         {
             if (message.ExceptionResult is null)
             {
-                CurrentNetworkOperations[message.OperatonID].SetResult(message.Result);
+                CurrentNetworkOperations[message.OperatonID].SetResult(message.Result, RemoteTaskScheduler);
             }
             else
             {
-                CurrentNetworkOperations[message.OperatonID].SetException(message.ExceptionResult);
+                CurrentNetworkOperations[message.OperatonID].SetException(message.ExceptionResult, RemoteTaskScheduler);
             }
         }
 
         [MessageCallback]
         private async Task GetRemotePropertyCallbackAsync(GetRemotePropertyMessage message)
         {
-            object toInvoke = HeldObjects[message.InvocationTarget];
-            if (toInvoke is null)
+            object toInvoke;
+            lock (Locker)
             {
-                throw new SecurityException("Remote endpoint attempted to access remote object that it does not hold.");
-            }
-            else
-            {
-                object returnValue = null;
-                try
+                if(HeldObjects.ContainsID(message.InvocationTarget))
                 {
-                    returnValue = await Task.Factory.StartNew(() => toInvoke.GetType().GetProperty(message.PropertyName).GetValue(toInvoke), CancellationToken.None, TaskCreationOptions.None, RemoteTaskScheduler);
+                    toInvoke = HeldObjects[message.InvocationTarget];
                 }
-                catch (Exception e)
+                else
                 {
-                    SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, new RemoteException(e.Message, e.StackTrace, e.Source)));
+                    SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, new RemoteException("Remote endpoint attempted to access remote object that it does not hold.", Environment.StackTrace)));
                     return;
                 }
-                SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, returnValue, null));
             }
+            object returnValue = null;
+            try
+            {
+                returnValue = await Task.Factory.StartNew(() => toInvoke.GetType().GetProperty(message.PropertyName).GetValue(toInvoke), CancellationToken.None, TaskCreationOptions.None, RemoteTaskScheduler);
+            }
+            catch (Exception e)
+            {
+                SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, new RemoteException(e.Message, e.StackTrace, e.Source)));
+                return;
+            }
+            SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, returnValue, null));
         }
 
         [MessageCallback]
@@ -598,11 +632,11 @@ namespace DouglasDwyer.Imp
         {
             if (message.ExceptionResult is null)
             {
-                CurrentNetworkOperations[message.OperatonID].SetResult(message.Result);
+                CurrentNetworkOperations[message.OperatonID].SetResult(message.Result, RemoteTaskScheduler);
             }
             else
             {
-                CurrentNetworkOperations[message.OperatonID].SetException(message.ExceptionResult);
+                CurrentNetworkOperations[message.OperatonID].SetException(message.ExceptionResult, RemoteTaskScheduler);
             }
         }
 
@@ -657,11 +691,11 @@ namespace DouglasDwyer.Imp
         {
             if (message.ExceptionResult is null)
             {
-                CurrentNetworkOperations[message.OperatonID].SetResult(message.Result);
+                CurrentNetworkOperations[message.OperatonID].SetResult(message.Result, RemoteTaskScheduler);
             }
             else
             {
-                CurrentNetworkOperations[message.OperatonID].SetException(message.ExceptionResult);
+                CurrentNetworkOperations[message.OperatonID].SetException(message.ExceptionResult, RemoteTaskScheduler);
             }
         }
 
@@ -716,10 +750,7 @@ namespace DouglasDwyer.Imp
                 {
                     int messageLength = networkReader.ReadInt32();
                     object o = Serializer.Deserialize<ImpMessage>(networkReader.ReadBytes(messageLength));
-                    lock (Locker)
-                    {
-                        MessageCallbacks[o.GetType()].Invoke(this, new[] { o });
-                    }
+                    MessageCallbacks[o.GetType()].Invoke(this, new[] { o });
                 }
             }
             catch(Exception e)
@@ -774,7 +805,7 @@ namespace DouglasDwyer.Imp
         }
     }
 
-    public class ImpClient<T> : ImpClient where T : IImpServer
+    public class ImpClient<T> : ImpClient, IImpClient<T> where T : IImpServer
     {
         /// <summary>
         /// The remote server object, or local server object if this is a server-owned client.

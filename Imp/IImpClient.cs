@@ -7,8 +7,7 @@ namespace DouglasDwyer.Imp
     public interface IImpClient
     {
         IImpServer Server { get; }
-        ushort NetworkID { get; }
-
-        void Disconnect();
     }
+
+    public interface IImpClient<T> : IImpClient { }
 }

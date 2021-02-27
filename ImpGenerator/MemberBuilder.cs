@@ -168,7 +168,8 @@ namespace DouglasDwyer.ImpGenerator
                 {
                     if (constant.Kind == TypedConstantKind.Type)
                     {
-                        return SyntaxFactory.TypeOfExpression(GetSyntaxForType((INamedTypeSymbol)constant.Value));
+                        NameSyntax name = GetSyntaxForType((INamedTypeSymbol)constant.Value);
+                        return SyntaxFactory.TypeOfExpression(name);
                     }
                     else
                     {

@@ -19,12 +19,43 @@ namespace DouglasDwyer.ImpGenerator
 
         public MethodDeclarationSyntax GenerateMethod()
         {
-            return SyntaxFactory.MethodDeclaration(GetSyntaxForType(Symbol.ReturnType), SyntaxFactory.Identifier(Symbol.Name))
+            TypeSyntax returnSyntax = GetSyntaxForType(Symbol.ReturnType);
+            if(Symbol.ReturnsByRef)
+            {
+                if (Symbol.ReturnsByRefReadonly)
+                {
+                    returnSyntax = SyntaxFactory.RefType(returnSyntax).WithReadOnlyKeyword(SyntaxFactory.Token(SyntaxKind.ReadOnlyKeyword));
+                }
+                else
+                {
+                    returnSyntax = SyntaxFactory.RefType(returnSyntax);
+                }
+            }
+
+            return SyntaxFactory.MethodDeclaration(returnSyntax, SyntaxFactory.Identifier(Symbol.Name))
+                .WithLeadingTrivia(GetTriviaListForMethod(Symbol))
                 .WithTypeParameterList(GetTypeParameterListSyntax())
                 .WithParameterList(GetParameterListSyntax())
                 .WithAttributeLists(GetAttributeList(Symbol))
                 .WithConstraintClauses(SyntaxFactory.List(Symbol.TypeParameters.Select(x => GetGenericParameterConstraintSyntax(x)).Where(x => x != null)))
                 .WithSemicolonToken(SyntaxFactory.Token(SyntaxKind.SemicolonToken));
+        }
+
+        private SyntaxTriviaList GetTriviaListForMethod(IMethodSymbol method)
+        {
+            SyntaxTriviaList leadingTrivia = SyntaxFactory.TriviaList();
+            foreach (SyntaxReference reference in method.DeclaringSyntaxReferences)
+            {
+                leadingTrivia = SyntaxFactory.TriviaList(leadingTrivia.Concat(reference.GetSyntax().GetLeadingTrivia()).Where(x => !string.IsNullOrWhiteSpace(x.ToFullString())));
+            }
+            if(!leadingTrivia.Any() && method.OverriddenMethod != null)
+            {
+                return GetTriviaListForMethod(method.OverriddenMethod);
+            }
+            else
+            {
+                return leadingTrivia;
+            }
         }
 
         protected ParameterListSyntax GetParameterListSyntax()

@@ -12,7 +12,7 @@ using DouglasDwyer.Imp;
 using DouglasDwyer.Imp.Messages;
 using DouglasDwyer.Imp.Serialization;
 
-[assembly: ShareAs(typeof(ImpServer<>), typeof(IImpServer))]
+[assembly: ShareAs(typeof(ImpServer<>), typeof(IImpServer<>))]
 [assembly: ShareAs(typeof(ImpServer), typeof(IImpServer))]
 namespace DouglasDwyer.Imp
 {
@@ -104,14 +104,12 @@ namespace DouglasDwyer.Imp
             {
                 BinaryWriter writer = new BinaryWriter(client.GetStream());
                 BinaryReader reader = new BinaryReader(client.GetStream());//BadProxyBinder.Instance.GetRemoteClass(ShareAsAttribute.ProxyIndex[reader.ReadUInt16()]);
-                ushort networkID = 0;
-                writer.Write(networkID);
                 ImpClient kClient = null;
                 ActiveClients.Add(x =>
                 {
-                    networkID = (ushort)(x + 1);
+                    ushort networkID = (ushort)(x + 1);
                     ImpPowerSerializer serializer = (ImpPowerSerializer)DefaultSerializer.Clone();
-                    kClient = new ImpClient(client, this, 0, UnreliableListener, DefaultProxyBinder, serializer, DefaultRemoteTaskScheduler);
+                    kClient = new ImpClient(client, this, networkID, UnreliableListener, DefaultProxyBinder, serializer, DefaultRemoteTaskScheduler);
                     return kClient.RemoteClient;
                 });
                 OnClientConnected(kClient.RemoteClient);
@@ -138,7 +136,7 @@ namespace DouglasDwyer.Imp
                 {
                     id = BitConverter.ToUInt16(new byte[] { data[1], data[0] }, 0);
                 }
-                ImpClient client = ((RemoteSharedObject)ActiveClients[id]).HostClient;
+                ImpClient client = ((RemoteSharedObject)ActiveClients[(ushort)(id - 1)]).HostClient;
                 if (client.DoesRemoteEndPointMatch(clientEndPoint))
                 {
                     client.ProcessUnreliableMessage(data.Skip(2).ToArray());
@@ -152,7 +150,7 @@ namespace DouglasDwyer.Imp
     }
 
     [Shared]
-    public class ImpServer<T> : ImpServer where T : IImpClient
+    public class ImpServer<T> : ImpServer, IImpServer<T> where T : IImpClient
     {
         [Local]
         public new List<T> ConnectedClients => base.ConnectedClients.Cast<T>().ToList();

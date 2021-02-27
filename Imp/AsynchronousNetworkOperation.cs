@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DouglasDwyer.Imp
@@ -16,8 +17,8 @@ namespace DouglasDwyer.Imp
             OnCompletion = onCompletion;
         }
 
-        public abstract void SetResult(object result);
-        public abstract void SetException(Exception result);
+        public abstract void SetResult(object result, TaskScheduler scheduler);
+        public abstract void SetException(Exception result, TaskScheduler scheduler);
     }
 
     public class AsynchronousNetworkOperation<T> : AsynchronousNetworkOperation
@@ -30,15 +31,15 @@ namespace DouglasDwyer.Imp
             OperationSource = new TaskCompletionSource<T>();
         }
 
-        public override void SetResult(object result)
+        public override void SetResult(object result, TaskScheduler scheduler)
         {
-            OperationSource.SetResult((T)result);
+            Task.Factory.StartNew(() => OperationSource.SetResult((T)result), CancellationToken.None, TaskCreationOptions.None, scheduler);
             OnCompletion(this);
         }
 
-        public override void SetException(Exception result)
+        public override void SetException(Exception result, TaskScheduler scheduler)
         {
-            OperationSource.SetException(result);
+            Task.Factory.StartNew(() => OperationSource.SetException(result), CancellationToken.None, TaskCreationOptions.None, scheduler);
             OnCompletion(this);
         }
     }

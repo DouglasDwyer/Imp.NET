@@ -14,7 +14,7 @@ namespace DouglasDwyer.Imp
 
         public ImpPowerSerializer() : base() { }
 
-        public ImpPowerSerializer(ImpClient client) : base() {
+        public ImpPowerSerializer(ImpClient client) : this() {
             Client = client;
         }
 
@@ -44,6 +44,13 @@ namespace DouglasDwyer.Imp
                         TypeResolver.WriteTypeID(writer, objType);
                         writer.Write((int)(writer.BaseStream.Position - pos));
                     }
+                    else if (obj is Type typeRepresentation)
+                    {
+                        TypeResolver.WriteTypeID(writer, typeRepresentation);
+                        long pos = writer.BaseStream.Position;
+                        TypeResolver.WriteTypeID(writer, typeof(Type));
+                        writer.Write((int)(writer.BaseStream.Position - pos));
+                    }
                     else if (objType.IsPrimitive)
                     {
                         WritePrimitiveObject(writer, obj);
@@ -53,8 +60,7 @@ namespace DouglasDwyer.Imp
                     }
                     else
                     {
-                        ushort? sharedID = Client.SharedTypeBinder.GetIDForSharedType(objType);
-                        if (sharedID is null)
+                        if (!Client.SharedTypeBinder.IsSharedType(objType))
                         {
                             if (obj is Array array)
                             {
@@ -72,7 +78,7 @@ namespace DouglasDwyer.Imp
                         }
                         else
                         {
-                            WriteSharedType(obj, sharedID.Value);
+                            WriteSharedType(obj, default);
                         }
                         ImmutableList<Type> types = context.IncludedTypes;
                         long pos = writer.BaseStream.Position;
@@ -88,14 +94,20 @@ namespace DouglasDwyer.Imp
                                 }
                                 else
                                 {
+                                    if(proxyType.IsGenericType)
+                                    {
+                                        proxyType = proxyType.MakeGenericType(type.GetGenericArguments());
+                                    }
                                     TypeResolver.WriteTypeID(writer, proxyType);
-                                    writer.Write(true);
                                 }
                             }
                             else
                             {
+                                if (proxyType.IsGenericType)
+                                {
+                                    proxyType = proxyType.MakeGenericType(type.GetGenericArguments());
+                                }
                                 TypeResolver.WriteTypeID(writer, proxyType);
-                                writer.Write(false);
                             }
                         }
                         writer.Write((int)(writer.BaseStream.Position - pos));
@@ -121,22 +133,7 @@ namespace DouglasDwyer.Imp
                     while (reader.BaseStream.Position < dataLength)
                     {
                         Type type = TypeResolver.ReadTypeID(reader);
-                        if(type.IsInterface)
-                        {
-                            bool isLocal = reader.ReadBoolean();
-                            if(isLocal)
-                            {
-                                knownTypes.Add(type);
-                            }
-                            else
-                            {
-                                knownTypes.Add(Client.SharedTypeBinder.GetRemoteType(type));
-                            }
-                        }
-                        else
-                        {
-                            knownTypes.Add(type);
-                        }
+                        knownTypes.Add(type);
                     }
                     stream.Position = 0;
                     context.IncludedTypes = knownTypes;
@@ -153,8 +150,7 @@ namespace DouglasDwyer.Imp
 
         protected override void SerializeObject(PowerSerializationContext context, BinaryWriter writer, object obj, Type type)
         {
-            ushort? id = Client.SharedTypeBinder.GetIDForSharedType(type);
-            if (id is null)
+            if (!Client.SharedTypeBinder.IsSharedType(type))
             {
                 base.SerializeObject(context, writer, obj, type);
             }
@@ -162,8 +158,7 @@ namespace DouglasDwyer.Imp
 
         protected override void DeserializeObject(PowerDeserializationContext context, BinaryReader reader, object obj, Type type)
         {
-            ushort? id = Client.SharedTypeBinder.GetIDForSharedType(type);
-            if (id is null)
+            if (!Client.SharedTypeBinder.IsSharedType(type))
             {
                 base.DeserializeObject(context, reader, obj, type);
             }
@@ -179,21 +174,29 @@ namespace DouglasDwyer.Imp
             {
                 writer.Write(context.GetObjectID(obj));
             }
+            else if (obj is Type typeRepresentation)
+            {
+                (ushort, Type) objectData = context.RegisterObject(obj);
+                writer.Write(objectData.Item1);
+                writer.Write(context.GetTypeID(typeof(Type)));
+                TypeResolver.WriteTypeID(writer, typeRepresentation);
+            }
             else
             {
                 (ushort, Type) objectData = context.RegisterObject(obj);
                 writer.Write(objectData.Item1);
                 writer.Write(context.GetTypeID(objectData.Item2));
 
-                ushort? id = Client.SharedTypeBinder.GetIDForSharedType(objectData.Item2);
-                if(id != null)
+                if(Client.SharedTypeBinder.IsSharedType(objectData.Item2))
                 {
-                    if (obj is RemoteSharedObject rem)
+                    if (obj is RemoteSharedObject rem && rem.HostClient == Client)
                     {
+                        writer.Write(true);
                         writer.Write(rem.ObjectID);
                     }
                     else
                     {
+                        writer.Write(false);
                         writer.Write(Client.GetOrRegisterLocalSharedObject(obj));
                     }
                 }
@@ -219,10 +222,9 @@ namespace DouglasDwyer.Imp
 
         protected override object ReadAndCreateObject(PowerDeserializationContext context, BinaryReader reader, Type type)
         {
-            ushort? id = Client.SharedTypeBinder.GetIDForSharedType(type);
-            if (id != null)
+            if (Client.SharedTypeBinder.IsSharedType(type))
             {
-                if(type.IsInterface)
+                if(reader.ReadBoolean())
                 {
                     return Client.RetrieveLocalSharedObject(reader.ReadUInt16());
                 }
@@ -234,6 +236,14 @@ namespace DouglasDwyer.Imp
             else
             {
                 return base.ReadAndCreateObject(context, reader, type);
+            }
+        }
+
+        protected override void CheckTypeAllowance(Type type)
+        {
+            if (!Client.SharedTypeBinder.IsSharedType(type))
+            {
+                base.CheckTypeAllowance(type);
             }
         }
 
