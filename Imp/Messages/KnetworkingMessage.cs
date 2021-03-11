@@ -1,6 +1,6 @@
 ﻿namespace DouglasDwyer.Imp.Messages
 {
-    public class ImpMessage
+    internal class ImpMessage
     {
         public virtual void Execute(ImpClient client)
         {

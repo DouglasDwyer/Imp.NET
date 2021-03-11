@@ -8,12 +8,11 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using DouglasDwyer.Imp;
-using DouglasDwyer.Imp.Serialization;
 using DouglasDwyer.Imp.Messages;
 using System.Collections;
 using System.Runtime.InteropServices;
 
-//[assembly: ShareAs(typeof(int[]), typeof(IList<int>))]
+[assembly: ShareAs(typeof(int[]), typeof(IList<int>))]
 
 namespace TestProject
 {
@@ -140,6 +139,13 @@ namespace TestProject
             {
                 client.ReceiveMessage(message);
             }
+        }
+
+        private int[] BEE = new[] { 5, 6, 12 };
+
+        public async Task<IList<int>> GetIntArray()
+        {
+            return BEE;
         }
     }
 

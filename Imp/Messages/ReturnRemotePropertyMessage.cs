@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DouglasDwyer.Imp.Messages
 {
-    public class ReturnRemotePropertyMessage : ImpMessage
+    internal class ReturnRemotePropertyMessage : ImpMessage
     {
         public ushort OperatonID;
         public object Result;

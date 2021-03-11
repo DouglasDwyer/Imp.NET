@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DouglasDwyer.Imp.Messages
 {
-    public class ReturnRemoteServerObjectMessage : ImpMessage
+    internal class ReturnRemoteServerObjectMessage : ImpMessage
     {
         public object Server;
 

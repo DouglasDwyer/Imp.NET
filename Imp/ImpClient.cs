@@ -1,6 +1,5 @@
 ﻿using DouglasDwyer.Imp;
 using DouglasDwyer.Imp.Messages;
-using DouglasDwyer.Imp.Serialization;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -36,17 +35,12 @@ namespace DouglasDwyer.Imp
         /// The serializer used to send objects across the network.
         /// </summary>
         [Local]
-        public ImpPowerSerializer Serializer { get; set; }
+        public INetworkSerializer Serializer { get; set; }
         /// <summary>
         /// The binder used to generate remote interfaces for shared objects.
         /// </summary>
         [Local]
         public IProxyBinder SharedTypeBinder { get; internal set; }
-        /// <summary>
-        /// The remote server reference.
-        /// </summary>
-        private IImpServer RemoteServer;
-
         /// <summary>
         /// Whether this object is a local, independent client or a server-owned object representing a connection to a remote host.
         /// </summary>
@@ -210,8 +204,8 @@ namespace DouglasDwyer.Imp
             HeldObjectsData[HeldObjects.Add(this)] = new CountedObject<object>(this);
             BinaryReader reader = new BinaryReader(InternalClient.GetStream());
             NetworkID = reader.ReadUInt16();
-            Serializer.TypeResolver.WriteTypeID(MessageWriter, GetSharedInterfaceForType(GetType()));
-            Server = (IImpServer)GetOrCreateRemoteSharedObject(0, Serializer.TypeResolver.ReadTypeID(reader));
+            MessageWriter.Write(GetSharedInterfaceForType(GetType()).AssemblyQualifiedName);
+            Server = (IImpServer)GetOrCreateRemoteSharedObject(0, Type.GetType(reader.ReadString()));
 
             IPEndPoint remoteEndPoint = (IPEndPoint)InternalClient.Client.RemoteEndPoint;
             UnreliableRemoteEndPoint = new IPEndPoint(remoteEndPoint.Address.AddressFamily == AddressFamily.InterNetwork ? remoteEndPoint.Address.MapToIPv6() : remoteEndPoint.Address, reader.ReadUInt16());
@@ -229,9 +223,9 @@ namespace DouglasDwyer.Imp
             MessageWriter.Write(NetworkID);
             HeldObjectsData[HeldObjects.Add(Server)] = new CountedObject<object>(Server);
             BinaryReader reader = new BinaryReader(InternalClient.GetStream());
-            Serializer.TypeResolver.WriteTypeID(MessageWriter, GetSharedInterfaceForType(Server.GetType()));
+            MessageWriter.Write(GetSharedInterfaceForType(Server.GetType()).AssemblyQualifiedName);
             MessageWriter.Write((ushort)((IPEndPoint)UnreliableClient.Client.LocalEndPoint).Port);
-            RemoteClient = (IImpClient)GetOrCreateRemoteSharedObject(0, Serializer.TypeResolver.ReadTypeID(reader));
+            RemoteClient = (IImpClient)GetOrCreateRemoteSharedObject(0, Type.GetType(reader.ReadString()));
             IPEndPoint remoteEndPoint = (IPEndPoint)InternalClient.Client.RemoteEndPoint;
             UnreliableRemoteEndPoint = new IPEndPoint(remoteEndPoint.Address.AddressFamily == AddressFamily.InterNetwork ? remoteEndPoint.Address.MapToIPv6() : remoteEndPoint.Address, reader.ReadUInt16());
         }
@@ -291,28 +285,24 @@ namespace DouglasDwyer.Imp
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Task<T> CallRemoteMethodAsync<T>(ushort obj, object[] arguments, Type[] genericArguments, ushort methodID)
         {
-            lock (Locker)
+            if (Connected)
             {
-                if (Connected)
-                {
-                    AsynchronousNetworkOperation<T> operation = CreateNewAsynchronousNetworkOperation<T>();
-                    SendImpMessage(new CallRemoteMethodMessage(obj, methodID, arguments, genericArguments, operation.OperationID));
-
-                    return operation.Operation;
-                }
-                else
-                {
-                    return Task.FromException<T>(new InvalidOperationException("An operation was attempted on an object owned by a disconnected host."));
-                }
+                AsynchronousNetworkOperation<T> operation = CreateNewAsynchronousNetworkOperation<T>();
+                SendImpMessage(new CallRemoteMethodMessage(obj, methodID, arguments, genericArguments, operation.OperationID));
+                return operation.Operation;
+            }
+            else
+            {
+                return Task.FromException<T>(new InvalidOperationException("An operation was attempted on an object owned by a disconnected host."));
             }
         }
 
         [Local]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public T GetRemoteProperty<T>(ushort obj, [CallerMemberName] string propertyName = null)
+        public T GetRemoteProperty<T>(ushort obj, ushort propertyID)
         {
             try {
-                return GetRemotePropertyAsync<T>(obj, propertyName).Result;
+                return GetRemotePropertyAsync<T>(obj, propertyID).Result;
             }
             catch (AggregateException e)
             {
@@ -329,29 +319,26 @@ namespace DouglasDwyer.Imp
 
         [Local]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<T> GetRemotePropertyAsync<T>(ushort obj, [CallerMemberName] string propertyName = null)
+        public Task<T> GetRemotePropertyAsync<T>(ushort obj, ushort propertyID)
         {
-            lock (Locker)
+            if (Connected)
             {
-                if (Connected)
-                {
-                    AsynchronousNetworkOperation<T> operation = CreateNewAsynchronousNetworkOperation<T>();
-                    SendImpMessage(new GetRemotePropertyMessage(obj, propertyName, operation.OperationID));
-                    return operation.Operation;
-                }
-                else
-                {
-                    return Task.FromException<T>(new InvalidOperationException("An operation was attempted on an object owned by a disconnected host."));
-                }
+                AsynchronousNetworkOperation<T> operation = CreateNewAsynchronousNetworkOperation<T>();
+                SendImpMessage(new GetRemotePropertyMessage(obj, propertyID, operation.OperationID));
+                return operation.Operation;
+            }
+            else
+            {
+                return Task.FromException<T>(new InvalidOperationException("An operation was attempted on an object owned by a disconnected host."));
             }
         }
 
         [Local]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public void SetRemoteProperty<T>(ushort obj, T toSet, [CallerMemberName] string propertyName = null)
+        public void SetRemoteProperty<T>(ushort obj, T toSet, ushort propertyID)
         {
             try {
-                Task t = SetRemotePropertyAsync(obj, toSet, propertyName);
+                Task t = SetRemotePropertyAsync(obj, toSet, propertyID);
                 t.Wait();
             }
             catch (AggregateException e)
@@ -369,39 +356,96 @@ namespace DouglasDwyer.Imp
 
         [Local]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task SetRemotePropertyAsync<T>(ushort obj, T toSet, [CallerMemberName] string propertyName = null)
+        public Task SetRemotePropertyAsync<T>(ushort obj, T toSet, ushort propertyID)
         {
-            lock (Locker)
+            if (InternalClient.Connected)
             {
-                if (InternalClient.Connected)
+                AsynchronousNetworkOperation<object> operation = CreateNewAsynchronousNetworkOperation<object>();
+                SendImpMessage(new SetRemotePropertyMessage(obj, propertyID, toSet, operation.OperationID));
+                return operation.Operation;
+            }
+            else
+            {
+                return Task.FromException<T>(new InvalidOperationException("An operation was attempted on an object owned by a disconnected host."));
+            }
+        }
+
+        [Local]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public T GetRemoteIndexer<T>(ushort obj, object[] arguments, ushort propertyID)
+        {
+            try
+            {
+                return GetRemoteIndexerAsync<T>(obj, arguments, propertyID).Result;
+            }
+            catch (AggregateException e)
+            {
+                if (e.InnerException is RemoteException x)
                 {
-                    AsynchronousNetworkOperation<object> operation = CreateNewAsynchronousNetworkOperation<object>();
-                    SendImpMessage(new SetRemotePropertyMessage(obj, propertyName, toSet, operation.OperationID));
-                    return operation.Operation;
+                    throw x;
                 }
                 else
                 {
-                    return Task.FromException<T>(new InvalidOperationException("An operation was attempted on an object owned by a disconnected host."));
+                    throw;
                 }
             }
         }
 
         [Local]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public T GetRemoteIndexer<T>(ushort obj, object[] arguments, [CallerMemberName] string propertyName = null)
+        public Task<T> GetRemoteIndexerAsync<T>(ushort obj, object[] arguments, ushort propertyID)
         {
-            throw new NotImplementedException();
+            if (InternalClient.Connected)
+            {
+                AsynchronousNetworkOperation<T> operation = CreateNewAsynchronousNetworkOperation<T>();
+                SendImpMessage(new GetRemoteIndexerMessage(obj, propertyID, arguments, operation.OperationID));
+                return operation.Operation;
+            }
+            else
+            {
+                return Task.FromException<T>(new InvalidOperationException("An operation was attempted on an object owned by a disconnected host."));
+            }
         }
 
         [Local]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public T SetRemoteIndexer<T>(ushort obj, T toSet, object[] arguments, [CallerMemberName] string propertyName = null)
+        public void SetRemoteIndexer<T>(ushort obj, T toSet, object[] arguments, ushort propertyID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SetRemoteIndexerAsync(obj, toSet, arguments, propertyID).Wait();
+            }
+            catch (AggregateException e)
+            {
+                if (e.InnerException is RemoteException x)
+                {
+                    throw x;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        [Local]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Task<object> SetRemoteIndexerAsync<T>(ushort obj, T toSet, object[] arguments, ushort propertyID)
+        {
+            if (InternalClient.Connected)
+            {
+                AsynchronousNetworkOperation<object> operation = CreateNewAsynchronousNetworkOperation<object>();
+                SendImpMessage(new SetRemoteIndexerMessage(obj, propertyID, toSet, arguments, operation.OperationID));
+                return operation.Operation;
+            }
+            else
+            {
+                return Task.FromException<object>(new InvalidOperationException("An operation was attempted on an object owned by a disconnected host."));
+            }
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        protected void SendImpMessage(ImpMessage message)
+        protected void SendImpMessage(object message)
         {
             byte[] toSend = Serializer.Serialize(message);
             Task.Run(() =>
@@ -430,7 +474,7 @@ namespace DouglasDwyer.Imp
             }
         }
         
-        protected void SendUnreliableImpMessage(ImpMessage message)
+        protected void SendUnreliableImpMessage(object message)
         {
             if (Local)
             {
@@ -446,7 +490,9 @@ namespace DouglasDwyer.Imp
             }
         }
 
-        internal RemoteSharedObject GetOrCreateRemoteSharedObject(ushort id, Type type)
+        [Local]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public RemoteSharedObject GetOrCreateRemoteSharedObject(ushort id, Type type)
         {
             lock(Locker)
             {
@@ -475,8 +521,9 @@ namespace DouglasDwyer.Imp
             }
         }
 
-
-        internal ushort GetOrRegisterLocalSharedObject(object obj)
+        [Local]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public ushort GetOrRegisterLocalSharedObject(object obj)
         {
             lock(Locker)
             {
@@ -495,7 +542,9 @@ namespace DouglasDwyer.Imp
             }
         }
 
-        internal object RetrieveLocalSharedObject(ushort id)
+        [Local]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public object RetrieveLocalSharedObject(ushort id)
         {
             lock(Locker)
             {
@@ -617,7 +666,7 @@ namespace DouglasDwyer.Imp
             object returnValue = null;
             try
             {
-                returnValue = await Task.Factory.StartNew(() => toInvoke.GetType().GetProperty(message.PropertyName).GetValue(toInvoke), CancellationToken.None, TaskCreationOptions.None, RemoteTaskScheduler);
+                returnValue = await Task.Factory.StartNew(() => SharedTypeBinder.GetDataForSharedType(toInvoke.GetType()).Properties[message.PropertyID].GetValue(toInvoke), CancellationToken.None, TaskCreationOptions.None, RemoteTaskScheduler);
             }
             catch (Exception e)
             {
@@ -643,46 +692,81 @@ namespace DouglasDwyer.Imp
         [MessageCallback]
         private async Task SetRemotePropertyCallbackAsync(SetRemotePropertyMessage message)
         {
-            object toInvoke = HeldObjects[message.InvocationTarget];
-            if (toInvoke is null)
+            object toInvoke;
+            lock (Locker)
             {
-                throw new SecurityException("Remote endpoint attempted to access remote object that it does not hold.");
+                if (HeldObjects.ContainsID(message.InvocationTarget))
+                {
+                    toInvoke = HeldObjects[message.InvocationTarget];
+                }
+                else
+                {
+                    SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, new RemoteException("Remote endpoint attempted to access remote object that it does not hold.", Environment.StackTrace)));
+                    return;
+                }
             }
-            else
+            try
             {
-                try
-                {
-                    await Task.Factory.StartNew(() => toInvoke.GetType().GetProperty(message.PropertyName).SetValue(toInvoke, message.Value), CancellationToken.None, TaskCreationOptions.None, RemoteTaskScheduler);
-                    SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, null));
-                }
-                catch (Exception e)
-                {
-                    SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, new RemoteException(e.Message, e.StackTrace, e.Source)));
-                }
+                await Task.Factory.StartNew(() => SharedTypeBinder.GetDataForSharedType(toInvoke.GetType()).Properties[message.PropertyID].SetValue(toInvoke, message.Value), CancellationToken.None, TaskCreationOptions.None, RemoteTaskScheduler);
+                SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, null));
+            }
+            catch (Exception e)
+            {
+                SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, new RemoteException(e.Message, e.StackTrace, e.Source)));
             }
         }
 
         [MessageCallback]
         private async Task GetRemoteIndexerCallbackAsync(GetRemoteIndexerMessage message)
         {
-            object toInvoke = HeldObjects[message.InvocationTarget];
-            if (toInvoke is null)
+            object toInvoke;
+            lock (Locker)
             {
-                throw new SecurityException("Remote endpoint attempted to access remote object that it does not hold.");
-            }
-            else
-            {
-                object returnValue = null;
-                try
+                if (HeldObjects.ContainsID(message.InvocationTarget))
                 {
-                    returnValue = await Task.Run(() => toInvoke.GetType().GetProperty(message.PropertyName).GetValue(toInvoke, message.Parameters));
+                    toInvoke = HeldObjects[message.InvocationTarget];
                 }
-                catch (Exception e)
+                else
                 {
-                    SendImpMessage(new ReturnRemoteMethodMessage(message.OperationID, null, new RemoteException(e.Message, e.StackTrace, e.Source)));
+                    SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, new RemoteException("Remote endpoint attempted to access remote object that it does not hold.", Environment.StackTrace)));
                     return;
                 }
-                SendImpMessage(new ReturnRemoteMethodMessage(message.OperationID, returnValue, null));
+            }
+            try
+            {
+                object result = await Task.Factory.StartNew(() => SharedTypeBinder.GetDataForSharedType(toInvoke.GetType()).Properties[message.PropertyID].GetValue(toInvoke, message.Parameters), CancellationToken.None, TaskCreationOptions.None, RemoteTaskScheduler);
+                SendImpMessage(new ReturnRemoteIndexerMessage(message.OperationID, result, null));
+            }
+            catch (Exception e)
+            {
+                SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, new RemoteException(e.Message, e.StackTrace, e.Source)));
+            }
+        }
+
+        [MessageCallback]
+        private async Task SetRemoteIndexerCallbackAsync(SetRemoteIndexerMessage message)
+        {
+            object toInvoke;
+            lock (Locker)
+            {
+                if (HeldObjects.ContainsID(message.InvocationTarget))
+                {
+                    toInvoke = HeldObjects[message.InvocationTarget];
+                }
+                else
+                {
+                    SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, new RemoteException("Remote endpoint attempted to access remote object that it does not hold.", Environment.StackTrace)));
+                    return;
+                }
+            }
+            try
+            {
+                await Task.Factory.StartNew(() => SharedTypeBinder.GetDataForSharedType(toInvoke.GetType()).Properties[message.PropertyID].SetValue(toInvoke, message.Value, message.Arguments), CancellationToken.None, TaskCreationOptions.None, RemoteTaskScheduler);
+                SendImpMessage(new ReturnRemoteIndexerMessage(message.OperationID, null, null));
+            }
+            catch (Exception e)
+            {
+                SendImpMessage(new ReturnRemotePropertyMessage(message.OperationID, null, new RemoteException(e.Message, e.StackTrace, e.Source)));
             }
         }
 

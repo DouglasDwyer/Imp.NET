@@ -8,7 +8,7 @@ namespace DouglasDwyer.Imp
     using System.Collections.Immutable;
     using System.IO;
 
-    public class ImpPowerSerializer : PowerSerializer
+    public class ImpPowerSerializer : PowerSerializer, INetworkSerializer
     {
         public ImpClient Client { get; set; }
 

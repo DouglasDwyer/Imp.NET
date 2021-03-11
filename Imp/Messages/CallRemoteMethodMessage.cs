@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DouglasDwyer.Imp.Messages
 {
-    public class CallRemoteMethodMessage : ImpMessage
+    internal class CallRemoteMethodMessage : ImpMessage
     {
         public ushort InvocationTarget;
         public ushort MethodID;

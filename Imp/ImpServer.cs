@@ -10,7 +10,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using DouglasDwyer.Imp;
 using DouglasDwyer.Imp.Messages;
-using DouglasDwyer.Imp.Serialization;
 
 [assembly: ShareAs(typeof(ImpServer<>), typeof(IImpServer<>))]
 [assembly: ShareAs(typeof(ImpServer), typeof(IImpServer))]
@@ -24,7 +23,7 @@ namespace DouglasDwyer.Imp
         [Local]
         public IProxyBinder DefaultProxyBinder { get; set; }
         [Local]
-        public ImpPowerSerializer DefaultSerializer { get; set; }
+        public INetworkSerializer DefaultSerializer { get; set; }
         [Local]
         public TaskScheduler DefaultRemoteTaskScheduler { get; set; }
 

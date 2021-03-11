@@ -41,13 +41,7 @@ namespace DouglasDwyer.Imp
 
         ~RemoteSharedObject()
         {
-            try
-            {
-                HostClient.ReleaseRemoteSharedObject(ObjectID);
-            }
-            catch(Exception e) {
-                Console.WriteLine(e);
-            }
+            HostClient?.ReleaseRemoteSharedObject(ObjectID);
         }
     }
 }

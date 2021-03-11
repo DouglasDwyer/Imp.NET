@@ -1,6 +1,6 @@
 ﻿namespace DouglasDwyer.Imp.Messages
 {
-    public class RemoteSharedObjectReleasedMessage : ImpMessage
+    internal class RemoteSharedObjectReleasedMessage : ImpMessage
     {
         public int Count;
         public ushort ObjectID;

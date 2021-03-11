@@ -4,6 +4,6 @@ using System.Text;
 
 namespace DouglasDwyer.Imp.Messages
 {
-    public class GetRemoteServerObjectMessage : ImpMessage
+    internal class GetRemoteServerObjectMessage : ImpMessage
     { }
 }

@@ -262,13 +262,16 @@ namespace DouglasDwyer.Imp
             TypeBuilder builder = module.DefineType("Remote" + proxy.Name + proxy.GUID.ToString("N"), TypeAttributes.Class | TypeAttributes.Sealed | TypeAttributes.NotPublic);
             if (proxy.IsGenericType)
             {
-                Type[] genericParameters = proxy.GetGenericArguments();
+                Type[] genericParameters = proxy.IsGenericTypeDefinition ? proxy.GetGenericArguments() : proxy.GetGenericTypeDefinition().GetGenericArguments();
                 GenericTypeParameterBuilder[] generic = builder.DefineGenericParameters(genericParameters.Select(x => x.Name).ToArray());
                 for (int i = 0; i < generic.Length; i++)
                 {
                     generic[i].SetBaseTypeConstraint(ObtainLocalizedType(genericParameters[i].BaseType, builder));
                     generic[i].SetInterfaceConstraints(genericParameters[i].GetInterfaces().Select(x => ObtainLocalizedType(x, builder)).ToArray());
-                    generic[i].SetGenericParameterAttributes(genericParameters[i].GenericParameterAttributes);
+                    if (genericParameters[i].IsGenericParameter)
+                    {
+                        generic[i].SetGenericParameterAttributes(genericParameters[i].GenericParameterAttributes);
+                    }
                 }
             }
             builder.SetParent(ObtainLocalizedType(proxyData.RemoteBaseType, builder));
@@ -479,46 +482,40 @@ namespace DouglasDwyer.Imp
             ParameterInfo[] parameters = info.GetIndexParameters();
             if (info.CanRead)
             {
-                if (parameters.Length > 0)
-                {
-
-                }
-                else
-                {
-                    toReturn.Add(info.GetMethod);
-                    builder.SetGetMethod(GenerateGetterMethod(type, info.Name, info.GetMethod, explicitDefinition));
-                }
+                toReturn.Add(info.GetMethod);
+                builder.SetGetMethod(GenerateGetterMethod(type, id, info.GetMethod, explicitDefinition));
             }
             if (info.CanWrite)
             {
-                if (parameters.Length > 0)
-                {
-
-                }
-                else
-                {
-                    toReturn.Add(info.GetMethod);
-                    builder.SetSetMethod(GenerateSetterMethod(type, info.Name, info.SetMethod, explicitDefinition));
-                }
+                toReturn.Add(info.SetMethod);
+                builder.SetSetMethod(GenerateSetterMethod(type, id, info.SetMethod, explicitDefinition));
             }
             return builder;
         }
 
         private MethodBuilder GenerateGetIndexerMethod(TypeBuilder type, string propertyName, MethodInfo getter)
         {
-            MethodBuilder method = type.DefineMethod(getter.Name, MethodAttributes.Private | MethodAttributes.Virtual, getter.ReturnType, getter.GetParameters().Select(x => x.ParameterType).ToArray());
+            Type[] parameters = getter.GetParameters().Select(x => ObtainLocalizedType(x.ParameterType, type)).ToArray();
+            MethodBuilder method = type.DefineMethod(getter.Name, MethodAttributes.Private | MethodAttributes.Virtual, getter.ReturnType, parameters);
             ILGenerator generator = method.GetILGenerator();
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectHostGetterMethod);
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectLocationField);
             generator.Emit(OpCodes.Ldstr, propertyName);
-            generator.Emit(OpCodes.Callvirt, ImpClientGetRemoteIndexerMethod.MakeGenericMethod(getter.ReturnType));
+            if (parameters.Length > 0)
+            {
+
+            }
+            else
+            {
+                generator.Emit(OpCodes.Callvirt, ImpClientGetRemoteIndexerMethod.MakeGenericMethod(getter.ReturnType));
+            }
             generator.Emit(OpCodes.Ret);
             return method;
         }
 
-        private MethodBuilder GenerateSetIndexerMethod(TypeBuilder type, string propertyName, MethodInfo getter)
+        private MethodBuilder GenerateSetIndexerMethod(TypeBuilder type, int id, MethodInfo getter)
         {
             MethodBuilder method = type.DefineMethod(getter.Name, MethodAttributes.Private | MethodAttributes.Virtual, getter.ReturnType, getter.GetParameters().Select(x => x.ParameterType).ToArray());
             ILGenerator generator = method.GetILGenerator();
@@ -527,22 +524,46 @@ namespace DouglasDwyer.Imp
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectLocationField);
             generator.Emit(OpCodes.Ldarg_1);
-            generator.Emit(OpCodes.Ldstr, propertyName);
+            generator.Emit(OpCodes.Ldc_I4, id);
             generator.Emit(OpCodes.Callvirt, ImpClientSetRemotePropertyMethod.MakeGenericMethod(getter.ReturnType));
             generator.Emit(OpCodes.Ret);
             return method;
         }
 
-        private MethodBuilder GenerateGetterMethod(TypeBuilder type, string propertyName, MethodInfo getter, bool explicitDefinition)
+        private MethodBuilder GenerateGetterMethod(TypeBuilder type, int id, MethodInfo getter, bool explicitDefinition)
         {
-            MethodBuilder method = type.DefineMethod(explicitDefinition ? GetFriendlyName(getter.DeclaringType) + "." + getter.Name : getter.Name, MethodAttributes.Public | MethodAttributes.NewSlot | MethodAttributes.Virtual, ObtainLocalizedType(getter.ReturnType, type), getter.GetParameters().Select(x => ObtainLocalizedType(x.ParameterType, type)).ToArray());
+            Type[] parameters = getter.GetParameters().Select(x => ObtainLocalizedType(x.ParameterType, type)).ToArray();
+            MethodBuilder method = type.DefineMethod(explicitDefinition ? GetFriendlyName(getter.DeclaringType) + "." + getter.Name : getter.Name, MethodAttributes.Public | MethodAttributes.NewSlot | MethodAttributes.Virtual, ObtainLocalizedType(getter.ReturnType, type), parameters);
             ILGenerator generator = method.GetILGenerator();
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectHostGetterMethod);
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectLocationField);
-            generator.Emit(OpCodes.Ldstr, propertyName);
-            generator.Emit(OpCodes.Callvirt, ImpClientGetRemotePropertyMethod.MakeGenericMethod(ObtainLocalizedType(getter.ReturnType, type)));
+            if(parameters.Length > 0)
+            {
+                generator.Emit(OpCodes.Ldc_I4, parameters.Length);
+                generator.Emit(OpCodes.Newarr, typeof(object));
+                for (int i = 0; i < parameters.Length; i++)
+                {
+                    generator.Emit(OpCodes.Dup);
+                    generator.Emit(OpCodes.Ldc_I4, i);
+                    generator.Emit(OpCodes.Ldarg, i + 1);
+                    if (parameters[i].IsValueType || parameters[i].IsGenericParameter)
+                    {
+                        generator.Emit(OpCodes.Box, parameters[i]);
+                    }
+                    generator.Emit(OpCodes.Stelem_Ref);
+                }
+            }
+            generator.Emit(OpCodes.Ldc_I4, id);
+            if (parameters.Length > 0)
+            {
+                generator.Emit(OpCodes.Callvirt, ImpClientGetRemoteIndexerMethod.MakeGenericMethod(ObtainLocalizedType(getter.ReturnType, type)));
+            }
+            else
+            {
+                generator.Emit(OpCodes.Callvirt, ImpClientGetRemotePropertyMethod.MakeGenericMethod(ObtainLocalizedType(getter.ReturnType, type)));
+            }
             generator.Emit(OpCodes.Ret);
             if (explicitDefinition)
             {
@@ -551,17 +572,41 @@ namespace DouglasDwyer.Imp
             return method;
         }
 
-        private MethodBuilder GenerateSetterMethod(TypeBuilder type, string propertyName, MethodInfo setter, bool explicitDefinition)
+        private MethodBuilder GenerateSetterMethod(TypeBuilder type, int id, MethodInfo setter, bool explicitDefinition)
         {
-            MethodBuilder method = type.DefineMethod(explicitDefinition ? GetFriendlyName(setter.DeclaringType) + "." + setter.Name : setter.Name, MethodAttributes.Public | MethodAttributes.NewSlot | MethodAttributes.Virtual, ObtainLocalizedType(setter.ReturnType, type), setter.GetParameters().Select(x => ObtainLocalizedType(x.ParameterType, type)).ToArray());
+            Type[] parameters = setter.GetParameters().Select(x => ObtainLocalizedType(x.ParameterType, type)).ToArray();
+            MethodBuilder method = type.DefineMethod(explicitDefinition ? GetFriendlyName(setter.DeclaringType) + "." + setter.Name : setter.Name, MethodAttributes.Public | MethodAttributes.NewSlot | MethodAttributes.Virtual, ObtainLocalizedType(setter.ReturnType, type), parameters);
             ILGenerator generator = method.GetILGenerator();
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectHostGetterMethod);
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Call, RemoteSharedObjectLocationField);
-            generator.Emit(OpCodes.Ldarg_1);
-            generator.Emit(OpCodes.Ldstr, propertyName);
-            generator.Emit(OpCodes.Callvirt, ImpClientSetRemotePropertyMethod.MakeGenericMethod(ObtainLocalizedType(setter.GetParameters()[0].ParameterType, type)));
+            generator.Emit(OpCodes.Ldarg, parameters.Length);
+            if (parameters.Length > 1)
+            {
+                generator.Emit(OpCodes.Ldc_I4, parameters.Length - 1);
+                generator.Emit(OpCodes.Newarr, typeof(object));
+                for (int i = 0; i < parameters.Length - 1; i++)
+                {
+                    generator.Emit(OpCodes.Dup);
+                    generator.Emit(OpCodes.Ldc_I4, i);
+                    generator.Emit(OpCodes.Ldarg, i + 1);
+                    if (parameters[i].IsValueType || parameters[i].IsGenericParameter)
+                    {
+                        generator.Emit(OpCodes.Box, parameters[i]);
+                    }
+                    generator.Emit(OpCodes.Stelem_Ref);
+                }
+            }
+            generator.Emit(OpCodes.Ldc_I4, id);
+            if (parameters.Length > 1)
+            {
+                generator.Emit(OpCodes.Callvirt, ImpClientSetRemoteIndexerMethod.MakeGenericMethod(parameters.Last()));
+            }
+            else
+            {
+                generator.Emit(OpCodes.Callvirt, ImpClientSetRemotePropertyMethod.MakeGenericMethod(parameters.Last()));
+            }
             generator.Emit(OpCodes.Ret);
             if (explicitDefinition)
             {
@@ -582,6 +627,10 @@ namespace DouglasDwyer.Imp
 
         private Type ObtainLocalizedType(Type type, TypeBuilder newType, MethodBuilder builder)
         {
+            if(type.Name == "ISpanFormattable")
+            {
+                Console.WriteLine("W????");
+            }
             if(type.IsGenericParameter)
             {
                 if (type.DeclaringMethod is null)

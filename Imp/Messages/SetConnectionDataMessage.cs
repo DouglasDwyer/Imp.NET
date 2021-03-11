@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DouglasDwyer.Imp.Messages
 {
-    public class SetConnectionDataMessage : ImpMessage
+    internal class SetConnectionDataMessage : ImpMessage
     {
         public ushort UnreliablePort;
         public string[] Interfaces;

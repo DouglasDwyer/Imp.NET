@@ -77,7 +77,7 @@ namespace DouglasDwyer.ImpGenerator
 
         protected AttributeSyntax GetSyntaxForAttribute(AttributeData attribute)
         {
-            return SyntaxFactory.Attribute(GetSyntaxForType(attribute.AttributeClass), GetAttributeArgumentSyntax(attribute));
+            return SyntaxFactory.Attribute(GetSyntaxForType(attribute.AttributeClass) as NameSyntax, GetAttributeArgumentSyntax(attribute));
         }
 
         protected List<KeyValuePair<string, TypedConstant>> GetAttributeArguments(AttributeData attribute)
@@ -168,7 +168,7 @@ namespace DouglasDwyer.ImpGenerator
                 {
                     if (constant.Kind == TypedConstantKind.Type)
                     {
-                        NameSyntax name = GetSyntaxForType((INamedTypeSymbol)constant.Value);
+                        NameSyntax name = GetSyntaxForType((INamedTypeSymbol)constant.Value) as NameSyntax;
                         return SyntaxFactory.TypeOfExpression(name);
                     }
                     else
@@ -179,8 +179,12 @@ namespace DouglasDwyer.ImpGenerator
             }
         }
 
-        protected NameSyntax GetSyntaxForType(ITypeSymbol type)
+        protected TypeSyntax GetSyntaxForType(ITypeSymbol type)
         {
+            if(type.NullableAnnotation == NullableAnnotation.Annotated)
+            {
+                return SyntaxFactory.NullableType(GetSyntaxForType(type.WithNullableAnnotation(NullableAnnotation.None)));
+            }
             if(type.SpecialType == SpecialType.System_Void)
             {
                 return SyntaxFactory.IdentifierName("void");

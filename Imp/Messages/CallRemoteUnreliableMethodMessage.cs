@@ -1,6 +1,6 @@
 ﻿namespace DouglasDwyer.Imp.Messages
 {
-    public class CallRemoteUnreliableMethodMessage : ImpMessage
+    internal class CallRemoteUnreliableMethodMessage : ImpMessage
     {
         public ushort ObjectID;
         public object[] Parameters;

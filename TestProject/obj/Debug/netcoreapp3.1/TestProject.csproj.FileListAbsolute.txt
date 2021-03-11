@@ -31,3 +31,4 @@ D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.pdb
 D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.genruntimeconfig.cache
 D:\Projects\Imp.NET\TestProject\bin\Debug\netcoreapp3.1\DouglasDwyer.PowerSerializer.dll
 D:\Projects\Imp.NET\TestProject\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Projects\Imp.NET\TestProject\obj\Debug\netcoreapp3.1\TestProject.csprojAssemblyReference.cache

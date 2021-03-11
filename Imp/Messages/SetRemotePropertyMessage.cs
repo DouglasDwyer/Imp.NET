@@ -4,17 +4,17 @@ using System.Text;
 
 namespace DouglasDwyer.Imp.Messages
 {
-    public class SetRemotePropertyMessage : ImpMessage
+    internal class SetRemotePropertyMessage : ImpMessage
     {
         public ushort InvocationTarget;
-        public string PropertyName;
+        public ushort PropertyID;
         public ushort OperationID;
         public object Value;
 
-        public SetRemotePropertyMessage(ushort invocationTarget, string methodName, object value, ushort operationID)
+        public SetRemotePropertyMessage(ushort invocationTarget, ushort propertyID, object value, ushort operationID)
         {
             InvocationTarget = invocationTarget;
-            PropertyName = methodName;
+            PropertyID = propertyID;
             Value = value;
             OperationID = operationID;
         }

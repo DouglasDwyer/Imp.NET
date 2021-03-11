@@ -63,6 +63,22 @@ namespace DouglasDwyer.ImpGenerator
                     "Class {0} is marked as shared, but its shared interface name '{1}' is not a valid C# type name.",
                     "DouglasDwyer.Imp",
                     DiagnosticSeverity.Error,
+                    true),
+            PassByReferenceParameterWarning =
+                new DiagnosticDescriptor(
+                    "IMP0008",
+                    "Shared method pass-by-reference parameter",
+                    "Method {0} can be called remotely, but has pass-by-reference parameter {1}. Remote method invocation with in, out, and ref parameters is not supported, and will throw an exception.",
+                    "DouglasDwyer.Imp",
+                    DiagnosticSeverity.Warning,
+                    true),
+            PassByReferenceReturnTypeWarning =
+                new DiagnosticDescriptor(
+                    "IMP0009",
+                    "Shared method pass-by-reference return type",
+                    "Method {0} can be called remotely, but has a pass-by-reference return type. Remote method invocation with ref returns is not supported, and will throw an exception.",
+                    "DouglasDwyer.Imp",
+                    DiagnosticSeverity.Warning,
                     true);
 
     }

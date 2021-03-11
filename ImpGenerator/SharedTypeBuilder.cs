@@ -50,7 +50,7 @@ namespace DouglasDwyer.ImpGenerator
                 node = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.IdentifierName(InterfaceNamespace)).WithMembers(SyntaxFactory.SingletonList(node));
             }
             SyntaxTree tree = Symbol.DeclaringSyntaxReferences[0].SyntaxTree;
-            return tree.WithRootAndOptions(tree.GetCompilationUnitRoot().WithUsings(SyntaxFactory.List<UsingDirectiveSyntax>()).WithMembers(SyntaxFactory.List(new[] { GeneratePartialClass(), node })).NormalizeWhitespace(), tree.Options);
+            return tree.WithRootAndOptions(tree.GetCompilationUnitRoot().WithAttributeLists(SyntaxFactory.List<AttributeListSyntax>()).WithUsings(SyntaxFactory.List<UsingDirectiveSyntax>()).WithMembers(SyntaxFactory.List(new[] { GeneratePartialClass(), node })).NormalizeWhitespace(), tree.Options);
         }
 
         public virtual SyntaxTree GenerateInterfaceInheritance()
@@ -65,6 +65,7 @@ namespace DouglasDwyer.ImpGenerator
             }
             SyntaxTree tree = Symbol.DeclaringSyntaxReferences[0].SyntaxTree;
             return tree.WithRootAndOptions(tree.GetCompilationUnitRoot()
+                .WithAttributeLists(SyntaxFactory.List<AttributeListSyntax>())
                 .WithUsings(SyntaxFactory.List<UsingDirectiveSyntax>())
                 .WithMembers(SyntaxFactory.List(new[] { GeneratePartialClass(), node, })).NormalizeWhitespace()
                 .WithAttributeLists(SyntaxFactory.SingletonList(GetShareAsAttributeSyntax())),
@@ -74,7 +75,7 @@ namespace DouglasDwyer.ImpGenerator
         public virtual SyntaxTree GenerateInterfaceImplementation()
         {
             SyntaxTree tree = Symbol.DeclaringSyntaxReferences[0].SyntaxTree;
-            return tree.WithRootAndOptions(tree.GetCompilationUnitRoot().WithUsings(SyntaxFactory.List<UsingDirectiveSyntax>()).WithMembers(GenerateNamespaceAndMemberNodes()).NormalizeWhitespace(), tree.Options);
+            return tree.WithRootAndOptions(tree.GetCompilationUnitRoot().WithAttributeLists(SyntaxFactory.List<AttributeListSyntax>()).WithUsings(SyntaxFactory.List<UsingDirectiveSyntax>()).WithMembers(GenerateNamespaceAndMemberNodes()).NormalizeWhitespace(), tree.Options);
         }
 
         public override void SetModel(SemanticModel model)
@@ -122,18 +123,18 @@ namespace DouglasDwyer.ImpGenerator
 
         protected virtual AttributeListSyntax GetShareAsAttributeSyntax()
         {
-            NameSyntax synt = GetSyntaxForType(Symbol);
+            NameSyntax synt = GetSyntaxForType(Symbol) as NameSyntax;
             if(synt is GenericNameSyntax gen)
             {
                 synt = gen.WithTypeArgumentList(SyntaxFactory.TypeArgumentList(SyntaxFactory.SeparatedList<TypeSyntax>(Symbol.TypeParameters.Select(x => SyntaxFactory.OmittedTypeArgument()))));
             }
-            NameSyntax name = GetSyntaxForType(InterfaceSymbol);
+            NameSyntax name = GetSyntaxForType(InterfaceSymbol) as NameSyntax;
             if (name is GenericNameSyntax gen2)
             {
                 name = gen2.WithTypeArgumentList(SyntaxFactory.TypeArgumentList(SyntaxFactory.SeparatedList<TypeSyntax>(InterfaceSymbol.TypeParameters.Select(x => SyntaxFactory.OmittedTypeArgument()))));
             }
 
-            return SyntaxFactory.AttributeList(SyntaxFactory.SingletonSeparatedList(SyntaxFactory.Attribute(GetSyntaxForType(Model.Compilation.GetTypeByMetadataName("DouglasDwyer.Imp.ShareAsAttribute")))
+            return SyntaxFactory.AttributeList(SyntaxFactory.SingletonSeparatedList(SyntaxFactory.Attribute(GetSyntaxForType(Model.Compilation.GetTypeByMetadataName("DouglasDwyer.Imp.ShareAsAttribute")) as NameSyntax)
                 .WithArgumentList(SyntaxFactory.AttributeArgumentList(
                         SyntaxFactory.SeparatedList<AttributeArgumentSyntax>(
                             new SyntaxNodeOrToken[]{
@@ -306,9 +307,17 @@ namespace DouglasDwyer.ImpGenerator
             {
                 Context.ReportDiagnostic(Diagnostic.Create(ImpRules.UnreliableMethodReturnTypeError, symbol.Locations.FirstOrDefault(), symbol.Name, symbol.ReturnType.Name));
             }
+            if (symbol.ReturnsByRef)
+            {
+                Context.ReportDiagnostic(Diagnostic.Create(ImpRules.PassByReferenceReturnTypeWarning, symbol.Locations.FirstOrDefault(), symbol.Name));
+            }
             bool hasCallingClient = false;
             foreach (IParameterSymbol para in symbol.Parameters)
             {
+                if(para.RefKind == RefKind.In || para.RefKind == RefKind.Out || para.RefKind == RefKind.Ref)
+                {
+                    Context.ReportDiagnostic(Diagnostic.Create(ImpRules.PassByReferenceParameterWarning, para.Locations.FirstOrDefault(), symbol.Name, para.Name));
+                }
                 if (para.GetAttributes().Any(x => x.AttributeClass.Equals(attributeSymbol)))
                 {
                     if (hasCallingClient)
