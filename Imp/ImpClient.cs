@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 namespace DouglasDwyer.Imp
 {
     /// <summary>
-    /// Represents a TCP client that can send <see cref="Shared"/> interfaces across the network as references.
+    /// Represents a TCP client that can send shared interfaces across the network as references.
     /// </summary>
     [Shared]
     public class ImpClient : IImpClient
@@ -52,7 +52,7 @@ namespace DouglasDwyer.Imp
         [Local]
         public bool Connected { get; private set; } = false;
         /// <summary>
-        /// The unique network ID of this client, used to identify this client from others connected to a <see cref="ImpServer"/>. This ID is always 0 for server-owned objects.
+        /// The unique network ID of this client, used to identify this client from others connected to a <see cref="ImpServer"/>.
         /// </summary>
         [Local]
         public ushort NetworkID { get; private set; }
@@ -166,12 +166,28 @@ namespace DouglasDwyer.Imp
             }
         }
 
+        /// <summary>
+        /// Attempts to asynchronously connect to an ImpServer using the specified IP address and port number.
+        /// </summary>
+        /// <param name="ip">The address to connect to.</param>
+        /// <param name="port">The port to connect to.</param>
+        /// <returns>A <see cref="Task"/> object representing the current state of the operation.</returns>
         [Local]
         public virtual Task ConnectAsync(string ip, int port)
         {
+            if(ip == "localhost")
+            {
+                ip = "127.0.0.1";
+            }
             return ConnectAsync(IPAddress.Parse(ip), port);
         }
 
+        /// <summary>
+        /// Attempts to asynchronously connect to an ImpServer using the specified IP address and port number.
+        /// </summary>
+        /// <param name="ip">The address to connect to.</param>
+        /// <param name="port">The port to connect to.</param>
+        /// <returns>A <see cref="Task"/> object representing the current state of the operation.</returns>
         [Local]
         public virtual async Task ConnectAsync(IPAddress ip, int port)
         {
@@ -249,15 +265,18 @@ namespace DouglasDwyer.Imp
         [Local]
         public virtual void Disconnect()
         {
-            ProcessDisconnection();
-            OnDisconnected();
+            lock (Locker)
+            {
+                ProcessDisconnection();
+                OnDisconnected();
+            }
         }
 
         [Local]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public void CallRemoteUnreliableMethod(ushort obj, object[] arguments, Type[] genericArguments, ushort methodID)
         {
-            SendUnreliableImpMessage(new CallRemoteUnreliableMethodMessage(obj, arguments, methodID));
+            SendUnreliableImpMessage(new CallRemoteUnreliableMethodMessage(obj, arguments, genericArguments, methodID));
         }
 
         [Local]
@@ -444,8 +463,7 @@ namespace DouglasDwyer.Imp
             }
         }
 
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        protected void SendImpMessage(object message)
+        private void SendImpMessage(object message)
         {
             byte[] toSend = Serializer.Serialize(message);
             Task.Run(() =>
@@ -458,6 +476,10 @@ namespace DouglasDwyer.Imp
             });
         }
 
+        /// <summary>
+        /// Called whenever this client is disconnected from the server due to an exception in networking code.
+        /// </summary>
+        /// <param name="exception">The exception that was thrown.</param>
         protected virtual void OnNetworkError(Exception exception)
         {
             if (!Local)
@@ -466,6 +488,9 @@ namespace DouglasDwyer.Imp
             }
         }
 
+        /// <summary>
+        /// Called whenever this client disconnects from the server.
+        /// </summary>
         protected virtual void OnDisconnected()
         {
             if(!Local)
@@ -473,8 +498,8 @@ namespace DouglasDwyer.Imp
                 ((ImpServer)Server).ReportClientDisconnected(RemoteClient);
             }
         }
-        
-        protected void SendUnreliableImpMessage(object message)
+
+        private void SendUnreliableImpMessage(object message)
         {
             if (Local)
             {
@@ -561,7 +586,7 @@ namespace DouglasDwyer.Imp
             }
         }
 
-        protected AsynchronousNetworkOperation<T> CreateNewAsynchronousNetworkOperation<T>()
+        private AsynchronousNetworkOperation<T> CreateNewAsynchronousNetworkOperation<T>()
         {
             AsynchronousNetworkOperation<T> toReturn = null;
             CurrentNetworkOperations.Add(x => { return toReturn = new AsynchronousNetworkOperation<T>(x, y => CurrentNetworkOperations.Remove(x)); });
@@ -590,7 +615,7 @@ namespace DouglasDwyer.Imp
         private void CallRemoteUnreliableMethodCallback(CallRemoteUnreliableMethodMessage message)
         {
             object toInvoke = HeldObjects[message.ObjectID];
-            SharedTypeBinder.GetDataForSharedType(toInvoke.GetType()).Methods[message.MethodID].Invoke(Local ? this : RemoteClient, this, toInvoke, message.Parameters, null);
+            SharedTypeBinder.GetDataForSharedType(toInvoke.GetType()).Methods[message.MethodID].Invoke(Local ? this : RemoteClient, this, toInvoke, message.Parameters, message.GenericArguments);
         }
 
        /* [MessageCallback]
@@ -872,6 +897,24 @@ namespace DouglasDwyer.Imp
                     }
                 }
                 catch { }
+
+                foreach(AsynchronousNetworkOperation operation in CurrentNetworkOperations.Values)
+                {
+                    operation.SetException(new IOException("The client was disconnected while processing this network operation."), RemoteTaskScheduler);
+                }
+                foreach(CountedObject<WeakReference<RemoteSharedObject>> rem in RemoteSharedObjects.Values)
+                {
+                    RemoteSharedObject obj;
+                    if(rem.ReferencedObject.TryGetTarget(out obj))
+                    {
+                        obj.HostClient = null;
+                    }
+                }
+                CurrentNetworkOperations = new IdentifiedCollection<AsynchronousNetworkOperation>();
+                HeldObjects = new IdentifiedCollection<object>();
+                HeldObjectsData.Clear();
+                RemoteSharedObjects.Clear();
+
                 Connected = false;
                 InternalClient = null;
             }
@@ -889,6 +932,10 @@ namespace DouglasDwyer.Imp
         }
     }
 
+    /// <summary>
+    /// Represents a TCP client that can send shared interfaces across the network as references.
+    /// </summary>
+    /// <typeparam name="T">The shared interface type of the server to which this client will connect.</typeparam>
     public class ImpClient<T> : ImpClient, IImpClient<T> where T : IImpServer
     {
         /// <summary>

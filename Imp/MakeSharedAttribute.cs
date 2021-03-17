@@ -5,7 +5,7 @@ using System.Text;
 namespace DouglasDwyer.Imp
 {
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
-    public class MakeSharedAttribute : Attribute
+    internal class MakeSharedAttribute : Attribute
     {
         public Type SharedType { get; private set; }
 

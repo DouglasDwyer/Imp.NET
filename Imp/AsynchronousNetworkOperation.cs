@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DouglasDwyer.Imp
 {
-    public abstract class AsynchronousNetworkOperation
+    internal abstract class AsynchronousNetworkOperation
     {
         public ushort OperationID { get; private set; }
         public Action<AsynchronousNetworkOperation> OnCompletion { get; set; }
@@ -21,7 +21,7 @@ namespace DouglasDwyer.Imp
         public abstract void SetException(Exception result, TaskScheduler scheduler);
     }
 
-    public class AsynchronousNetworkOperation<T> : AsynchronousNetworkOperation
+    internal class AsynchronousNetworkOperation<T> : AsynchronousNetworkOperation
     {
         public Task<T> Operation => OperationSource.Task;
         private TaskCompletionSource<T> OperationSource { get; set; }

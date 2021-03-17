@@ -8,18 +8,37 @@ namespace DouglasDwyer.Imp
     using System.Collections.Immutable;
     using System.IO;
 
+    /// <summary>
+    /// Represents a serializer that can serialize/deserialize shared interface references as well as complex object value graphs.
+    /// </summary>
     public class ImpPowerSerializer : PowerSerializer, INetworkSerializer
     {
         public ImpClient Client { get; set; }
 
+        /// <summary>
+        /// Creates a new serializer that is not associated with a client.
+        /// </summary>
         public ImpPowerSerializer() : base() { }
 
+        /// <summary>
+        /// Creates a new serializer associated with the given client.
+        /// </summary>
+        /// <param name="client">The client to employ when serializing shared interfaces.</param>
         public ImpPowerSerializer(ImpClient client) : this() {
             Client = client;
         }
 
+        /// <summary>
+        /// Creates a new serializer that is not associated with a client.
+        /// </summary>
+        /// <param name="resolver">The type resolver to use during serialization.</param>
         public ImpPowerSerializer(ITypeResolver resolver) : base(resolver) { }
 
+        /// <summary>
+        /// Creates a new serializer associated with the given client.
+        /// </summary>
+        /// <param name="client">The client to employ when serializing shared interfaces.</param>
+        /// <param name="resolver">The type resolver to use during serialization.</param>
         public ImpPowerSerializer(ImpClient client, ITypeResolver resolver) : base(resolver) {
             Client = client;
         }
@@ -78,7 +97,16 @@ namespace DouglasDwyer.Imp
                         }
                         else
                         {
-                            WriteSharedType(obj, default);
+                            if (obj is RemoteSharedObject rem && rem.HostClient == Client)
+                            {
+                                writer.Write(true);
+                                writer.Write(rem.ObjectID);
+                            }
+                            else
+                            {
+                                writer.Write(false);
+                                writer.Write(Client.GetOrRegisterLocalSharedObject(obj));
+                            }
                         }
                         ImmutableList<Type> types = context.IncludedTypes;
                         long pos = writer.BaseStream.Position;
@@ -245,11 +273,6 @@ namespace DouglasDwyer.Imp
             {
                 base.CheckTypeAllowance(type);
             }
-        }
-
-        private void WriteSharedType(object obj, ushort id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace DouglasDwyer.Imp
         {
             if (client is RemoteSharedObject rem)
             {
-                args[ClientArgumentLocation] = ((ImpServer)rem.HostClient.Server).GetCallingClientData(client);
+                args[ClientArgumentLocation] = client;
             }
             return base.Invoke(client, caller, target, args, genericArguments);
         }

@@ -6,6 +6,9 @@ using System.Text;
 
 namespace DouglasDwyer.Imp
 {
+    /// <summary>
+    /// Indicates that a given type should be utilized as the base type for remote interface implementations. Base types must inherit from their shared interface. Base types should be <c>abstract</c>; any members left unimplemented will be automatically implemented during proxy generation.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public sealed class ProxyForAttribute : Attribute
     {
@@ -46,8 +49,15 @@ namespace DouglasDwyer.Imp
         private static Dictionary<Type, Type> InterfaceToClass;
         private static Dictionary<Type, Type> ClassToInterface;*/
 
+        /// <summary>
+        /// The interface for which this base class acts as a remote proxy.
+        /// </summary>
         public Type InterfaceType { get; private set; }
 
+        /// <summary>
+        /// Indicates that the given type should be utilized as the base type for remote interface implementations. Base types must inherit from their shared interface. Base types should be <c>abstract</c>; any members left unimplemented will be automatically implemented during proxy generation.
+        /// </summary>
+        /// <param name="interfaceType">The interface for which this class acts as a remote proxy.</param>
         public ProxyForAttribute(Type interfaceType)
         {
             InterfaceType = interfaceType;

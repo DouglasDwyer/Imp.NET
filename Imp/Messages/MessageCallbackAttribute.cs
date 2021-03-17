@@ -5,7 +5,7 @@ using System.Text;
 namespace DouglasDwyer.Imp.Messages
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public class MessageCallbackAttribute : Attribute
+    internal class MessageCallbackAttribute : Attribute
     {
     }
 }

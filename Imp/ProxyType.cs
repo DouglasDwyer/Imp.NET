@@ -6,16 +6,40 @@ using System.Text;
 
 namespace DouglasDwyer.Imp
 {
+    /// <summary>
+    /// Stores information about a shared interface type.
+    /// </summary>
     public sealed class ProxyType
     {
+        /// <summary>
+        /// The ID of this interface to be used in cross-network identification.
+        /// </summary>
         public ushort InterfaceID { get; }
+        /// <summary>
+        /// The interface that should be shared.
+        /// </summary>
         public Type InterfaceType { get; }
+        /// <summary>
+        /// The remote base type that should be inherited when generating a remote proxy class for this interface.
+        /// </summary>
         public Type RemoteBaseType { get; }
+        /// <summary>
+        /// All of the methods that can be called on this interface.
+        /// </summary>
         public IReadOnlyList<RemoteMethodInvoker> Methods { get; }
+        /// <summary>
+        /// All of the properties that can be accessed on this interface.
+        /// </summary>
         public IReadOnlyList<PropertyInfo> Properties { get; }
 
         //public ProxyType(ushort id, Type mainType) : this(id, mainType, typeof(RemoteSharedObject)) { }
 
+        /// <summary>
+        /// Creates a new <see cref="ProxyType"/> with the specified ID and type data.
+        /// </summary>
+        /// <param name="id">The ID of this shared interface.</param>
+        /// <param name="mainType">The interface to share.</param>
+        /// <param name="remoteBaseType">The remote base type that should be inherited when generating a remote proxy class.</param>
         public ProxyType(ushort id, Type mainType, Type remoteBaseType)
         {
             InterfaceID = id;

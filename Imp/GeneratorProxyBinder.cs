@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace DouglasDwyer.Imp
 {
+    /// <summary>
+    /// Represents a shared type binder that generates all remote shared types at runtime.
+    /// </summary>
     public abstract class GeneratorProxyBinder : IProxyBinder
     {
         private static readonly ConstructorInfo RemoteSharedObjectConstructor;
@@ -23,10 +26,25 @@ namespace DouglasDwyer.Imp
         private static readonly MethodInfo TypeGetRuntimeTypeFromHandle;
         private static readonly ConstructorInfo CreateNotSupportedException;
 
+        /// <summary>
+        /// An indexed collection of all shared interfaces.
+        /// </summary>
         protected IdentifiedCollection<Type> ProxyIndex = new IdentifiedCollection<Type>();
+        /// <summary>
+        /// A list, ordered by index, containing data about each shared interface type.
+        /// </summary>
         protected List<ProxyType> ProxyData = new List<ProxyType>();
+        /// <summary>
+        /// A dictionary that contains bindings between local shared classes and their respective shared interfaces.
+        /// </summary>
         protected Dictionary<Type, Type> LocalClassToInterface = new Dictionary<Type, Type>();
+        /// <summary>
+        /// A dictionary that contains bindings between remote shared classes and their respective shared interfaces.
+        /// </summary>
         protected Dictionary<Type, Type> RemoteClassToInterface = new Dictionary<Type, Type>();
+        /// <summary>
+        /// A dictionary that contains bindings between remote shared interfaces and their respective shared classes.
+        /// </summary>
         protected Dictionary<Type, Type> RemoteInterfaceToClass = new Dictionary<Type, Type>();
 
         static GeneratorProxyBinder()
@@ -47,10 +65,10 @@ namespace DouglasDwyer.Imp
             CreateNotSupportedException = typeof(NotSupportedException).GetConstructor(new[] { typeof(string) });
         }
 
-        public virtual ProxyType GetDataForProxy(ushort id)
+        /*public virtual ProxyType GetDataForProxy(ushort id)
         {
             return ProxyData[id];
-        }
+        }*/
 
         public virtual ProxyType GetDataForProxy(Type proxyInterface)
         {
@@ -69,7 +87,7 @@ namespace DouglasDwyer.Imp
             }
         }
 
-        public virtual ushort? GetIDForLocalType(Type localType)
+        private ushort? GetIDForLocalType(Type localType)
         {
             if (LocalClassToInterface.ContainsKey(localType))
             {
@@ -89,12 +107,12 @@ namespace DouglasDwyer.Imp
             }
         }
 
-        public virtual ushort? GetIDForProxy(Type proxyInterface)
+        private ushort? GetIDForProxy(Type proxyInterface)
         {
             return ProxyIndex.ContainsValue(proxyInterface) ? (ushort?)ProxyIndex[proxyInterface] : null;
         }
 
-        public virtual ushort? GetIDForRemoteType(Type remoteType)
+        private ushort? GetIDForRemoteType(Type remoteType)
         {
             if (RemoteClassToInterface.ContainsKey(remoteType))
             {
@@ -114,7 +132,7 @@ namespace DouglasDwyer.Imp
             }
         }
 
-        public virtual ushort? GetIDForSharedType(Type sharedType)
+        private ushort? GetIDForSharedType(Type sharedType)
         {
             if (typeof(RemoteSharedObject).IsAssignableFrom(sharedType))
             {
@@ -244,6 +262,10 @@ namespace DouglasDwyer.Imp
 
         #region Proxy generator methods
 
+        /// <summary>
+        /// Generates remote proxies for all of the types in the given list, building the <see cref="RemoteClassToInterface"/> and <see cref="RemoteInterfaceToClass"/> arrays in the process.
+        /// </summary>
+        /// <param name="proxyTypes">A list containing all of the shared interfaces for which to generate proxies.</param>
         protected void GenerateProxies(IEnumerable<Type> proxyTypes)
         {
             AssemblyName assembly = new AssemblyName("DouglasDwyer.Imp.Proxy." + Guid.NewGuid().ToString("N"));
