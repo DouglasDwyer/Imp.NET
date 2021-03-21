@@ -38,4 +38,4 @@ while(true)
     server.SendMessage(Console.ReadLine());
 }
 ```
-Thus, Imp.NET provides an incredibly simple way for clients and servers to interact. The user can define custom "shared" properties and methods. These members man then be accessed remotely, as though they existed in the local runtime.
+Thus, Imp.NET provides an incredibly simple way for clients and servers to interact. The user can define custom "shared" properties and methods. These members may then be accessed remotely, as though they existed in the local runtime.
