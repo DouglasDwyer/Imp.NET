@@ -12,6 +12,8 @@ Imp.NET can be obtained as a Nuget package. To import it into your project, eith
 
 ### Features
 
+With Imp.NET, you can:
+
 - Write networked code with remote method calls that looks exactly like normal/local code
 - Send shared objects as method arguments across the network via interfaces, and remotely invoke methods/properties on them as though they are local objects
 - Send non-shared objects as method arguments across the network by value using a serializer
