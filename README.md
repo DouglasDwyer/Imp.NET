@@ -6,10 +6,6 @@ Imp.NET is a fast, high-level, object-oriented C# networking library that suppor
 
 Imp.NET may optionally be used without its source generator.
 
-### Installation
-
-Imp.NET can be obtained as a Nuget package. To import it into your project, either download DouglasDwyer.Imp from the Visual Studio package manager or run the command `Install-Package DouglasDwyer.Imp` using the package manager console.
-
 ### Features
 
 With Imp.NET, you can:
@@ -21,9 +17,17 @@ With Imp.NET, you can:
 - Call remote methods synchronously or asynchronously with the use of `Task`s and the `await` keyword
 - Use UDP and the `Unreliable` attribute to send data across the network with less overhead
 
-### Overview
+### Installation
 
-Imp.NET abstracts away the details of networking by automatically generating remote proxy classes that inherit from shared interfaces. First, the user defines shared local types - types whose methods and properties may be accessed across the network. Then, during runtime, an Imp.NET client application connects to an Imp.NET server application. These applications may send one another instances of shared local types. Shared local types each implement a shared interface, which defines the members that can be called remotely. When a shared object is received over the network, it is received as the shared interface type. The following client-side code example demonstrates remote method invocation. In the example, the remote server object (whose shared interface type is `IChatServer`) is retrieved, and the remote method `SendMessage` is invoked. Observe that the process is identical to calling normal methods:
+Imp.NET can be obtained as a Nuget package. To import it into your project, either download DouglasDwyer.Imp from the Visual Studio package manager or run the command `Install-Package DouglasDwyer.Imp` using the package manager console.
+
+### Getting started
+
+Please see [the documentation](https://douglasdwyer.github.io/Imp.NET/) for a complete guide on setting up an Imp.NET application.
+
+### Example
+
+Imp.NET abstracts away the details of networking by automatically generating remote proxy classes that inherit from shared interfaces. In the following client-side example, a client connects to a server, then gets a remote representation of the server object, which is of the user-defined type `IChatServer`. Then, the client repeatedly sends messages read from the console to the server. Despite the fact that the code is executing client-side, the call to `SendMessage` executes on the server, as the `server` variable is a remote/server-owned object:
 ```csharp
 ChatClient client = new ChatClient();
 client.Connect("127.0.0.1", 10);
@@ -34,8 +38,4 @@ while(true)
     server.SendMessage(Console.ReadLine());
 }
 ```
-Despite how simple this appears, the `SendMessage` method will be called server-side, even though client-side code is being executed. Any class that implements an interface may be marked as shared using the `Shared` and `ShareAs` attributes, including classes in other libraries.
-
-### Getting started
-
-Please see the documentation for a complete guide on setting up an Imp.NET application.
+Thus, Imp.NET provides an incredibly simple way for clients and servers to interact. The user can define custom "shared" properties and methods. These members man then be accessed remotely, as though they existed in the local runtime.
