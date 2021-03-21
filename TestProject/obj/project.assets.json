@@ -32,7 +32,7 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "DouglasDwyer.Imp/0.2.0": {
+      "DouglasDwyer.Imp/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -142,7 +142,7 @@
         "version.txt"
       ]
     },
-    "DouglasDwyer.Imp/0.2.0": {
+    "DouglasDwyer.Imp/1.0.0": {
       "type": "project",
       "path": "../Imp/Imp.csproj",
       "msbuildProject": "../Imp/Imp.csproj"
@@ -150,7 +150,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "DouglasDwyer.Imp >= 0.2.0"
+      "DouglasDwyer.Imp >= 1.0.0"
     ]
   },
   "packageFolders": {

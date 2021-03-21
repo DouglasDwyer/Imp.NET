@@ -1,0 +1,458 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IProxyBinder
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IProxyBinder
+   ">
+    <meta name="generator" content="docfx 2.54.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="DouglasDwyer.Imp.IProxyBinder">
+  
+  
+  <h1 id="DouglasDwyer_Imp_IProxyBinder" data-uid="DouglasDwyer.Imp.IProxyBinder" class="text-break">Interface IProxyBinder
+  </h1>
+  <div class="markdown level0 summary"><p>Classes that implement <a class="xref" href="DouglasDwyer.Imp.IProxyBinder.html">IProxyBinder</a> provide the ability to identify and convert between local shared types, their shared interfaces, and remote shared types.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="DouglasDwyer.Imp.html">DouglasDwyer.Imp</a></h6>
+  <h6><strong>Assembly</strong>: Imp.dll</h6>
+  <h5 id="DouglasDwyer_Imp_IProxyBinder_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IProxyBinder</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DouglasDwyer/Imp.NET/new/main/apiSpec/new?filename=DouglasDwyer_Imp_IProxyBinder_GetDataForProxy_System_Type_.md&amp;value=---%0Auid%3A%20DouglasDwyer.Imp.IProxyBinder.GetDataForProxy(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DouglasDwyer/Imp.NET/blob/main/Imp/IProxyBinder.cs/#L23">View Source</a>
+  </span>
+  <a id="DouglasDwyer_Imp_IProxyBinder_GetDataForProxy_" data-uid="DouglasDwyer.Imp.IProxyBinder.GetDataForProxy*"></a>
+  <h4 id="DouglasDwyer_Imp_IProxyBinder_GetDataForProxy_System_Type_" data-uid="DouglasDwyer.Imp.IProxyBinder.GetDataForProxy(System.Type)">GetDataForProxy(Type)</h4>
+  <div class="markdown level1 summary"><p>Obtains the proxy data for the given shared interface type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ProxyType GetDataForProxy(Type proxyInterface)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">proxyInterface</span></td>
+        <td><p>The interface type to identify.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DouglasDwyer.Imp.ProxyType.html">ProxyType</a></td>
+        <td><p>An object containing sharing data about the type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DouglasDwyer/Imp.NET/new/main/apiSpec/new?filename=DouglasDwyer_Imp_IProxyBinder_GetDataForSharedType_System_Type_.md&amp;value=---%0Auid%3A%20DouglasDwyer.Imp.IProxyBinder.GetDataForSharedType(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DouglasDwyer/Imp.NET/blob/main/Imp/IProxyBinder.cs/#L29">View Source</a>
+  </span>
+  <a id="DouglasDwyer_Imp_IProxyBinder_GetDataForSharedType_" data-uid="DouglasDwyer.Imp.IProxyBinder.GetDataForSharedType*"></a>
+  <h4 id="DouglasDwyer_Imp_IProxyBinder_GetDataForSharedType_System_Type_" data-uid="DouglasDwyer.Imp.IProxyBinder.GetDataForSharedType(System.Type)">GetDataForSharedType(Type)</h4>
+  <div class="markdown level1 summary"><p>Obtains the proxy data for the given shared class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ProxyType GetDataForSharedType(Type sharedType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">sharedType</span></td>
+        <td><p>The shared class to identify.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DouglasDwyer.Imp.ProxyType.html">ProxyType</a></td>
+        <td><p>An object containing sharing data about the type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DouglasDwyer/Imp.NET/new/main/apiSpec/new?filename=DouglasDwyer_Imp_IProxyBinder_GetProxyForLocalType_System_Type_.md&amp;value=---%0Auid%3A%20DouglasDwyer.Imp.IProxyBinder.GetProxyForLocalType(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DouglasDwyer/Imp.NET/blob/main/Imp/IProxyBinder.cs/#L58">View Source</a>
+  </span>
+  <a id="DouglasDwyer_Imp_IProxyBinder_GetProxyForLocalType_" data-uid="DouglasDwyer.Imp.IProxyBinder.GetProxyForLocalType*"></a>
+  <h4 id="DouglasDwyer_Imp_IProxyBinder_GetProxyForLocalType_System_Type_" data-uid="DouglasDwyer.Imp.IProxyBinder.GetProxyForLocalType(System.Type)">GetProxyForLocalType(Type)</h4>
+  <div class="markdown level1 summary"><p>Returns the shared interface that represents the given local shared class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Type GetProxyForLocalType(Type localType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">localType</span></td>
+        <td><p>The shared class which implements the interface.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><p>The shared interface.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DouglasDwyer/Imp.NET/new/main/apiSpec/new?filename=DouglasDwyer_Imp_IProxyBinder_GetProxyForRemoteType_System_Type_.md&amp;value=---%0Auid%3A%20DouglasDwyer.Imp.IProxyBinder.GetProxyForRemoteType(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DouglasDwyer/Imp.NET/blob/main/Imp/IProxyBinder.cs/#L52">View Source</a>
+  </span>
+  <a id="DouglasDwyer_Imp_IProxyBinder_GetProxyForRemoteType_" data-uid="DouglasDwyer.Imp.IProxyBinder.GetProxyForRemoteType*"></a>
+  <h4 id="DouglasDwyer_Imp_IProxyBinder_GetProxyForRemoteType_System_Type_" data-uid="DouglasDwyer.Imp.IProxyBinder.GetProxyForRemoteType(System.Type)">GetProxyForRemoteType(Type)</h4>
+  <div class="markdown level1 summary"><p>Returns the shared interface represented by the given remote class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Type GetProxyForRemoteType(Type remoteClass)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">remoteClass</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><p>The shared interface.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DouglasDwyer/Imp.NET/new/main/apiSpec/new?filename=DouglasDwyer_Imp_IProxyBinder_GetProxyTypes.md&amp;value=---%0Auid%3A%20DouglasDwyer.Imp.IProxyBinder.GetProxyTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DouglasDwyer/Imp.NET/blob/main/Imp/IProxyBinder.cs/#L34">View Source</a>
+  </span>
+  <a id="DouglasDwyer_Imp_IProxyBinder_GetProxyTypes_" data-uid="DouglasDwyer.Imp.IProxyBinder.GetProxyTypes*"></a>
+  <h4 id="DouglasDwyer_Imp_IProxyBinder_GetProxyTypes" data-uid="DouglasDwyer.Imp.IProxyBinder.GetProxyTypes">GetProxyTypes()</h4>
+  <div class="markdown level1 summary"><p>Returns a list of all the shared proxy interfaces that this binder supports.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;Type&gt; GetProxyTypes()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Type</span>&gt;</td>
+        <td><p>A list of shared interfaces.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DouglasDwyer/Imp.NET/new/main/apiSpec/new?filename=DouglasDwyer_Imp_IProxyBinder_GetRemoteType_System_Type_.md&amp;value=---%0Auid%3A%20DouglasDwyer.Imp.IProxyBinder.GetRemoteType(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DouglasDwyer/Imp.NET/blob/main/Imp/IProxyBinder.cs/#L46">View Source</a>
+  </span>
+  <a id="DouglasDwyer_Imp_IProxyBinder_GetRemoteType_" data-uid="DouglasDwyer.Imp.IProxyBinder.GetRemoteType*"></a>
+  <h4 id="DouglasDwyer_Imp_IProxyBinder_GetRemoteType_System_Type_" data-uid="DouglasDwyer.Imp.IProxyBinder.GetRemoteType(System.Type)">GetRemoteType(Type)</h4>
+  <div class="markdown level1 summary"><p>Returns the remote type that represents the given shared interface.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Type GetRemoteType(Type proxyInterface)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">proxyInterface</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><p>The remote type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DouglasDwyer/Imp.NET/new/main/apiSpec/new?filename=DouglasDwyer_Imp_IProxyBinder_IsSharedType_System_Type_.md&amp;value=---%0Auid%3A%20DouglasDwyer.Imp.IProxyBinder.IsSharedType(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DouglasDwyer/Imp.NET/blob/main/Imp/IProxyBinder.cs/#L64">View Source</a>
+  </span>
+  <a id="DouglasDwyer_Imp_IProxyBinder_IsSharedType_" data-uid="DouglasDwyer.Imp.IProxyBinder.IsSharedType*"></a>
+  <h4 id="DouglasDwyer_Imp_IProxyBinder_IsSharedType_System_Type_" data-uid="DouglasDwyer.Imp.IProxyBinder.IsSharedType(System.Type)">IsSharedType(Type)</h4>
+  <div class="markdown level1 summary"><p>Returns whether a given type is shared.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsSharedType(Type sharedType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">sharedType</span></td>
+        <td><p>The type to check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether the given type is a local shared class, shared interface, or remote proxy class.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/DouglasDwyer/Imp.NET/new/main/apiSpec/new?filename=DouglasDwyer_Imp_IProxyBinder.md&amp;value=---%0Auid%3A%20DouglasDwyer.Imp.IProxyBinder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/DouglasDwyer/Imp.NET/blob/main/Imp/IProxyBinder.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -8,7 +8,8 @@
     <description>Package Description</description>
     <dependencies>
       <group targetFramework=".NETStandard2.0">
-        <dependency id="Imp.NET" version="0.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CSharp" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis" version="3.8.0" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>

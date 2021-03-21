@@ -1,0 +1,1687 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: DouglasDwyer.Imp
+  name: DouglasDwyer.Imp
+  href: api/DouglasDwyer.Imp.html
+  commentId: N:DouglasDwyer.Imp
+  fullName: DouglasDwyer.Imp
+  nameWithType: DouglasDwyer.Imp
+- uid: DouglasDwyer.Imp.CallingClientAttribute
+  name: CallingClientAttribute
+  href: api/DouglasDwyer.Imp.CallingClientAttribute.html
+  commentId: T:DouglasDwyer.Imp.CallingClientAttribute
+  fullName: DouglasDwyer.Imp.CallingClientAttribute
+  nameWithType: CallingClientAttribute
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder
+  name: GeneratorProxyBinder
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html
+  commentId: T:DouglasDwyer.Imp.GeneratorProxyBinder
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder
+  nameWithType: GeneratorProxyBinder
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GenerateProxies(System.Collections.Generic.IEnumerable{System.Type})
+  name: GenerateProxies(IEnumerable<Type>)
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GenerateProxies_System_Collections_Generic_IEnumerable_System_Type__
+  commentId: M:DouglasDwyer.Imp.GeneratorProxyBinder.GenerateProxies(System.Collections.Generic.IEnumerable{System.Type})
+  name.vb: GenerateProxies(IEnumerable(Of Type))
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GenerateProxies(System.Collections.Generic.IEnumerable<System.Type>)
+  fullName.vb: DouglasDwyer.Imp.GeneratorProxyBinder.GenerateProxies(System.Collections.Generic.IEnumerable(Of System.Type))
+  nameWithType: GeneratorProxyBinder.GenerateProxies(IEnumerable<Type>)
+  nameWithType.vb: GeneratorProxyBinder.GenerateProxies(IEnumerable(Of Type))
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GenerateProxies*
+  name: GenerateProxies
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GenerateProxies_
+  commentId: Overload:DouglasDwyer.Imp.GeneratorProxyBinder.GenerateProxies
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GenerateProxies
+  nameWithType: GeneratorProxyBinder.GenerateProxies
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForProxy(System.Type)
+  name: GetDataForProxy(Type)
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetDataForProxy_System_Type_
+  commentId: M:DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForProxy(System.Type)
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForProxy(System.Type)
+  nameWithType: GeneratorProxyBinder.GetDataForProxy(Type)
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForProxy*
+  name: GetDataForProxy
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetDataForProxy_
+  commentId: Overload:DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForProxy
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForProxy
+  nameWithType: GeneratorProxyBinder.GetDataForProxy
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForSharedType(System.Type)
+  name: GetDataForSharedType(Type)
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetDataForSharedType_System_Type_
+  commentId: M:DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForSharedType(System.Type)
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForSharedType(System.Type)
+  nameWithType: GeneratorProxyBinder.GetDataForSharedType(Type)
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForSharedType*
+  name: GetDataForSharedType
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetDataForSharedType_
+  commentId: Overload:DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForSharedType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetDataForSharedType
+  nameWithType: GeneratorProxyBinder.GetDataForSharedType
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForLocalType(System.Type)
+  name: GetProxyForLocalType(Type)
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetProxyForLocalType_System_Type_
+  commentId: M:DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForLocalType(System.Type)
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForLocalType(System.Type)
+  nameWithType: GeneratorProxyBinder.GetProxyForLocalType(Type)
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForLocalType*
+  name: GetProxyForLocalType
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetProxyForLocalType_
+  commentId: Overload:DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForLocalType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForLocalType
+  nameWithType: GeneratorProxyBinder.GetProxyForLocalType
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForRemoteType(System.Type)
+  name: GetProxyForRemoteType(Type)
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetProxyForRemoteType_System_Type_
+  commentId: M:DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForRemoteType(System.Type)
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForRemoteType(System.Type)
+  nameWithType: GeneratorProxyBinder.GetProxyForRemoteType(Type)
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForRemoteType*
+  name: GetProxyForRemoteType
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetProxyForRemoteType_
+  commentId: Overload:DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForRemoteType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyForRemoteType
+  nameWithType: GeneratorProxyBinder.GetProxyForRemoteType
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyTypes
+  name: GetProxyTypes()
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetProxyTypes
+  commentId: M:DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyTypes
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyTypes()
+  nameWithType: GeneratorProxyBinder.GetProxyTypes()
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyTypes*
+  name: GetProxyTypes
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetProxyTypes_
+  commentId: Overload:DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyTypes
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetProxyTypes
+  nameWithType: GeneratorProxyBinder.GetProxyTypes
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetRemoteType(System.Type)
+  name: GetRemoteType(Type)
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetRemoteType_System_Type_
+  commentId: M:DouglasDwyer.Imp.GeneratorProxyBinder.GetRemoteType(System.Type)
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetRemoteType(System.Type)
+  nameWithType: GeneratorProxyBinder.GetRemoteType(Type)
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetRemoteType(System.UInt16)
+  name: GetRemoteType(UInt16)
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetRemoteType_System_UInt16_
+  commentId: M:DouglasDwyer.Imp.GeneratorProxyBinder.GetRemoteType(System.UInt16)
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetRemoteType(System.UInt16)
+  nameWithType: GeneratorProxyBinder.GetRemoteType(UInt16)
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.GetRemoteType*
+  name: GetRemoteType
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_GetRemoteType_
+  commentId: Overload:DouglasDwyer.Imp.GeneratorProxyBinder.GetRemoteType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.GetRemoteType
+  nameWithType: GeneratorProxyBinder.GetRemoteType
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.IsSharedType(System.Type)
+  name: IsSharedType(Type)
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_IsSharedType_System_Type_
+  commentId: M:DouglasDwyer.Imp.GeneratorProxyBinder.IsSharedType(System.Type)
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.IsSharedType(System.Type)
+  nameWithType: GeneratorProxyBinder.IsSharedType(Type)
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.IsSharedType*
+  name: IsSharedType
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_IsSharedType_
+  commentId: Overload:DouglasDwyer.Imp.GeneratorProxyBinder.IsSharedType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.IsSharedType
+  nameWithType: GeneratorProxyBinder.IsSharedType
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.LocalClassToInterface
+  name: LocalClassToInterface
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_LocalClassToInterface
+  commentId: F:DouglasDwyer.Imp.GeneratorProxyBinder.LocalClassToInterface
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.LocalClassToInterface
+  nameWithType: GeneratorProxyBinder.LocalClassToInterface
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.ProxyData
+  name: ProxyData
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_ProxyData
+  commentId: F:DouglasDwyer.Imp.GeneratorProxyBinder.ProxyData
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.ProxyData
+  nameWithType: GeneratorProxyBinder.ProxyData
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.ProxyIndex
+  name: ProxyIndex
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_ProxyIndex
+  commentId: F:DouglasDwyer.Imp.GeneratorProxyBinder.ProxyIndex
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.ProxyIndex
+  nameWithType: GeneratorProxyBinder.ProxyIndex
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.RemoteClassToInterface
+  name: RemoteClassToInterface
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_RemoteClassToInterface
+  commentId: F:DouglasDwyer.Imp.GeneratorProxyBinder.RemoteClassToInterface
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.RemoteClassToInterface
+  nameWithType: GeneratorProxyBinder.RemoteClassToInterface
+- uid: DouglasDwyer.Imp.GeneratorProxyBinder.RemoteInterfaceToClass
+  name: RemoteInterfaceToClass
+  href: api/DouglasDwyer.Imp.GeneratorProxyBinder.html#DouglasDwyer_Imp_GeneratorProxyBinder_RemoteInterfaceToClass
+  commentId: F:DouglasDwyer.Imp.GeneratorProxyBinder.RemoteInterfaceToClass
+  fullName: DouglasDwyer.Imp.GeneratorProxyBinder.RemoteInterfaceToClass
+  nameWithType: GeneratorProxyBinder.RemoteInterfaceToClass
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1
+  name: IdentifiedCollection<T>
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html
+  commentId: T:DouglasDwyer.Imp.IdentifiedCollection`1
+  name.vb: IdentifiedCollection(Of T)
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T)
+  nameWithType: IdentifiedCollection<T>
+  nameWithType.vb: IdentifiedCollection(Of T)
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Add(`0)
+  name: Add(T)
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Add__0_
+  commentId: M:DouglasDwyer.Imp.IdentifiedCollection`1.Add(`0)
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Add(T)
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Add(T)
+  nameWithType: IdentifiedCollection<T>.Add(T)
+  nameWithType.vb: IdentifiedCollection(Of T).Add(T)
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Add(System.Func{System.UInt16,`0})
+  name: Add(Func<UInt16, T>)
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Add_System_Func_System_UInt16__0__
+  commentId: M:DouglasDwyer.Imp.IdentifiedCollection`1.Add(System.Func{System.UInt16,`0})
+  name.vb: Add(Func(Of UInt16, T))
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Add(System.Func<System.UInt16, T>)
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Add(System.Func(Of System.UInt16, T))
+  nameWithType: IdentifiedCollection<T>.Add(Func<UInt16, T>)
+  nameWithType.vb: IdentifiedCollection(Of T).Add(Func(Of UInt16, T))
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Add*
+  name: Add
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Add_
+  commentId: Overload:DouglasDwyer.Imp.IdentifiedCollection`1.Add
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Add
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Add
+  nameWithType: IdentifiedCollection<T>.Add
+  nameWithType.vb: IdentifiedCollection(Of T).Add
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.ContainsID(System.UInt16)
+  name: ContainsID(UInt16)
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_ContainsID_System_UInt16_
+  commentId: M:DouglasDwyer.Imp.IdentifiedCollection`1.ContainsID(System.UInt16)
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.ContainsID(System.UInt16)
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).ContainsID(System.UInt16)
+  nameWithType: IdentifiedCollection<T>.ContainsID(UInt16)
+  nameWithType.vb: IdentifiedCollection(Of T).ContainsID(UInt16)
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.ContainsID*
+  name: ContainsID
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_ContainsID_
+  commentId: Overload:DouglasDwyer.Imp.IdentifiedCollection`1.ContainsID
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.ContainsID
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).ContainsID
+  nameWithType: IdentifiedCollection<T>.ContainsID
+  nameWithType.vb: IdentifiedCollection(Of T).ContainsID
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.ContainsValue(`0)
+  name: ContainsValue(T)
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_ContainsValue__0_
+  commentId: M:DouglasDwyer.Imp.IdentifiedCollection`1.ContainsValue(`0)
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.ContainsValue(T)
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).ContainsValue(T)
+  nameWithType: IdentifiedCollection<T>.ContainsValue(T)
+  nameWithType.vb: IdentifiedCollection(Of T).ContainsValue(T)
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.ContainsValue*
+  name: ContainsValue
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_ContainsValue_
+  commentId: Overload:DouglasDwyer.Imp.IdentifiedCollection`1.ContainsValue
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.ContainsValue
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).ContainsValue
+  nameWithType: IdentifiedCollection<T>.ContainsValue
+  nameWithType.vb: IdentifiedCollection(Of T).ContainsValue
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Count
+  name: Count
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Count
+  commentId: P:DouglasDwyer.Imp.IdentifiedCollection`1.Count
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Count
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Count
+  nameWithType: IdentifiedCollection<T>.Count
+  nameWithType.vb: IdentifiedCollection(Of T).Count
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Count*
+  name: Count
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Count_
+  commentId: Overload:DouglasDwyer.Imp.IdentifiedCollection`1.Count
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Count
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Count
+  nameWithType: IdentifiedCollection<T>.Count
+  nameWithType.vb: IdentifiedCollection(Of T).Count
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Item(`0)
+  name: Item[T]
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Item__0_
+  commentId: P:DouglasDwyer.Imp.IdentifiedCollection`1.Item(`0)
+  name.vb: Item(T)
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Item[T]
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Item(T)
+  nameWithType: IdentifiedCollection<T>.Item[T]
+  nameWithType.vb: IdentifiedCollection(Of T).Item(T)
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Item(System.UInt16)
+  name: Item[UInt16]
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Item_System_UInt16_
+  commentId: P:DouglasDwyer.Imp.IdentifiedCollection`1.Item(System.UInt16)
+  name.vb: Item(UInt16)
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Item[System.UInt16]
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Item(System.UInt16)
+  nameWithType: IdentifiedCollection<T>.Item[UInt16]
+  nameWithType.vb: IdentifiedCollection(Of T).Item(UInt16)
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Item*
+  name: Item
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Item_
+  commentId: Overload:DouglasDwyer.Imp.IdentifiedCollection`1.Item
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Item
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Item
+  nameWithType: IdentifiedCollection<T>.Item
+  nameWithType.vb: IdentifiedCollection(Of T).Item
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Keys
+  name: Keys
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Keys
+  commentId: P:DouglasDwyer.Imp.IdentifiedCollection`1.Keys
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Keys
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Keys
+  nameWithType: IdentifiedCollection<T>.Keys
+  nameWithType.vb: IdentifiedCollection(Of T).Keys
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Keys*
+  name: Keys
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Keys_
+  commentId: Overload:DouglasDwyer.Imp.IdentifiedCollection`1.Keys
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Keys
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Keys
+  nameWithType: IdentifiedCollection<T>.Keys
+  nameWithType.vb: IdentifiedCollection(Of T).Keys
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Remove(`0)
+  name: Remove(T)
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Remove__0_
+  commentId: M:DouglasDwyer.Imp.IdentifiedCollection`1.Remove(`0)
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Remove(T)
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Remove(T)
+  nameWithType: IdentifiedCollection<T>.Remove(T)
+  nameWithType.vb: IdentifiedCollection(Of T).Remove(T)
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Remove(System.UInt16)
+  name: Remove(UInt16)
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Remove_System_UInt16_
+  commentId: M:DouglasDwyer.Imp.IdentifiedCollection`1.Remove(System.UInt16)
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Remove(System.UInt16)
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Remove(System.UInt16)
+  nameWithType: IdentifiedCollection<T>.Remove(UInt16)
+  nameWithType.vb: IdentifiedCollection(Of T).Remove(UInt16)
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Remove*
+  name: Remove
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Remove_
+  commentId: Overload:DouglasDwyer.Imp.IdentifiedCollection`1.Remove
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Remove
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Remove
+  nameWithType: IdentifiedCollection<T>.Remove
+  nameWithType.vb: IdentifiedCollection(Of T).Remove
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.TryGetID(`0,System.UInt16@)
+  name: TryGetID(T, out UInt16)
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_TryGetID__0_System_UInt16__
+  commentId: M:DouglasDwyer.Imp.IdentifiedCollection`1.TryGetID(`0,System.UInt16@)
+  name.vb: TryGetID(T, ByRef UInt16)
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.TryGetID(T, out System.UInt16)
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).TryGetID(T, ByRef System.UInt16)
+  nameWithType: IdentifiedCollection<T>.TryGetID(T, out UInt16)
+  nameWithType.vb: IdentifiedCollection(Of T).TryGetID(T, ByRef UInt16)
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.TryGetID*
+  name: TryGetID
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_TryGetID_
+  commentId: Overload:DouglasDwyer.Imp.IdentifiedCollection`1.TryGetID
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.TryGetID
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).TryGetID
+  nameWithType: IdentifiedCollection<T>.TryGetID
+  nameWithType.vb: IdentifiedCollection(Of T).TryGetID
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.TryGetValue(System.UInt16,`0@)
+  name: TryGetValue(UInt16, out T)
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_TryGetValue_System_UInt16__0__
+  commentId: M:DouglasDwyer.Imp.IdentifiedCollection`1.TryGetValue(System.UInt16,`0@)
+  name.vb: TryGetValue(UInt16, ByRef T)
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.TryGetValue(System.UInt16, out T)
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).TryGetValue(System.UInt16, ByRef T)
+  nameWithType: IdentifiedCollection<T>.TryGetValue(UInt16, out T)
+  nameWithType.vb: IdentifiedCollection(Of T).TryGetValue(UInt16, ByRef T)
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.TryGetValue*
+  name: TryGetValue
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_TryGetValue_
+  commentId: Overload:DouglasDwyer.Imp.IdentifiedCollection`1.TryGetValue
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.TryGetValue
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).TryGetValue
+  nameWithType: IdentifiedCollection<T>.TryGetValue
+  nameWithType.vb: IdentifiedCollection(Of T).TryGetValue
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Values
+  name: Values
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Values
+  commentId: P:DouglasDwyer.Imp.IdentifiedCollection`1.Values
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Values
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Values
+  nameWithType: IdentifiedCollection<T>.Values
+  nameWithType.vb: IdentifiedCollection(Of T).Values
+- uid: DouglasDwyer.Imp.IdentifiedCollection`1.Values*
+  name: Values
+  href: api/DouglasDwyer.Imp.IdentifiedCollection-1.html#DouglasDwyer_Imp_IdentifiedCollection_1_Values_
+  commentId: Overload:DouglasDwyer.Imp.IdentifiedCollection`1.Values
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IdentifiedCollection<T>.Values
+  fullName.vb: DouglasDwyer.Imp.IdentifiedCollection(Of T).Values
+  nameWithType: IdentifiedCollection<T>.Values
+  nameWithType.vb: IdentifiedCollection(Of T).Values
+- uid: DouglasDwyer.Imp.IImpClient
+  name: IImpClient
+  href: api/DouglasDwyer.Imp.IImpClient.html
+  commentId: T:DouglasDwyer.Imp.IImpClient
+  fullName: DouglasDwyer.Imp.IImpClient
+  nameWithType: IImpClient
+- uid: DouglasDwyer.Imp.IImpClient.Server
+  name: Server
+  href: api/DouglasDwyer.Imp.IImpClient.html#DouglasDwyer_Imp_IImpClient_Server
+  commentId: P:DouglasDwyer.Imp.IImpClient.Server
+  fullName: DouglasDwyer.Imp.IImpClient.Server
+  nameWithType: IImpClient.Server
+- uid: DouglasDwyer.Imp.IImpClient.Server*
+  name: Server
+  href: api/DouglasDwyer.Imp.IImpClient.html#DouglasDwyer_Imp_IImpClient_Server_
+  commentId: Overload:DouglasDwyer.Imp.IImpClient.Server
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IImpClient.Server
+  nameWithType: IImpClient.Server
+- uid: DouglasDwyer.Imp.IImpClient`1
+  name: IImpClient<T>
+  href: api/DouglasDwyer.Imp.IImpClient-1.html
+  commentId: T:DouglasDwyer.Imp.IImpClient`1
+  name.vb: IImpClient(Of T)
+  fullName: DouglasDwyer.Imp.IImpClient<T>
+  fullName.vb: DouglasDwyer.Imp.IImpClient(Of T)
+  nameWithType: IImpClient<T>
+  nameWithType.vb: IImpClient(Of T)
+- uid: DouglasDwyer.Imp.IImpServer
+  name: IImpServer
+  href: api/DouglasDwyer.Imp.IImpServer.html
+  commentId: T:DouglasDwyer.Imp.IImpServer
+  fullName: DouglasDwyer.Imp.IImpServer
+  nameWithType: IImpServer
+- uid: DouglasDwyer.Imp.IImpServer`1
+  name: IImpServer<T>
+  href: api/DouglasDwyer.Imp.IImpServer-1.html
+  commentId: T:DouglasDwyer.Imp.IImpServer`1
+  name.vb: IImpServer(Of T)
+  fullName: DouglasDwyer.Imp.IImpServer<T>
+  fullName.vb: DouglasDwyer.Imp.IImpServer(Of T)
+  nameWithType: IImpServer<T>
+  nameWithType.vb: IImpServer(Of T)
+- uid: DouglasDwyer.Imp.ImpClient
+  name: ImpClient
+  href: api/DouglasDwyer.Imp.ImpClient.html
+  commentId: T:DouglasDwyer.Imp.ImpClient
+  fullName: DouglasDwyer.Imp.ImpClient
+  nameWithType: ImpClient
+- uid: DouglasDwyer.Imp.ImpClient.#ctor
+  name: ImpClient()
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient__ctor
+  commentId: M:DouglasDwyer.Imp.ImpClient.#ctor
+  fullName: DouglasDwyer.Imp.ImpClient.ImpClient()
+  nameWithType: ImpClient.ImpClient()
+- uid: DouglasDwyer.Imp.ImpClient.#ctor*
+  name: ImpClient
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient__ctor_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.ImpClient
+  nameWithType: ImpClient.ImpClient
+- uid: DouglasDwyer.Imp.ImpClient.Connect(System.Net.IPAddress,System.Int32)
+  name: Connect(IPAddress, Int32)
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Connect_System_Net_IPAddress_System_Int32_
+  commentId: M:DouglasDwyer.Imp.ImpClient.Connect(System.Net.IPAddress,System.Int32)
+  fullName: DouglasDwyer.Imp.ImpClient.Connect(System.Net.IPAddress, System.Int32)
+  nameWithType: ImpClient.Connect(IPAddress, Int32)
+- uid: DouglasDwyer.Imp.ImpClient.Connect(System.String,System.Int32)
+  name: Connect(String, Int32)
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Connect_System_String_System_Int32_
+  commentId: M:DouglasDwyer.Imp.ImpClient.Connect(System.String,System.Int32)
+  fullName: DouglasDwyer.Imp.ImpClient.Connect(System.String, System.Int32)
+  nameWithType: ImpClient.Connect(String, Int32)
+- uid: DouglasDwyer.Imp.ImpClient.Connect*
+  name: Connect
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Connect_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.Connect
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.Connect
+  nameWithType: ImpClient.Connect
+- uid: DouglasDwyer.Imp.ImpClient.ConnectAsync(System.Net.IPAddress,System.Int32)
+  name: ConnectAsync(IPAddress, Int32)
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_ConnectAsync_System_Net_IPAddress_System_Int32_
+  commentId: M:DouglasDwyer.Imp.ImpClient.ConnectAsync(System.Net.IPAddress,System.Int32)
+  fullName: DouglasDwyer.Imp.ImpClient.ConnectAsync(System.Net.IPAddress, System.Int32)
+  nameWithType: ImpClient.ConnectAsync(IPAddress, Int32)
+- uid: DouglasDwyer.Imp.ImpClient.ConnectAsync(System.String,System.Int32)
+  name: ConnectAsync(String, Int32)
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_ConnectAsync_System_String_System_Int32_
+  commentId: M:DouglasDwyer.Imp.ImpClient.ConnectAsync(System.String,System.Int32)
+  fullName: DouglasDwyer.Imp.ImpClient.ConnectAsync(System.String, System.Int32)
+  nameWithType: ImpClient.ConnectAsync(String, Int32)
+- uid: DouglasDwyer.Imp.ImpClient.ConnectAsync*
+  name: ConnectAsync
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_ConnectAsync_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.ConnectAsync
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.ConnectAsync
+  nameWithType: ImpClient.ConnectAsync
+- uid: DouglasDwyer.Imp.ImpClient.Connected
+  name: Connected
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Connected
+  commentId: P:DouglasDwyer.Imp.ImpClient.Connected
+  fullName: DouglasDwyer.Imp.ImpClient.Connected
+  nameWithType: ImpClient.Connected
+- uid: DouglasDwyer.Imp.ImpClient.Connected*
+  name: Connected
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Connected_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.Connected
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.Connected
+  nameWithType: ImpClient.Connected
+- uid: DouglasDwyer.Imp.ImpClient.Disconnect
+  name: Disconnect()
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Disconnect
+  commentId: M:DouglasDwyer.Imp.ImpClient.Disconnect
+  fullName: DouglasDwyer.Imp.ImpClient.Disconnect()
+  nameWithType: ImpClient.Disconnect()
+- uid: DouglasDwyer.Imp.ImpClient.Disconnect*
+  name: Disconnect
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Disconnect_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.Disconnect
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.Disconnect
+  nameWithType: ImpClient.Disconnect
+- uid: DouglasDwyer.Imp.ImpClient.Local
+  name: Local
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Local
+  commentId: P:DouglasDwyer.Imp.ImpClient.Local
+  fullName: DouglasDwyer.Imp.ImpClient.Local
+  nameWithType: ImpClient.Local
+- uid: DouglasDwyer.Imp.ImpClient.Local*
+  name: Local
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Local_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.Local
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.Local
+  nameWithType: ImpClient.Local
+- uid: DouglasDwyer.Imp.ImpClient.MaximumHeldObjects
+  name: MaximumHeldObjects
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_MaximumHeldObjects
+  commentId: P:DouglasDwyer.Imp.ImpClient.MaximumHeldObjects
+  fullName: DouglasDwyer.Imp.ImpClient.MaximumHeldObjects
+  nameWithType: ImpClient.MaximumHeldObjects
+- uid: DouglasDwyer.Imp.ImpClient.MaximumHeldObjects*
+  name: MaximumHeldObjects
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_MaximumHeldObjects_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.MaximumHeldObjects
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.MaximumHeldObjects
+  nameWithType: ImpClient.MaximumHeldObjects
+- uid: DouglasDwyer.Imp.ImpClient.MaximumRemoteObjects
+  name: MaximumRemoteObjects
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_MaximumRemoteObjects
+  commentId: P:DouglasDwyer.Imp.ImpClient.MaximumRemoteObjects
+  fullName: DouglasDwyer.Imp.ImpClient.MaximumRemoteObjects
+  nameWithType: ImpClient.MaximumRemoteObjects
+- uid: DouglasDwyer.Imp.ImpClient.MaximumRemoteObjects*
+  name: MaximumRemoteObjects
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_MaximumRemoteObjects_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.MaximumRemoteObjects
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.MaximumRemoteObjects
+  nameWithType: ImpClient.MaximumRemoteObjects
+- uid: DouglasDwyer.Imp.ImpClient.NetworkID
+  name: NetworkID
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_NetworkID
+  commentId: P:DouglasDwyer.Imp.ImpClient.NetworkID
+  fullName: DouglasDwyer.Imp.ImpClient.NetworkID
+  nameWithType: ImpClient.NetworkID
+- uid: DouglasDwyer.Imp.ImpClient.NetworkID*
+  name: NetworkID
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_NetworkID_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.NetworkID
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.NetworkID
+  nameWithType: ImpClient.NetworkID
+- uid: DouglasDwyer.Imp.ImpClient.OnDisconnected
+  name: OnDisconnected()
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_OnDisconnected
+  commentId: M:DouglasDwyer.Imp.ImpClient.OnDisconnected
+  fullName: DouglasDwyer.Imp.ImpClient.OnDisconnected()
+  nameWithType: ImpClient.OnDisconnected()
+- uid: DouglasDwyer.Imp.ImpClient.OnDisconnected*
+  name: OnDisconnected
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_OnDisconnected_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.OnDisconnected
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.OnDisconnected
+  nameWithType: ImpClient.OnDisconnected
+- uid: DouglasDwyer.Imp.ImpClient.OnNetworkError(System.Exception)
+  name: OnNetworkError(Exception)
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_OnNetworkError_System_Exception_
+  commentId: M:DouglasDwyer.Imp.ImpClient.OnNetworkError(System.Exception)
+  fullName: DouglasDwyer.Imp.ImpClient.OnNetworkError(System.Exception)
+  nameWithType: ImpClient.OnNetworkError(Exception)
+- uid: DouglasDwyer.Imp.ImpClient.OnNetworkError*
+  name: OnNetworkError
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_OnNetworkError_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.OnNetworkError
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.OnNetworkError
+  nameWithType: ImpClient.OnNetworkError
+- uid: DouglasDwyer.Imp.ImpClient.RemoteTaskScheduler
+  name: RemoteTaskScheduler
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_RemoteTaskScheduler
+  commentId: P:DouglasDwyer.Imp.ImpClient.RemoteTaskScheduler
+  fullName: DouglasDwyer.Imp.ImpClient.RemoteTaskScheduler
+  nameWithType: ImpClient.RemoteTaskScheduler
+- uid: DouglasDwyer.Imp.ImpClient.RemoteTaskScheduler*
+  name: RemoteTaskScheduler
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_RemoteTaskScheduler_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.RemoteTaskScheduler
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.RemoteTaskScheduler
+  nameWithType: ImpClient.RemoteTaskScheduler
+- uid: DouglasDwyer.Imp.ImpClient.Serializer
+  name: Serializer
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Serializer
+  commentId: P:DouglasDwyer.Imp.ImpClient.Serializer
+  fullName: DouglasDwyer.Imp.ImpClient.Serializer
+  nameWithType: ImpClient.Serializer
+- uid: DouglasDwyer.Imp.ImpClient.Serializer*
+  name: Serializer
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Serializer_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.Serializer
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.Serializer
+  nameWithType: ImpClient.Serializer
+- uid: DouglasDwyer.Imp.ImpClient.Server
+  name: Server
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Server
+  commentId: P:DouglasDwyer.Imp.ImpClient.Server
+  fullName: DouglasDwyer.Imp.ImpClient.Server
+  nameWithType: ImpClient.Server
+- uid: DouglasDwyer.Imp.ImpClient.Server*
+  name: Server
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_Server_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.Server
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.Server
+  nameWithType: ImpClient.Server
+- uid: DouglasDwyer.Imp.ImpClient.SharedTypeBinder
+  name: SharedTypeBinder
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_SharedTypeBinder
+  commentId: P:DouglasDwyer.Imp.ImpClient.SharedTypeBinder
+  fullName: DouglasDwyer.Imp.ImpClient.SharedTypeBinder
+  nameWithType: ImpClient.SharedTypeBinder
+- uid: DouglasDwyer.Imp.ImpClient.SharedTypeBinder*
+  name: SharedTypeBinder
+  href: api/DouglasDwyer.Imp.ImpClient.html#DouglasDwyer_Imp_ImpClient_SharedTypeBinder_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient.SharedTypeBinder
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient.SharedTypeBinder
+  nameWithType: ImpClient.SharedTypeBinder
+- uid: DouglasDwyer.Imp.ImpClient`1
+  name: ImpClient<T>
+  href: api/DouglasDwyer.Imp.ImpClient-1.html
+  commentId: T:DouglasDwyer.Imp.ImpClient`1
+  name.vb: ImpClient(Of T)
+  fullName: DouglasDwyer.Imp.ImpClient<T>
+  fullName.vb: DouglasDwyer.Imp.ImpClient(Of T)
+  nameWithType: ImpClient<T>
+  nameWithType.vb: ImpClient(Of T)
+- uid: DouglasDwyer.Imp.ImpClient`1.Server
+  name: Server
+  href: api/DouglasDwyer.Imp.ImpClient-1.html#DouglasDwyer_Imp_ImpClient_1_Server
+  commentId: P:DouglasDwyer.Imp.ImpClient`1.Server
+  fullName: DouglasDwyer.Imp.ImpClient<T>.Server
+  fullName.vb: DouglasDwyer.Imp.ImpClient(Of T).Server
+  nameWithType: ImpClient<T>.Server
+  nameWithType.vb: ImpClient(Of T).Server
+- uid: DouglasDwyer.Imp.ImpClient`1.Server*
+  name: Server
+  href: api/DouglasDwyer.Imp.ImpClient-1.html#DouglasDwyer_Imp_ImpClient_1_Server_
+  commentId: Overload:DouglasDwyer.Imp.ImpClient`1.Server
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpClient<T>.Server
+  fullName.vb: DouglasDwyer.Imp.ImpClient(Of T).Server
+  nameWithType: ImpClient<T>.Server
+  nameWithType.vb: ImpClient(Of T).Server
+- uid: DouglasDwyer.Imp.ImpPowerSerializer
+  name: ImpPowerSerializer
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html
+  commentId: T:DouglasDwyer.Imp.ImpPowerSerializer
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer
+  nameWithType: ImpPowerSerializer
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.#ctor
+  name: ImpPowerSerializer()
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer__ctor
+  commentId: M:DouglasDwyer.Imp.ImpPowerSerializer.#ctor
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.ImpPowerSerializer()
+  nameWithType: ImpPowerSerializer.ImpPowerSerializer()
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.#ctor(DouglasDwyer.Imp.ImpClient)
+  name: ImpPowerSerializer(ImpClient)
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer__ctor_DouglasDwyer_Imp_ImpClient_
+  commentId: M:DouglasDwyer.Imp.ImpPowerSerializer.#ctor(DouglasDwyer.Imp.ImpClient)
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.ImpPowerSerializer(DouglasDwyer.Imp.ImpClient)
+  nameWithType: ImpPowerSerializer.ImpPowerSerializer(ImpClient)
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.#ctor(DouglasDwyer.Imp.ImpClient,DouglasDwyer.PowerSerializer.ITypeResolver)
+  name: ImpPowerSerializer(ImpClient, ITypeResolver)
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer__ctor_DouglasDwyer_Imp_ImpClient_DouglasDwyer_PowerSerializer_ITypeResolver_
+  commentId: M:DouglasDwyer.Imp.ImpPowerSerializer.#ctor(DouglasDwyer.Imp.ImpClient,DouglasDwyer.PowerSerializer.ITypeResolver)
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.ImpPowerSerializer(DouglasDwyer.Imp.ImpClient, DouglasDwyer.PowerSerializer.ITypeResolver)
+  nameWithType: ImpPowerSerializer.ImpPowerSerializer(ImpClient, ITypeResolver)
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.#ctor(DouglasDwyer.PowerSerializer.ITypeResolver)
+  name: ImpPowerSerializer(ITypeResolver)
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer__ctor_DouglasDwyer_PowerSerializer_ITypeResolver_
+  commentId: M:DouglasDwyer.Imp.ImpPowerSerializer.#ctor(DouglasDwyer.PowerSerializer.ITypeResolver)
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.ImpPowerSerializer(DouglasDwyer.PowerSerializer.ITypeResolver)
+  nameWithType: ImpPowerSerializer.ImpPowerSerializer(ITypeResolver)
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.#ctor*
+  name: ImpPowerSerializer
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer__ctor_
+  commentId: Overload:DouglasDwyer.Imp.ImpPowerSerializer.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.ImpPowerSerializer
+  nameWithType: ImpPowerSerializer.ImpPowerSerializer
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.CheckTypeAllowance(System.Type)
+  name: CheckTypeAllowance(Type)
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_CheckTypeAllowance_System_Type_
+  commentId: M:DouglasDwyer.Imp.ImpPowerSerializer.CheckTypeAllowance(System.Type)
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.CheckTypeAllowance(System.Type)
+  nameWithType: ImpPowerSerializer.CheckTypeAllowance(Type)
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.CheckTypeAllowance*
+  name: CheckTypeAllowance
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_CheckTypeAllowance_
+  commentId: Overload:DouglasDwyer.Imp.ImpPowerSerializer.CheckTypeAllowance
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.CheckTypeAllowance
+  nameWithType: ImpPowerSerializer.CheckTypeAllowance
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.Client
+  name: Client
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_Client
+  commentId: P:DouglasDwyer.Imp.ImpPowerSerializer.Client
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.Client
+  nameWithType: ImpPowerSerializer.Client
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.Client*
+  name: Client
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_Client_
+  commentId: Overload:DouglasDwyer.Imp.ImpPowerSerializer.Client
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.Client
+  nameWithType: ImpPowerSerializer.Client
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.Deserialize(System.Byte[])
+  name: Deserialize(Byte[])
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_Deserialize_System_Byte___
+  commentId: M:DouglasDwyer.Imp.ImpPowerSerializer.Deserialize(System.Byte[])
+  name.vb: Deserialize(Byte())
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.Deserialize(System.Byte[])
+  fullName.vb: DouglasDwyer.Imp.ImpPowerSerializer.Deserialize(System.Byte())
+  nameWithType: ImpPowerSerializer.Deserialize(Byte[])
+  nameWithType.vb: ImpPowerSerializer.Deserialize(Byte())
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.Deserialize*
+  name: Deserialize
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_Deserialize_
+  commentId: Overload:DouglasDwyer.Imp.ImpPowerSerializer.Deserialize
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.Deserialize
+  nameWithType: ImpPowerSerializer.Deserialize
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.DeserializeObject(DouglasDwyer.PowerSerializer.PowerDeserializationContext,System.IO.BinaryReader,System.Object,System.Type)
+  name: DeserializeObject(PowerDeserializationContext, BinaryReader, Object, Type)
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_DeserializeObject_DouglasDwyer_PowerSerializer_PowerDeserializationContext_System_IO_BinaryReader_System_Object_System_Type_
+  commentId: M:DouglasDwyer.Imp.ImpPowerSerializer.DeserializeObject(DouglasDwyer.PowerSerializer.PowerDeserializationContext,System.IO.BinaryReader,System.Object,System.Type)
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.DeserializeObject(DouglasDwyer.PowerSerializer.PowerDeserializationContext, System.IO.BinaryReader, System.Object, System.Type)
+  nameWithType: ImpPowerSerializer.DeserializeObject(PowerDeserializationContext, BinaryReader, Object, Type)
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.DeserializeObject*
+  name: DeserializeObject
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_DeserializeObject_
+  commentId: Overload:DouglasDwyer.Imp.ImpPowerSerializer.DeserializeObject
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.DeserializeObject
+  nameWithType: ImpPowerSerializer.DeserializeObject
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.ReadAndCreateObject(DouglasDwyer.PowerSerializer.PowerDeserializationContext,System.IO.BinaryReader,System.Type)
+  name: ReadAndCreateObject(PowerDeserializationContext, BinaryReader, Type)
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_ReadAndCreateObject_DouglasDwyer_PowerSerializer_PowerDeserializationContext_System_IO_BinaryReader_System_Type_
+  commentId: M:DouglasDwyer.Imp.ImpPowerSerializer.ReadAndCreateObject(DouglasDwyer.PowerSerializer.PowerDeserializationContext,System.IO.BinaryReader,System.Type)
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.ReadAndCreateObject(DouglasDwyer.PowerSerializer.PowerDeserializationContext, System.IO.BinaryReader, System.Type)
+  nameWithType: ImpPowerSerializer.ReadAndCreateObject(PowerDeserializationContext, BinaryReader, Type)
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.ReadAndCreateObject*
+  name: ReadAndCreateObject
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_ReadAndCreateObject_
+  commentId: Overload:DouglasDwyer.Imp.ImpPowerSerializer.ReadAndCreateObject
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.ReadAndCreateObject
+  nameWithType: ImpPowerSerializer.ReadAndCreateObject
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.Serialize(System.Object)
+  name: Serialize(Object)
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_Serialize_System_Object_
+  commentId: M:DouglasDwyer.Imp.ImpPowerSerializer.Serialize(System.Object)
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.Serialize(System.Object)
+  nameWithType: ImpPowerSerializer.Serialize(Object)
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.Serialize*
+  name: Serialize
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_Serialize_
+  commentId: Overload:DouglasDwyer.Imp.ImpPowerSerializer.Serialize
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.Serialize
+  nameWithType: ImpPowerSerializer.Serialize
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.SerializeObject(DouglasDwyer.PowerSerializer.PowerSerializationContext,System.IO.BinaryWriter,System.Object,System.Type)
+  name: SerializeObject(PowerSerializationContext, BinaryWriter, Object, Type)
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_SerializeObject_DouglasDwyer_PowerSerializer_PowerSerializationContext_System_IO_BinaryWriter_System_Object_System_Type_
+  commentId: M:DouglasDwyer.Imp.ImpPowerSerializer.SerializeObject(DouglasDwyer.PowerSerializer.PowerSerializationContext,System.IO.BinaryWriter,System.Object,System.Type)
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.SerializeObject(DouglasDwyer.PowerSerializer.PowerSerializationContext, System.IO.BinaryWriter, System.Object, System.Type)
+  nameWithType: ImpPowerSerializer.SerializeObject(PowerSerializationContext, BinaryWriter, Object, Type)
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.SerializeObject*
+  name: SerializeObject
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_SerializeObject_
+  commentId: Overload:DouglasDwyer.Imp.ImpPowerSerializer.SerializeObject
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.SerializeObject
+  nameWithType: ImpPowerSerializer.SerializeObject
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.WriteObjectReference(DouglasDwyer.PowerSerializer.PowerSerializationContext,System.IO.BinaryWriter,System.Object)
+  name: WriteObjectReference(PowerSerializationContext, BinaryWriter, Object)
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_WriteObjectReference_DouglasDwyer_PowerSerializer_PowerSerializationContext_System_IO_BinaryWriter_System_Object_
+  commentId: M:DouglasDwyer.Imp.ImpPowerSerializer.WriteObjectReference(DouglasDwyer.PowerSerializer.PowerSerializationContext,System.IO.BinaryWriter,System.Object)
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.WriteObjectReference(DouglasDwyer.PowerSerializer.PowerSerializationContext, System.IO.BinaryWriter, System.Object)
+  nameWithType: ImpPowerSerializer.WriteObjectReference(PowerSerializationContext, BinaryWriter, Object)
+- uid: DouglasDwyer.Imp.ImpPowerSerializer.WriteObjectReference*
+  name: WriteObjectReference
+  href: api/DouglasDwyer.Imp.ImpPowerSerializer.html#DouglasDwyer_Imp_ImpPowerSerializer_WriteObjectReference_
+  commentId: Overload:DouglasDwyer.Imp.ImpPowerSerializer.WriteObjectReference
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpPowerSerializer.WriteObjectReference
+  nameWithType: ImpPowerSerializer.WriteObjectReference
+- uid: DouglasDwyer.Imp.ImpServer
+  name: ImpServer
+  href: api/DouglasDwyer.Imp.ImpServer.html
+  commentId: T:DouglasDwyer.Imp.ImpServer
+  fullName: DouglasDwyer.Imp.ImpServer
+  nameWithType: ImpServer
+- uid: DouglasDwyer.Imp.ImpServer.#ctor(System.Int32)
+  name: ImpServer(Int32)
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer__ctor_System_Int32_
+  commentId: M:DouglasDwyer.Imp.ImpServer.#ctor(System.Int32)
+  fullName: DouglasDwyer.Imp.ImpServer.ImpServer(System.Int32)
+  nameWithType: ImpServer.ImpServer(Int32)
+- uid: DouglasDwyer.Imp.ImpServer.#ctor(System.Net.IPAddress,System.Int32)
+  name: ImpServer(IPAddress, Int32)
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer__ctor_System_Net_IPAddress_System_Int32_
+  commentId: M:DouglasDwyer.Imp.ImpServer.#ctor(System.Net.IPAddress,System.Int32)
+  fullName: DouglasDwyer.Imp.ImpServer.ImpServer(System.Net.IPAddress, System.Int32)
+  nameWithType: ImpServer.ImpServer(IPAddress, Int32)
+- uid: DouglasDwyer.Imp.ImpServer.#ctor(System.Net.IPAddress,System.Int32,DouglasDwyer.Imp.INetworkSerializer,DouglasDwyer.Imp.IProxyBinder)
+  name: ImpServer(IPAddress, Int32, INetworkSerializer, IProxyBinder)
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer__ctor_System_Net_IPAddress_System_Int32_DouglasDwyer_Imp_INetworkSerializer_DouglasDwyer_Imp_IProxyBinder_
+  commentId: M:DouglasDwyer.Imp.ImpServer.#ctor(System.Net.IPAddress,System.Int32,DouglasDwyer.Imp.INetworkSerializer,DouglasDwyer.Imp.IProxyBinder)
+  fullName: DouglasDwyer.Imp.ImpServer.ImpServer(System.Net.IPAddress, System.Int32, DouglasDwyer.Imp.INetworkSerializer, DouglasDwyer.Imp.IProxyBinder)
+  nameWithType: ImpServer.ImpServer(IPAddress, Int32, INetworkSerializer, IProxyBinder)
+- uid: DouglasDwyer.Imp.ImpServer.#ctor*
+  name: ImpServer
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer__ctor_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.ImpServer
+  nameWithType: ImpServer.ImpServer
+- uid: DouglasDwyer.Imp.ImpServer.ConnectedClients
+  name: ConnectedClients
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_ConnectedClients
+  commentId: P:DouglasDwyer.Imp.ImpServer.ConnectedClients
+  fullName: DouglasDwyer.Imp.ImpServer.ConnectedClients
+  nameWithType: ImpServer.ConnectedClients
+- uid: DouglasDwyer.Imp.ImpServer.ConnectedClients*
+  name: ConnectedClients
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_ConnectedClients_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.ConnectedClients
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.ConnectedClients
+  nameWithType: ImpServer.ConnectedClients
+- uid: DouglasDwyer.Imp.ImpServer.DefaultMaximumHeldObjects
+  name: DefaultMaximumHeldObjects
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_DefaultMaximumHeldObjects
+  commentId: P:DouglasDwyer.Imp.ImpServer.DefaultMaximumHeldObjects
+  fullName: DouglasDwyer.Imp.ImpServer.DefaultMaximumHeldObjects
+  nameWithType: ImpServer.DefaultMaximumHeldObjects
+- uid: DouglasDwyer.Imp.ImpServer.DefaultMaximumHeldObjects*
+  name: DefaultMaximumHeldObjects
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_DefaultMaximumHeldObjects_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.DefaultMaximumHeldObjects
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.DefaultMaximumHeldObjects
+  nameWithType: ImpServer.DefaultMaximumHeldObjects
+- uid: DouglasDwyer.Imp.ImpServer.DefaultMaximumRemoteObjects
+  name: DefaultMaximumRemoteObjects
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_DefaultMaximumRemoteObjects
+  commentId: P:DouglasDwyer.Imp.ImpServer.DefaultMaximumRemoteObjects
+  fullName: DouglasDwyer.Imp.ImpServer.DefaultMaximumRemoteObjects
+  nameWithType: ImpServer.DefaultMaximumRemoteObjects
+- uid: DouglasDwyer.Imp.ImpServer.DefaultMaximumRemoteObjects*
+  name: DefaultMaximumRemoteObjects
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_DefaultMaximumRemoteObjects_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.DefaultMaximumRemoteObjects
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.DefaultMaximumRemoteObjects
+  nameWithType: ImpServer.DefaultMaximumRemoteObjects
+- uid: DouglasDwyer.Imp.ImpServer.DefaultProxyBinder
+  name: DefaultProxyBinder
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_DefaultProxyBinder
+  commentId: P:DouglasDwyer.Imp.ImpServer.DefaultProxyBinder
+  fullName: DouglasDwyer.Imp.ImpServer.DefaultProxyBinder
+  nameWithType: ImpServer.DefaultProxyBinder
+- uid: DouglasDwyer.Imp.ImpServer.DefaultProxyBinder*
+  name: DefaultProxyBinder
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_DefaultProxyBinder_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.DefaultProxyBinder
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.DefaultProxyBinder
+  nameWithType: ImpServer.DefaultProxyBinder
+- uid: DouglasDwyer.Imp.ImpServer.DefaultRemoteTaskScheduler
+  name: DefaultRemoteTaskScheduler
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_DefaultRemoteTaskScheduler
+  commentId: P:DouglasDwyer.Imp.ImpServer.DefaultRemoteTaskScheduler
+  fullName: DouglasDwyer.Imp.ImpServer.DefaultRemoteTaskScheduler
+  nameWithType: ImpServer.DefaultRemoteTaskScheduler
+- uid: DouglasDwyer.Imp.ImpServer.DefaultRemoteTaskScheduler*
+  name: DefaultRemoteTaskScheduler
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_DefaultRemoteTaskScheduler_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.DefaultRemoteTaskScheduler
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.DefaultRemoteTaskScheduler
+  nameWithType: ImpServer.DefaultRemoteTaskScheduler
+- uid: DouglasDwyer.Imp.ImpServer.DefaultSerializer
+  name: DefaultSerializer
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_DefaultSerializer
+  commentId: P:DouglasDwyer.Imp.ImpServer.DefaultSerializer
+  fullName: DouglasDwyer.Imp.ImpServer.DefaultSerializer
+  nameWithType: ImpServer.DefaultSerializer
+- uid: DouglasDwyer.Imp.ImpServer.DefaultSerializer*
+  name: DefaultSerializer
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_DefaultSerializer_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.DefaultSerializer
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.DefaultSerializer
+  nameWithType: ImpServer.DefaultSerializer
+- uid: DouglasDwyer.Imp.ImpServer.MaximumConnectedClients
+  name: MaximumConnectedClients
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_MaximumConnectedClients
+  commentId: P:DouglasDwyer.Imp.ImpServer.MaximumConnectedClients
+  fullName: DouglasDwyer.Imp.ImpServer.MaximumConnectedClients
+  nameWithType: ImpServer.MaximumConnectedClients
+- uid: DouglasDwyer.Imp.ImpServer.MaximumConnectedClients*
+  name: MaximumConnectedClients
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_MaximumConnectedClients_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.MaximumConnectedClients
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.MaximumConnectedClients
+  nameWithType: ImpServer.MaximumConnectedClients
+- uid: DouglasDwyer.Imp.ImpServer.OnClientConnected(DouglasDwyer.Imp.IImpClient)
+  name: OnClientConnected(IImpClient)
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_OnClientConnected_DouglasDwyer_Imp_IImpClient_
+  commentId: M:DouglasDwyer.Imp.ImpServer.OnClientConnected(DouglasDwyer.Imp.IImpClient)
+  fullName: DouglasDwyer.Imp.ImpServer.OnClientConnected(DouglasDwyer.Imp.IImpClient)
+  nameWithType: ImpServer.OnClientConnected(IImpClient)
+- uid: DouglasDwyer.Imp.ImpServer.OnClientConnected*
+  name: OnClientConnected
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_OnClientConnected_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.OnClientConnected
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.OnClientConnected
+  nameWithType: ImpServer.OnClientConnected
+- uid: DouglasDwyer.Imp.ImpServer.OnClientDisconnected(DouglasDwyer.Imp.IImpClient)
+  name: OnClientDisconnected(IImpClient)
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_OnClientDisconnected_DouglasDwyer_Imp_IImpClient_
+  commentId: M:DouglasDwyer.Imp.ImpServer.OnClientDisconnected(DouglasDwyer.Imp.IImpClient)
+  fullName: DouglasDwyer.Imp.ImpServer.OnClientDisconnected(DouglasDwyer.Imp.IImpClient)
+  nameWithType: ImpServer.OnClientDisconnected(IImpClient)
+- uid: DouglasDwyer.Imp.ImpServer.OnClientDisconnected*
+  name: OnClientDisconnected
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_OnClientDisconnected_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.OnClientDisconnected
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.OnClientDisconnected
+  nameWithType: ImpServer.OnClientDisconnected
+- uid: DouglasDwyer.Imp.ImpServer.OnClientNetworkError(DouglasDwyer.Imp.IImpClient,System.Exception)
+  name: OnClientNetworkError(IImpClient, Exception)
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_OnClientNetworkError_DouglasDwyer_Imp_IImpClient_System_Exception_
+  commentId: M:DouglasDwyer.Imp.ImpServer.OnClientNetworkError(DouglasDwyer.Imp.IImpClient,System.Exception)
+  fullName: DouglasDwyer.Imp.ImpServer.OnClientNetworkError(DouglasDwyer.Imp.IImpClient, System.Exception)
+  nameWithType: ImpServer.OnClientNetworkError(IImpClient, Exception)
+- uid: DouglasDwyer.Imp.ImpServer.OnClientNetworkError*
+  name: OnClientNetworkError
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_OnClientNetworkError_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.OnClientNetworkError
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.OnClientNetworkError
+  nameWithType: ImpServer.OnClientNetworkError
+- uid: DouglasDwyer.Imp.ImpServer.Start
+  name: Start()
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_Start
+  commentId: M:DouglasDwyer.Imp.ImpServer.Start
+  fullName: DouglasDwyer.Imp.ImpServer.Start()
+  nameWithType: ImpServer.Start()
+- uid: DouglasDwyer.Imp.ImpServer.Start*
+  name: Start
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_Start_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.Start
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.Start
+  nameWithType: ImpServer.Start
+- uid: DouglasDwyer.Imp.ImpServer.Stop
+  name: Stop()
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_Stop
+  commentId: M:DouglasDwyer.Imp.ImpServer.Stop
+  fullName: DouglasDwyer.Imp.ImpServer.Stop()
+  nameWithType: ImpServer.Stop()
+- uid: DouglasDwyer.Imp.ImpServer.Stop*
+  name: Stop
+  href: api/DouglasDwyer.Imp.ImpServer.html#DouglasDwyer_Imp_ImpServer_Stop_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer.Stop
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer.Stop
+  nameWithType: ImpServer.Stop
+- uid: DouglasDwyer.Imp.ImpServer`1
+  name: ImpServer<T>
+  href: api/DouglasDwyer.Imp.ImpServer-1.html
+  commentId: T:DouglasDwyer.Imp.ImpServer`1
+  name.vb: ImpServer(Of T)
+  fullName: DouglasDwyer.Imp.ImpServer<T>
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T)
+  nameWithType: ImpServer<T>
+  nameWithType.vb: ImpServer(Of T)
+- uid: DouglasDwyer.Imp.ImpServer`1.#ctor(System.Int32)
+  name: ImpServer(Int32)
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1__ctor_System_Int32_
+  commentId: M:DouglasDwyer.Imp.ImpServer`1.#ctor(System.Int32)
+  fullName: DouglasDwyer.Imp.ImpServer<T>.ImpServer(System.Int32)
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).ImpServer(System.Int32)
+  nameWithType: ImpServer<T>.ImpServer(Int32)
+  nameWithType.vb: ImpServer(Of T).ImpServer(Int32)
+- uid: DouglasDwyer.Imp.ImpServer`1.#ctor(System.Net.IPAddress,System.Int32)
+  name: ImpServer(IPAddress, Int32)
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1__ctor_System_Net_IPAddress_System_Int32_
+  commentId: M:DouglasDwyer.Imp.ImpServer`1.#ctor(System.Net.IPAddress,System.Int32)
+  fullName: DouglasDwyer.Imp.ImpServer<T>.ImpServer(System.Net.IPAddress, System.Int32)
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).ImpServer(System.Net.IPAddress, System.Int32)
+  nameWithType: ImpServer<T>.ImpServer(IPAddress, Int32)
+  nameWithType.vb: ImpServer(Of T).ImpServer(IPAddress, Int32)
+- uid: DouglasDwyer.Imp.ImpServer`1.#ctor(System.Net.IPAddress,System.Int32,DouglasDwyer.Imp.INetworkSerializer,DouglasDwyer.Imp.IProxyBinder)
+  name: ImpServer(IPAddress, Int32, INetworkSerializer, IProxyBinder)
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1__ctor_System_Net_IPAddress_System_Int32_DouglasDwyer_Imp_INetworkSerializer_DouglasDwyer_Imp_IProxyBinder_
+  commentId: M:DouglasDwyer.Imp.ImpServer`1.#ctor(System.Net.IPAddress,System.Int32,DouglasDwyer.Imp.INetworkSerializer,DouglasDwyer.Imp.IProxyBinder)
+  fullName: DouglasDwyer.Imp.ImpServer<T>.ImpServer(System.Net.IPAddress, System.Int32, DouglasDwyer.Imp.INetworkSerializer, DouglasDwyer.Imp.IProxyBinder)
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).ImpServer(System.Net.IPAddress, System.Int32, DouglasDwyer.Imp.INetworkSerializer, DouglasDwyer.Imp.IProxyBinder)
+  nameWithType: ImpServer<T>.ImpServer(IPAddress, Int32, INetworkSerializer, IProxyBinder)
+  nameWithType.vb: ImpServer(Of T).ImpServer(IPAddress, Int32, INetworkSerializer, IProxyBinder)
+- uid: DouglasDwyer.Imp.ImpServer`1.#ctor*
+  name: ImpServer
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1__ctor_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer`1.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer<T>.ImpServer
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).ImpServer
+  nameWithType: ImpServer<T>.ImpServer
+  nameWithType.vb: ImpServer(Of T).ImpServer
+- uid: DouglasDwyer.Imp.ImpServer`1.ConnectedClients
+  name: ConnectedClients
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1_ConnectedClients
+  commentId: P:DouglasDwyer.Imp.ImpServer`1.ConnectedClients
+  fullName: DouglasDwyer.Imp.ImpServer<T>.ConnectedClients
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).ConnectedClients
+  nameWithType: ImpServer<T>.ConnectedClients
+  nameWithType.vb: ImpServer(Of T).ConnectedClients
+- uid: DouglasDwyer.Imp.ImpServer`1.ConnectedClients*
+  name: ConnectedClients
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1_ConnectedClients_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer`1.ConnectedClients
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer<T>.ConnectedClients
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).ConnectedClients
+  nameWithType: ImpServer<T>.ConnectedClients
+  nameWithType.vb: ImpServer(Of T).ConnectedClients
+- uid: DouglasDwyer.Imp.ImpServer`1.OnClientConnected(`0)
+  name: OnClientConnected(T)
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1_OnClientConnected__0_
+  commentId: M:DouglasDwyer.Imp.ImpServer`1.OnClientConnected(`0)
+  fullName: DouglasDwyer.Imp.ImpServer<T>.OnClientConnected(T)
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).OnClientConnected(T)
+  nameWithType: ImpServer<T>.OnClientConnected(T)
+  nameWithType.vb: ImpServer(Of T).OnClientConnected(T)
+- uid: DouglasDwyer.Imp.ImpServer`1.OnClientConnected*
+  name: OnClientConnected
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1_OnClientConnected_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer`1.OnClientConnected
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer<T>.OnClientConnected
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).OnClientConnected
+  nameWithType: ImpServer<T>.OnClientConnected
+  nameWithType.vb: ImpServer(Of T).OnClientConnected
+- uid: DouglasDwyer.Imp.ImpServer`1.OnClientDisconnected(`0)
+  name: OnClientDisconnected(T)
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1_OnClientDisconnected__0_
+  commentId: M:DouglasDwyer.Imp.ImpServer`1.OnClientDisconnected(`0)
+  fullName: DouglasDwyer.Imp.ImpServer<T>.OnClientDisconnected(T)
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).OnClientDisconnected(T)
+  nameWithType: ImpServer<T>.OnClientDisconnected(T)
+  nameWithType.vb: ImpServer(Of T).OnClientDisconnected(T)
+- uid: DouglasDwyer.Imp.ImpServer`1.OnClientDisconnected*
+  name: OnClientDisconnected
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1_OnClientDisconnected_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer`1.OnClientDisconnected
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer<T>.OnClientDisconnected
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).OnClientDisconnected
+  nameWithType: ImpServer<T>.OnClientDisconnected
+  nameWithType.vb: ImpServer(Of T).OnClientDisconnected
+- uid: DouglasDwyer.Imp.ImpServer`1.OnClientNetworkError(`0,System.Exception)
+  name: OnClientNetworkError(T, Exception)
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1_OnClientNetworkError__0_System_Exception_
+  commentId: M:DouglasDwyer.Imp.ImpServer`1.OnClientNetworkError(`0,System.Exception)
+  fullName: DouglasDwyer.Imp.ImpServer<T>.OnClientNetworkError(T, System.Exception)
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).OnClientNetworkError(T, System.Exception)
+  nameWithType: ImpServer<T>.OnClientNetworkError(T, Exception)
+  nameWithType.vb: ImpServer(Of T).OnClientNetworkError(T, Exception)
+- uid: DouglasDwyer.Imp.ImpServer`1.OnClientNetworkError*
+  name: OnClientNetworkError
+  href: api/DouglasDwyer.Imp.ImpServer-1.html#DouglasDwyer_Imp_ImpServer_1_OnClientNetworkError_
+  commentId: Overload:DouglasDwyer.Imp.ImpServer`1.OnClientNetworkError
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ImpServer<T>.OnClientNetworkError
+  fullName.vb: DouglasDwyer.Imp.ImpServer(Of T).OnClientNetworkError
+  nameWithType: ImpServer<T>.OnClientNetworkError
+  nameWithType.vb: ImpServer(Of T).OnClientNetworkError
+- uid: DouglasDwyer.Imp.INetworkSerializer
+  name: INetworkSerializer
+  href: api/DouglasDwyer.Imp.INetworkSerializer.html
+  commentId: T:DouglasDwyer.Imp.INetworkSerializer
+  fullName: DouglasDwyer.Imp.INetworkSerializer
+  nameWithType: INetworkSerializer
+- uid: DouglasDwyer.Imp.INetworkSerializer.Client
+  name: Client
+  href: api/DouglasDwyer.Imp.INetworkSerializer.html#DouglasDwyer_Imp_INetworkSerializer_Client
+  commentId: P:DouglasDwyer.Imp.INetworkSerializer.Client
+  fullName: DouglasDwyer.Imp.INetworkSerializer.Client
+  nameWithType: INetworkSerializer.Client
+- uid: DouglasDwyer.Imp.INetworkSerializer.Client*
+  name: Client
+  href: api/DouglasDwyer.Imp.INetworkSerializer.html#DouglasDwyer_Imp_INetworkSerializer_Client_
+  commentId: Overload:DouglasDwyer.Imp.INetworkSerializer.Client
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.INetworkSerializer.Client
+  nameWithType: INetworkSerializer.Client
+- uid: DouglasDwyer.Imp.INetworkSerializer.Deserialize(System.Byte[])
+  name: Deserialize(Byte[])
+  href: api/DouglasDwyer.Imp.INetworkSerializer.html#DouglasDwyer_Imp_INetworkSerializer_Deserialize_System_Byte___
+  commentId: M:DouglasDwyer.Imp.INetworkSerializer.Deserialize(System.Byte[])
+  name.vb: Deserialize(Byte())
+  fullName: DouglasDwyer.Imp.INetworkSerializer.Deserialize(System.Byte[])
+  fullName.vb: DouglasDwyer.Imp.INetworkSerializer.Deserialize(System.Byte())
+  nameWithType: INetworkSerializer.Deserialize(Byte[])
+  nameWithType.vb: INetworkSerializer.Deserialize(Byte())
+- uid: DouglasDwyer.Imp.INetworkSerializer.Deserialize*
+  name: Deserialize
+  href: api/DouglasDwyer.Imp.INetworkSerializer.html#DouglasDwyer_Imp_INetworkSerializer_Deserialize_
+  commentId: Overload:DouglasDwyer.Imp.INetworkSerializer.Deserialize
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.INetworkSerializer.Deserialize
+  nameWithType: INetworkSerializer.Deserialize
+- uid: DouglasDwyer.Imp.INetworkSerializer.Deserialize``1(System.Byte[])
+  name: Deserialize<T>(Byte[])
+  href: api/DouglasDwyer.Imp.INetworkSerializer.html#DouglasDwyer_Imp_INetworkSerializer_Deserialize__1_System_Byte___
+  commentId: M:DouglasDwyer.Imp.INetworkSerializer.Deserialize``1(System.Byte[])
+  name.vb: Deserialize(Of T)(Byte())
+  fullName: DouglasDwyer.Imp.INetworkSerializer.Deserialize<T>(System.Byte[])
+  fullName.vb: DouglasDwyer.Imp.INetworkSerializer.Deserialize(Of T)(System.Byte())
+  nameWithType: INetworkSerializer.Deserialize<T>(Byte[])
+  nameWithType.vb: INetworkSerializer.Deserialize(Of T)(Byte())
+- uid: DouglasDwyer.Imp.INetworkSerializer.Serialize(System.Object)
+  name: Serialize(Object)
+  href: api/DouglasDwyer.Imp.INetworkSerializer.html#DouglasDwyer_Imp_INetworkSerializer_Serialize_System_Object_
+  commentId: M:DouglasDwyer.Imp.INetworkSerializer.Serialize(System.Object)
+  fullName: DouglasDwyer.Imp.INetworkSerializer.Serialize(System.Object)
+  nameWithType: INetworkSerializer.Serialize(Object)
+- uid: DouglasDwyer.Imp.INetworkSerializer.Serialize*
+  name: Serialize
+  href: api/DouglasDwyer.Imp.INetworkSerializer.html#DouglasDwyer_Imp_INetworkSerializer_Serialize_
+  commentId: Overload:DouglasDwyer.Imp.INetworkSerializer.Serialize
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.INetworkSerializer.Serialize
+  nameWithType: INetworkSerializer.Serialize
+- uid: DouglasDwyer.Imp.IProxyBinder
+  name: IProxyBinder
+  href: api/DouglasDwyer.Imp.IProxyBinder.html
+  commentId: T:DouglasDwyer.Imp.IProxyBinder
+  fullName: DouglasDwyer.Imp.IProxyBinder
+  nameWithType: IProxyBinder
+- uid: DouglasDwyer.Imp.IProxyBinder.GetDataForProxy(System.Type)
+  name: GetDataForProxy(Type)
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetDataForProxy_System_Type_
+  commentId: M:DouglasDwyer.Imp.IProxyBinder.GetDataForProxy(System.Type)
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetDataForProxy(System.Type)
+  nameWithType: IProxyBinder.GetDataForProxy(Type)
+- uid: DouglasDwyer.Imp.IProxyBinder.GetDataForProxy*
+  name: GetDataForProxy
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetDataForProxy_
+  commentId: Overload:DouglasDwyer.Imp.IProxyBinder.GetDataForProxy
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetDataForProxy
+  nameWithType: IProxyBinder.GetDataForProxy
+- uid: DouglasDwyer.Imp.IProxyBinder.GetDataForSharedType(System.Type)
+  name: GetDataForSharedType(Type)
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetDataForSharedType_System_Type_
+  commentId: M:DouglasDwyer.Imp.IProxyBinder.GetDataForSharedType(System.Type)
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetDataForSharedType(System.Type)
+  nameWithType: IProxyBinder.GetDataForSharedType(Type)
+- uid: DouglasDwyer.Imp.IProxyBinder.GetDataForSharedType*
+  name: GetDataForSharedType
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetDataForSharedType_
+  commentId: Overload:DouglasDwyer.Imp.IProxyBinder.GetDataForSharedType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetDataForSharedType
+  nameWithType: IProxyBinder.GetDataForSharedType
+- uid: DouglasDwyer.Imp.IProxyBinder.GetProxyForLocalType(System.Type)
+  name: GetProxyForLocalType(Type)
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetProxyForLocalType_System_Type_
+  commentId: M:DouglasDwyer.Imp.IProxyBinder.GetProxyForLocalType(System.Type)
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetProxyForLocalType(System.Type)
+  nameWithType: IProxyBinder.GetProxyForLocalType(Type)
+- uid: DouglasDwyer.Imp.IProxyBinder.GetProxyForLocalType*
+  name: GetProxyForLocalType
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetProxyForLocalType_
+  commentId: Overload:DouglasDwyer.Imp.IProxyBinder.GetProxyForLocalType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetProxyForLocalType
+  nameWithType: IProxyBinder.GetProxyForLocalType
+- uid: DouglasDwyer.Imp.IProxyBinder.GetProxyForRemoteType(System.Type)
+  name: GetProxyForRemoteType(Type)
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetProxyForRemoteType_System_Type_
+  commentId: M:DouglasDwyer.Imp.IProxyBinder.GetProxyForRemoteType(System.Type)
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetProxyForRemoteType(System.Type)
+  nameWithType: IProxyBinder.GetProxyForRemoteType(Type)
+- uid: DouglasDwyer.Imp.IProxyBinder.GetProxyForRemoteType*
+  name: GetProxyForRemoteType
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetProxyForRemoteType_
+  commentId: Overload:DouglasDwyer.Imp.IProxyBinder.GetProxyForRemoteType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetProxyForRemoteType
+  nameWithType: IProxyBinder.GetProxyForRemoteType
+- uid: DouglasDwyer.Imp.IProxyBinder.GetProxyTypes
+  name: GetProxyTypes()
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetProxyTypes
+  commentId: M:DouglasDwyer.Imp.IProxyBinder.GetProxyTypes
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetProxyTypes()
+  nameWithType: IProxyBinder.GetProxyTypes()
+- uid: DouglasDwyer.Imp.IProxyBinder.GetProxyTypes*
+  name: GetProxyTypes
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetProxyTypes_
+  commentId: Overload:DouglasDwyer.Imp.IProxyBinder.GetProxyTypes
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetProxyTypes
+  nameWithType: IProxyBinder.GetProxyTypes
+- uid: DouglasDwyer.Imp.IProxyBinder.GetRemoteType(System.Type)
+  name: GetRemoteType(Type)
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetRemoteType_System_Type_
+  commentId: M:DouglasDwyer.Imp.IProxyBinder.GetRemoteType(System.Type)
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetRemoteType(System.Type)
+  nameWithType: IProxyBinder.GetRemoteType(Type)
+- uid: DouglasDwyer.Imp.IProxyBinder.GetRemoteType*
+  name: GetRemoteType
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_GetRemoteType_
+  commentId: Overload:DouglasDwyer.Imp.IProxyBinder.GetRemoteType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IProxyBinder.GetRemoteType
+  nameWithType: IProxyBinder.GetRemoteType
+- uid: DouglasDwyer.Imp.IProxyBinder.IsSharedType(System.Type)
+  name: IsSharedType(Type)
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_IsSharedType_System_Type_
+  commentId: M:DouglasDwyer.Imp.IProxyBinder.IsSharedType(System.Type)
+  fullName: DouglasDwyer.Imp.IProxyBinder.IsSharedType(System.Type)
+  nameWithType: IProxyBinder.IsSharedType(Type)
+- uid: DouglasDwyer.Imp.IProxyBinder.IsSharedType*
+  name: IsSharedType
+  href: api/DouglasDwyer.Imp.IProxyBinder.html#DouglasDwyer_Imp_IProxyBinder_IsSharedType_
+  commentId: Overload:DouglasDwyer.Imp.IProxyBinder.IsSharedType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.IProxyBinder.IsSharedType
+  nameWithType: IProxyBinder.IsSharedType
+- uid: DouglasDwyer.Imp.LocalAttribute
+  name: LocalAttribute
+  href: api/DouglasDwyer.Imp.LocalAttribute.html
+  commentId: T:DouglasDwyer.Imp.LocalAttribute
+  fullName: DouglasDwyer.Imp.LocalAttribute
+  nameWithType: LocalAttribute
+- uid: DouglasDwyer.Imp.ProxyForAttribute
+  name: ProxyForAttribute
+  href: api/DouglasDwyer.Imp.ProxyForAttribute.html
+  commentId: T:DouglasDwyer.Imp.ProxyForAttribute
+  fullName: DouglasDwyer.Imp.ProxyForAttribute
+  nameWithType: ProxyForAttribute
+- uid: DouglasDwyer.Imp.ProxyForAttribute.#ctor(System.Type)
+  name: ProxyForAttribute(Type)
+  href: api/DouglasDwyer.Imp.ProxyForAttribute.html#DouglasDwyer_Imp_ProxyForAttribute__ctor_System_Type_
+  commentId: M:DouglasDwyer.Imp.ProxyForAttribute.#ctor(System.Type)
+  fullName: DouglasDwyer.Imp.ProxyForAttribute.ProxyForAttribute(System.Type)
+  nameWithType: ProxyForAttribute.ProxyForAttribute(Type)
+- uid: DouglasDwyer.Imp.ProxyForAttribute.#ctor*
+  name: ProxyForAttribute
+  href: api/DouglasDwyer.Imp.ProxyForAttribute.html#DouglasDwyer_Imp_ProxyForAttribute__ctor_
+  commentId: Overload:DouglasDwyer.Imp.ProxyForAttribute.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ProxyForAttribute.ProxyForAttribute
+  nameWithType: ProxyForAttribute.ProxyForAttribute
+- uid: DouglasDwyer.Imp.ProxyForAttribute.InterfaceType
+  name: InterfaceType
+  href: api/DouglasDwyer.Imp.ProxyForAttribute.html#DouglasDwyer_Imp_ProxyForAttribute_InterfaceType
+  commentId: P:DouglasDwyer.Imp.ProxyForAttribute.InterfaceType
+  fullName: DouglasDwyer.Imp.ProxyForAttribute.InterfaceType
+  nameWithType: ProxyForAttribute.InterfaceType
+- uid: DouglasDwyer.Imp.ProxyForAttribute.InterfaceType*
+  name: InterfaceType
+  href: api/DouglasDwyer.Imp.ProxyForAttribute.html#DouglasDwyer_Imp_ProxyForAttribute_InterfaceType_
+  commentId: Overload:DouglasDwyer.Imp.ProxyForAttribute.InterfaceType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ProxyForAttribute.InterfaceType
+  nameWithType: ProxyForAttribute.InterfaceType
+- uid: DouglasDwyer.Imp.ProxyType
+  name: ProxyType
+  href: api/DouglasDwyer.Imp.ProxyType.html
+  commentId: T:DouglasDwyer.Imp.ProxyType
+  fullName: DouglasDwyer.Imp.ProxyType
+  nameWithType: ProxyType
+- uid: DouglasDwyer.Imp.ProxyType.#ctor(System.UInt16,System.Type,System.Type)
+  name: ProxyType(UInt16, Type, Type)
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType__ctor_System_UInt16_System_Type_System_Type_
+  commentId: M:DouglasDwyer.Imp.ProxyType.#ctor(System.UInt16,System.Type,System.Type)
+  fullName: DouglasDwyer.Imp.ProxyType.ProxyType(System.UInt16, System.Type, System.Type)
+  nameWithType: ProxyType.ProxyType(UInt16, Type, Type)
+- uid: DouglasDwyer.Imp.ProxyType.#ctor*
+  name: ProxyType
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType__ctor_
+  commentId: Overload:DouglasDwyer.Imp.ProxyType.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ProxyType.ProxyType
+  nameWithType: ProxyType.ProxyType
+- uid: DouglasDwyer.Imp.ProxyType.InterfaceID
+  name: InterfaceID
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType_InterfaceID
+  commentId: P:DouglasDwyer.Imp.ProxyType.InterfaceID
+  fullName: DouglasDwyer.Imp.ProxyType.InterfaceID
+  nameWithType: ProxyType.InterfaceID
+- uid: DouglasDwyer.Imp.ProxyType.InterfaceID*
+  name: InterfaceID
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType_InterfaceID_
+  commentId: Overload:DouglasDwyer.Imp.ProxyType.InterfaceID
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ProxyType.InterfaceID
+  nameWithType: ProxyType.InterfaceID
+- uid: DouglasDwyer.Imp.ProxyType.InterfaceType
+  name: InterfaceType
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType_InterfaceType
+  commentId: P:DouglasDwyer.Imp.ProxyType.InterfaceType
+  fullName: DouglasDwyer.Imp.ProxyType.InterfaceType
+  nameWithType: ProxyType.InterfaceType
+- uid: DouglasDwyer.Imp.ProxyType.InterfaceType*
+  name: InterfaceType
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType_InterfaceType_
+  commentId: Overload:DouglasDwyer.Imp.ProxyType.InterfaceType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ProxyType.InterfaceType
+  nameWithType: ProxyType.InterfaceType
+- uid: DouglasDwyer.Imp.ProxyType.Methods
+  name: Methods
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType_Methods
+  commentId: P:DouglasDwyer.Imp.ProxyType.Methods
+  fullName: DouglasDwyer.Imp.ProxyType.Methods
+  nameWithType: ProxyType.Methods
+- uid: DouglasDwyer.Imp.ProxyType.Methods*
+  name: Methods
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType_Methods_
+  commentId: Overload:DouglasDwyer.Imp.ProxyType.Methods
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ProxyType.Methods
+  nameWithType: ProxyType.Methods
+- uid: DouglasDwyer.Imp.ProxyType.Properties
+  name: Properties
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType_Properties
+  commentId: P:DouglasDwyer.Imp.ProxyType.Properties
+  fullName: DouglasDwyer.Imp.ProxyType.Properties
+  nameWithType: ProxyType.Properties
+- uid: DouglasDwyer.Imp.ProxyType.Properties*
+  name: Properties
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType_Properties_
+  commentId: Overload:DouglasDwyer.Imp.ProxyType.Properties
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ProxyType.Properties
+  nameWithType: ProxyType.Properties
+- uid: DouglasDwyer.Imp.ProxyType.RemoteBaseType
+  name: RemoteBaseType
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType_RemoteBaseType
+  commentId: P:DouglasDwyer.Imp.ProxyType.RemoteBaseType
+  fullName: DouglasDwyer.Imp.ProxyType.RemoteBaseType
+  nameWithType: ProxyType.RemoteBaseType
+- uid: DouglasDwyer.Imp.ProxyType.RemoteBaseType*
+  name: RemoteBaseType
+  href: api/DouglasDwyer.Imp.ProxyType.html#DouglasDwyer_Imp_ProxyType_RemoteBaseType_
+  commentId: Overload:DouglasDwyer.Imp.ProxyType.RemoteBaseType
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ProxyType.RemoteBaseType
+  nameWithType: ProxyType.RemoteBaseType
+- uid: DouglasDwyer.Imp.RemoteException
+  name: RemoteException
+  href: api/DouglasDwyer.Imp.RemoteException.html
+  commentId: T:DouglasDwyer.Imp.RemoteException
+  fullName: DouglasDwyer.Imp.RemoteException
+  nameWithType: RemoteException
+- uid: DouglasDwyer.Imp.RemoteException.#ctor(System.String,System.String)
+  name: RemoteException(String, String)
+  href: api/DouglasDwyer.Imp.RemoteException.html#DouglasDwyer_Imp_RemoteException__ctor_System_String_System_String_
+  commentId: M:DouglasDwyer.Imp.RemoteException.#ctor(System.String,System.String)
+  fullName: DouglasDwyer.Imp.RemoteException.RemoteException(System.String, System.String)
+  nameWithType: RemoteException.RemoteException(String, String)
+- uid: DouglasDwyer.Imp.RemoteException.#ctor(System.String,System.String,System.String)
+  name: RemoteException(String, String, String)
+  href: api/DouglasDwyer.Imp.RemoteException.html#DouglasDwyer_Imp_RemoteException__ctor_System_String_System_String_System_String_
+  commentId: M:DouglasDwyer.Imp.RemoteException.#ctor(System.String,System.String,System.String)
+  fullName: DouglasDwyer.Imp.RemoteException.RemoteException(System.String, System.String, System.String)
+  nameWithType: RemoteException.RemoteException(String, String, String)
+- uid: DouglasDwyer.Imp.RemoteException.#ctor*
+  name: RemoteException
+  href: api/DouglasDwyer.Imp.RemoteException.html#DouglasDwyer_Imp_RemoteException__ctor_
+  commentId: Overload:DouglasDwyer.Imp.RemoteException.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteException.RemoteException
+  nameWithType: RemoteException.RemoteException
+- uid: DouglasDwyer.Imp.RemoteException.Message
+  name: Message
+  href: api/DouglasDwyer.Imp.RemoteException.html#DouglasDwyer_Imp_RemoteException_Message
+  commentId: P:DouglasDwyer.Imp.RemoteException.Message
+  fullName: DouglasDwyer.Imp.RemoteException.Message
+  nameWithType: RemoteException.Message
+- uid: DouglasDwyer.Imp.RemoteException.Message*
+  name: Message
+  href: api/DouglasDwyer.Imp.RemoteException.html#DouglasDwyer_Imp_RemoteException_Message_
+  commentId: Overload:DouglasDwyer.Imp.RemoteException.Message
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteException.Message
+  nameWithType: RemoteException.Message
+- uid: DouglasDwyer.Imp.RemoteException.StackTrace
+  name: StackTrace
+  href: api/DouglasDwyer.Imp.RemoteException.html#DouglasDwyer_Imp_RemoteException_StackTrace
+  commentId: P:DouglasDwyer.Imp.RemoteException.StackTrace
+  fullName: DouglasDwyer.Imp.RemoteException.StackTrace
+  nameWithType: RemoteException.StackTrace
+- uid: DouglasDwyer.Imp.RemoteException.StackTrace*
+  name: StackTrace
+  href: api/DouglasDwyer.Imp.RemoteException.html#DouglasDwyer_Imp_RemoteException_StackTrace_
+  commentId: Overload:DouglasDwyer.Imp.RemoteException.StackTrace
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteException.StackTrace
+  nameWithType: RemoteException.StackTrace
+- uid: DouglasDwyer.Imp.RemoteImpClient
+  name: RemoteImpClient
+  href: api/DouglasDwyer.Imp.RemoteImpClient.html
+  commentId: T:DouglasDwyer.Imp.RemoteImpClient
+  fullName: DouglasDwyer.Imp.RemoteImpClient
+  nameWithType: RemoteImpClient
+- uid: DouglasDwyer.Imp.RemoteImpClient.#ctor(System.UInt16,DouglasDwyer.Imp.ImpClient)
+  name: RemoteImpClient(UInt16, ImpClient)
+  href: api/DouglasDwyer.Imp.RemoteImpClient.html#DouglasDwyer_Imp_RemoteImpClient__ctor_System_UInt16_DouglasDwyer_Imp_ImpClient_
+  commentId: M:DouglasDwyer.Imp.RemoteImpClient.#ctor(System.UInt16,DouglasDwyer.Imp.ImpClient)
+  fullName: DouglasDwyer.Imp.RemoteImpClient.RemoteImpClient(System.UInt16, DouglasDwyer.Imp.ImpClient)
+  nameWithType: RemoteImpClient.RemoteImpClient(UInt16, ImpClient)
+- uid: DouglasDwyer.Imp.RemoteImpClient.#ctor*
+  name: RemoteImpClient
+  href: api/DouglasDwyer.Imp.RemoteImpClient.html#DouglasDwyer_Imp_RemoteImpClient__ctor_
+  commentId: Overload:DouglasDwyer.Imp.RemoteImpClient.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteImpClient.RemoteImpClient
+  nameWithType: RemoteImpClient.RemoteImpClient
+- uid: DouglasDwyer.Imp.RemoteImpClient.Server
+  name: Server
+  href: api/DouglasDwyer.Imp.RemoteImpClient.html#DouglasDwyer_Imp_RemoteImpClient_Server
+  commentId: P:DouglasDwyer.Imp.RemoteImpClient.Server
+  fullName: DouglasDwyer.Imp.RemoteImpClient.Server
+  nameWithType: RemoteImpClient.Server
+- uid: DouglasDwyer.Imp.RemoteImpClient.Server*
+  name: Server
+  href: api/DouglasDwyer.Imp.RemoteImpClient.html#DouglasDwyer_Imp_RemoteImpClient_Server_
+  commentId: Overload:DouglasDwyer.Imp.RemoteImpClient.Server
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteImpClient.Server
+  nameWithType: RemoteImpClient.Server
+- uid: DouglasDwyer.Imp.RemoteImpServer
+  name: RemoteImpServer
+  href: api/DouglasDwyer.Imp.RemoteImpServer.html
+  commentId: T:DouglasDwyer.Imp.RemoteImpServer
+  fullName: DouglasDwyer.Imp.RemoteImpServer
+  nameWithType: RemoteImpServer
+- uid: DouglasDwyer.Imp.RemoteImpServer.#ctor(System.UInt16,DouglasDwyer.Imp.ImpClient)
+  name: RemoteImpServer(UInt16, ImpClient)
+  href: api/DouglasDwyer.Imp.RemoteImpServer.html#DouglasDwyer_Imp_RemoteImpServer__ctor_System_UInt16_DouglasDwyer_Imp_ImpClient_
+  commentId: M:DouglasDwyer.Imp.RemoteImpServer.#ctor(System.UInt16,DouglasDwyer.Imp.ImpClient)
+  fullName: DouglasDwyer.Imp.RemoteImpServer.RemoteImpServer(System.UInt16, DouglasDwyer.Imp.ImpClient)
+  nameWithType: RemoteImpServer.RemoteImpServer(UInt16, ImpClient)
+- uid: DouglasDwyer.Imp.RemoteImpServer.#ctor*
+  name: RemoteImpServer
+  href: api/DouglasDwyer.Imp.RemoteImpServer.html#DouglasDwyer_Imp_RemoteImpServer__ctor_
+  commentId: Overload:DouglasDwyer.Imp.RemoteImpServer.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteImpServer.RemoteImpServer
+  nameWithType: RemoteImpServer.RemoteImpServer
+- uid: DouglasDwyer.Imp.RemoteMethodInvoker
+  name: RemoteMethodInvoker
+  href: api/DouglasDwyer.Imp.RemoteMethodInvoker.html
+  commentId: T:DouglasDwyer.Imp.RemoteMethodInvoker
+  fullName: DouglasDwyer.Imp.RemoteMethodInvoker
+  nameWithType: RemoteMethodInvoker
+- uid: DouglasDwyer.Imp.RemoteMethodInvoker.#ctor(System.Reflection.MethodInfo)
+  name: RemoteMethodInvoker(MethodInfo)
+  href: api/DouglasDwyer.Imp.RemoteMethodInvoker.html#DouglasDwyer_Imp_RemoteMethodInvoker__ctor_System_Reflection_MethodInfo_
+  commentId: M:DouglasDwyer.Imp.RemoteMethodInvoker.#ctor(System.Reflection.MethodInfo)
+  fullName: DouglasDwyer.Imp.RemoteMethodInvoker.RemoteMethodInvoker(System.Reflection.MethodInfo)
+  nameWithType: RemoteMethodInvoker.RemoteMethodInvoker(MethodInfo)
+- uid: DouglasDwyer.Imp.RemoteMethodInvoker.#ctor*
+  name: RemoteMethodInvoker
+  href: api/DouglasDwyer.Imp.RemoteMethodInvoker.html#DouglasDwyer_Imp_RemoteMethodInvoker__ctor_
+  commentId: Overload:DouglasDwyer.Imp.RemoteMethodInvoker.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteMethodInvoker.RemoteMethodInvoker
+  nameWithType: RemoteMethodInvoker.RemoteMethodInvoker
+- uid: DouglasDwyer.Imp.RemoteMethodInvoker.GetResult
+  name: GetResult
+  href: api/DouglasDwyer.Imp.RemoteMethodInvoker.html#DouglasDwyer_Imp_RemoteMethodInvoker_GetResult
+  commentId: P:DouglasDwyer.Imp.RemoteMethodInvoker.GetResult
+  fullName: DouglasDwyer.Imp.RemoteMethodInvoker.GetResult
+  nameWithType: RemoteMethodInvoker.GetResult
+- uid: DouglasDwyer.Imp.RemoteMethodInvoker.GetResult*
+  name: GetResult
+  href: api/DouglasDwyer.Imp.RemoteMethodInvoker.html#DouglasDwyer_Imp_RemoteMethodInvoker_GetResult_
+  commentId: Overload:DouglasDwyer.Imp.RemoteMethodInvoker.GetResult
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteMethodInvoker.GetResult
+  nameWithType: RemoteMethodInvoker.GetResult
+- uid: DouglasDwyer.Imp.RemoteMethodInvoker.Invoke(DouglasDwyer.Imp.IImpClient,DouglasDwyer.Imp.ImpClient,System.Object,System.Object[],System.Type[])
+  name: Invoke(IImpClient, ImpClient, Object, Object[], Type[])
+  href: api/DouglasDwyer.Imp.RemoteMethodInvoker.html#DouglasDwyer_Imp_RemoteMethodInvoker_Invoke_DouglasDwyer_Imp_IImpClient_DouglasDwyer_Imp_ImpClient_System_Object_System_Object___System_Type___
+  commentId: M:DouglasDwyer.Imp.RemoteMethodInvoker.Invoke(DouglasDwyer.Imp.IImpClient,DouglasDwyer.Imp.ImpClient,System.Object,System.Object[],System.Type[])
+  name.vb: Invoke(IImpClient, ImpClient, Object, Object(), Type())
+  fullName: DouglasDwyer.Imp.RemoteMethodInvoker.Invoke(DouglasDwyer.Imp.IImpClient, DouglasDwyer.Imp.ImpClient, System.Object, System.Object[], System.Type[])
+  fullName.vb: DouglasDwyer.Imp.RemoteMethodInvoker.Invoke(DouglasDwyer.Imp.IImpClient, DouglasDwyer.Imp.ImpClient, System.Object, System.Object(), System.Type())
+  nameWithType: RemoteMethodInvoker.Invoke(IImpClient, ImpClient, Object, Object[], Type[])
+  nameWithType.vb: RemoteMethodInvoker.Invoke(IImpClient, ImpClient, Object, Object(), Type())
+- uid: DouglasDwyer.Imp.RemoteMethodInvoker.Invoke*
+  name: Invoke
+  href: api/DouglasDwyer.Imp.RemoteMethodInvoker.html#DouglasDwyer_Imp_RemoteMethodInvoker_Invoke_
+  commentId: Overload:DouglasDwyer.Imp.RemoteMethodInvoker.Invoke
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteMethodInvoker.Invoke
+  nameWithType: RemoteMethodInvoker.Invoke
+- uid: DouglasDwyer.Imp.RemoteMethodInvoker.Method
+  name: Method
+  href: api/DouglasDwyer.Imp.RemoteMethodInvoker.html#DouglasDwyer_Imp_RemoteMethodInvoker_Method
+  commentId: P:DouglasDwyer.Imp.RemoteMethodInvoker.Method
+  fullName: DouglasDwyer.Imp.RemoteMethodInvoker.Method
+  nameWithType: RemoteMethodInvoker.Method
+- uid: DouglasDwyer.Imp.RemoteMethodInvoker.Method*
+  name: Method
+  href: api/DouglasDwyer.Imp.RemoteMethodInvoker.html#DouglasDwyer_Imp_RemoteMethodInvoker_Method_
+  commentId: Overload:DouglasDwyer.Imp.RemoteMethodInvoker.Method
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteMethodInvoker.Method
+  nameWithType: RemoteMethodInvoker.Method
+- uid: DouglasDwyer.Imp.RemoteSharedObject
+  name: RemoteSharedObject
+  href: api/DouglasDwyer.Imp.RemoteSharedObject.html
+  commentId: T:DouglasDwyer.Imp.RemoteSharedObject
+  fullName: DouglasDwyer.Imp.RemoteSharedObject
+  nameWithType: RemoteSharedObject
+- uid: DouglasDwyer.Imp.RemoteSharedObject.#ctor(System.UInt16,DouglasDwyer.Imp.ImpClient)
+  name: RemoteSharedObject(UInt16, ImpClient)
+  href: api/DouglasDwyer.Imp.RemoteSharedObject.html#DouglasDwyer_Imp_RemoteSharedObject__ctor_System_UInt16_DouglasDwyer_Imp_ImpClient_
+  commentId: M:DouglasDwyer.Imp.RemoteSharedObject.#ctor(System.UInt16,DouglasDwyer.Imp.ImpClient)
+  fullName: DouglasDwyer.Imp.RemoteSharedObject.RemoteSharedObject(System.UInt16, DouglasDwyer.Imp.ImpClient)
+  nameWithType: RemoteSharedObject.RemoteSharedObject(UInt16, ImpClient)
+- uid: DouglasDwyer.Imp.RemoteSharedObject.#ctor*
+  name: RemoteSharedObject
+  href: api/DouglasDwyer.Imp.RemoteSharedObject.html#DouglasDwyer_Imp_RemoteSharedObject__ctor_
+  commentId: Overload:DouglasDwyer.Imp.RemoteSharedObject.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteSharedObject.RemoteSharedObject
+  nameWithType: RemoteSharedObject.RemoteSharedObject
+- uid: DouglasDwyer.Imp.RemoteSharedObject.Finalize
+  name: Finalize()
+  href: api/DouglasDwyer.Imp.RemoteSharedObject.html#DouglasDwyer_Imp_RemoteSharedObject_Finalize
+  commentId: M:DouglasDwyer.Imp.RemoteSharedObject.Finalize
+  fullName: DouglasDwyer.Imp.RemoteSharedObject.Finalize()
+  nameWithType: RemoteSharedObject.Finalize()
+- uid: DouglasDwyer.Imp.RemoteSharedObject.Finalize*
+  name: Finalize
+  href: api/DouglasDwyer.Imp.RemoteSharedObject.html#DouglasDwyer_Imp_RemoteSharedObject_Finalize_
+  commentId: Overload:DouglasDwyer.Imp.RemoteSharedObject.Finalize
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteSharedObject.Finalize
+  nameWithType: RemoteSharedObject.Finalize
+- uid: DouglasDwyer.Imp.RemoteSharedObject.HostClient
+  name: HostClient
+  href: api/DouglasDwyer.Imp.RemoteSharedObject.html#DouglasDwyer_Imp_RemoteSharedObject_HostClient
+  commentId: P:DouglasDwyer.Imp.RemoteSharedObject.HostClient
+  fullName: DouglasDwyer.Imp.RemoteSharedObject.HostClient
+  nameWithType: RemoteSharedObject.HostClient
+- uid: DouglasDwyer.Imp.RemoteSharedObject.HostClient*
+  name: HostClient
+  href: api/DouglasDwyer.Imp.RemoteSharedObject.html#DouglasDwyer_Imp_RemoteSharedObject_HostClient_
+  commentId: Overload:DouglasDwyer.Imp.RemoteSharedObject.HostClient
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteSharedObject.HostClient
+  nameWithType: RemoteSharedObject.HostClient
+- uid: DouglasDwyer.Imp.RemoteSharedObject.ObjectID
+  name: ObjectID
+  href: api/DouglasDwyer.Imp.RemoteSharedObject.html#DouglasDwyer_Imp_RemoteSharedObject_ObjectID
+  commentId: P:DouglasDwyer.Imp.RemoteSharedObject.ObjectID
+  fullName: DouglasDwyer.Imp.RemoteSharedObject.ObjectID
+  nameWithType: RemoteSharedObject.ObjectID
+- uid: DouglasDwyer.Imp.RemoteSharedObject.ObjectID*
+  name: ObjectID
+  href: api/DouglasDwyer.Imp.RemoteSharedObject.html#DouglasDwyer_Imp_RemoteSharedObject_ObjectID_
+  commentId: Overload:DouglasDwyer.Imp.RemoteSharedObject.ObjectID
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteSharedObject.ObjectID
+  nameWithType: RemoteSharedObject.ObjectID
+- uid: DouglasDwyer.Imp.RemoteSharedObject.ToString
+  name: ToString()
+  href: api/DouglasDwyer.Imp.RemoteSharedObject.html#DouglasDwyer_Imp_RemoteSharedObject_ToString
+  commentId: M:DouglasDwyer.Imp.RemoteSharedObject.ToString
+  fullName: DouglasDwyer.Imp.RemoteSharedObject.ToString()
+  nameWithType: RemoteSharedObject.ToString()
+- uid: DouglasDwyer.Imp.RemoteSharedObject.ToString*
+  name: ToString
+  href: api/DouglasDwyer.Imp.RemoteSharedObject.html#DouglasDwyer_Imp_RemoteSharedObject_ToString_
+  commentId: Overload:DouglasDwyer.Imp.RemoteSharedObject.ToString
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.RemoteSharedObject.ToString
+  nameWithType: RemoteSharedObject.ToString
+- uid: DouglasDwyer.Imp.ShareAsAttribute
+  name: ShareAsAttribute
+  href: api/DouglasDwyer.Imp.ShareAsAttribute.html
+  commentId: T:DouglasDwyer.Imp.ShareAsAttribute
+  fullName: DouglasDwyer.Imp.ShareAsAttribute
+  nameWithType: ShareAsAttribute
+- uid: DouglasDwyer.Imp.ShareAsAttribute.#ctor(System.Type)
+  name: ShareAsAttribute(Type)
+  href: api/DouglasDwyer.Imp.ShareAsAttribute.html#DouglasDwyer_Imp_ShareAsAttribute__ctor_System_Type_
+  commentId: M:DouglasDwyer.Imp.ShareAsAttribute.#ctor(System.Type)
+  fullName: DouglasDwyer.Imp.ShareAsAttribute.ShareAsAttribute(System.Type)
+  nameWithType: ShareAsAttribute.ShareAsAttribute(Type)
+- uid: DouglasDwyer.Imp.ShareAsAttribute.#ctor(System.Type,System.Type)
+  name: ShareAsAttribute(Type, Type)
+  href: api/DouglasDwyer.Imp.ShareAsAttribute.html#DouglasDwyer_Imp_ShareAsAttribute__ctor_System_Type_System_Type_
+  commentId: M:DouglasDwyer.Imp.ShareAsAttribute.#ctor(System.Type,System.Type)
+  fullName: DouglasDwyer.Imp.ShareAsAttribute.ShareAsAttribute(System.Type, System.Type)
+  nameWithType: ShareAsAttribute.ShareAsAttribute(Type, Type)
+- uid: DouglasDwyer.Imp.ShareAsAttribute.#ctor*
+  name: ShareAsAttribute
+  href: api/DouglasDwyer.Imp.ShareAsAttribute.html#DouglasDwyer_Imp_ShareAsAttribute__ctor_
+  commentId: Overload:DouglasDwyer.Imp.ShareAsAttribute.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ShareAsAttribute.ShareAsAttribute
+  nameWithType: ShareAsAttribute.ShareAsAttribute
+- uid: DouglasDwyer.Imp.ShareAsAttribute.InterfaceBinding
+  name: InterfaceBinding
+  href: api/DouglasDwyer.Imp.ShareAsAttribute.html#DouglasDwyer_Imp_ShareAsAttribute_InterfaceBinding
+  commentId: P:DouglasDwyer.Imp.ShareAsAttribute.InterfaceBinding
+  fullName: DouglasDwyer.Imp.ShareAsAttribute.InterfaceBinding
+  nameWithType: ShareAsAttribute.InterfaceBinding
+- uid: DouglasDwyer.Imp.ShareAsAttribute.InterfaceBinding*
+  name: InterfaceBinding
+  href: api/DouglasDwyer.Imp.ShareAsAttribute.html#DouglasDwyer_Imp_ShareAsAttribute_InterfaceBinding_
+  commentId: Overload:DouglasDwyer.Imp.ShareAsAttribute.InterfaceBinding
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ShareAsAttribute.InterfaceBinding
+  nameWithType: ShareAsAttribute.InterfaceBinding
+- uid: DouglasDwyer.Imp.ShareAsAttribute.TypeToShare
+  name: TypeToShare
+  href: api/DouglasDwyer.Imp.ShareAsAttribute.html#DouglasDwyer_Imp_ShareAsAttribute_TypeToShare
+  commentId: P:DouglasDwyer.Imp.ShareAsAttribute.TypeToShare
+  fullName: DouglasDwyer.Imp.ShareAsAttribute.TypeToShare
+  nameWithType: ShareAsAttribute.TypeToShare
+- uid: DouglasDwyer.Imp.ShareAsAttribute.TypeToShare*
+  name: TypeToShare
+  href: api/DouglasDwyer.Imp.ShareAsAttribute.html#DouglasDwyer_Imp_ShareAsAttribute_TypeToShare_
+  commentId: Overload:DouglasDwyer.Imp.ShareAsAttribute.TypeToShare
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.ShareAsAttribute.TypeToShare
+  nameWithType: ShareAsAttribute.TypeToShare
+- uid: DouglasDwyer.Imp.SharedAttribute
+  name: SharedAttribute
+  href: api/DouglasDwyer.Imp.SharedAttribute.html
+  commentId: T:DouglasDwyer.Imp.SharedAttribute
+  fullName: DouglasDwyer.Imp.SharedAttribute
+  nameWithType: SharedAttribute
+- uid: DouglasDwyer.Imp.SharedAttribute.#ctor
+  name: SharedAttribute()
+  href: api/DouglasDwyer.Imp.SharedAttribute.html#DouglasDwyer_Imp_SharedAttribute__ctor
+  commentId: M:DouglasDwyer.Imp.SharedAttribute.#ctor
+  fullName: DouglasDwyer.Imp.SharedAttribute.SharedAttribute()
+  nameWithType: SharedAttribute.SharedAttribute()
+- uid: DouglasDwyer.Imp.SharedAttribute.#ctor(System.String)
+  name: SharedAttribute(String)
+  href: api/DouglasDwyer.Imp.SharedAttribute.html#DouglasDwyer_Imp_SharedAttribute__ctor_System_String_
+  commentId: M:DouglasDwyer.Imp.SharedAttribute.#ctor(System.String)
+  fullName: DouglasDwyer.Imp.SharedAttribute.SharedAttribute(System.String)
+  nameWithType: SharedAttribute.SharedAttribute(String)
+- uid: DouglasDwyer.Imp.SharedAttribute.#ctor*
+  name: SharedAttribute
+  href: api/DouglasDwyer.Imp.SharedAttribute.html#DouglasDwyer_Imp_SharedAttribute__ctor_
+  commentId: Overload:DouglasDwyer.Imp.SharedAttribute.#ctor
+  isSpec: "True"
+  fullName: DouglasDwyer.Imp.SharedAttribute.SharedAttribute
+  nameWithType: SharedAttribute.SharedAttribute
+- uid: DouglasDwyer.Imp.UnreliableAttribute
+  name: UnreliableAttribute
+  href: api/DouglasDwyer.Imp.UnreliableAttribute.html
+  commentId: T:DouglasDwyer.Imp.UnreliableAttribute
+  fullName: DouglasDwyer.Imp.UnreliableAttribute
+  nameWithType: UnreliableAttribute

@@ -1,7 +1,6 @@
 D:\Projects\Imp.NET\Imp\bin\Release\netstandard2.0\Imp.deps.json
 D:\Projects\Imp.NET\Imp\bin\Release\netstandard2.0\Imp.dll
 D:\Projects\Imp.NET\Imp\bin\Release\netstandard2.0\Imp.pdb
-D:\Projects\Imp.NET\Imp\obj\Release\netstandard2.0\Imp.csprojAssemblyReference.cache
 D:\Projects\Imp.NET\Imp\obj\Release\netstandard2.0\Imp.AssemblyInfoInputs.cache
 D:\Projects\Imp.NET\Imp\obj\Release\netstandard2.0\Imp.AssemblyInfo.cs
 D:\Projects\Imp.NET\Imp\obj\Release\netstandard2.0\Imp.csproj.CoreCompileInputs.cache

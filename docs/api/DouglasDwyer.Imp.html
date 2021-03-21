@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace DouglasDwyer.Imp
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace DouglasDwyer.Imp
+   ">
+    <meta name="generator" content="docfx 2.54.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="DouglasDwyer.Imp">
+  
+  <h1 id="DouglasDwyer_Imp" data-uid="DouglasDwyer.Imp" class="text-break">Namespace DouglasDwyer.Imp
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="DouglasDwyer.Imp.CallingClientAttribute.html">CallingClientAttribute</a></h4>
+      <section><p>Indicates that the value of this parameter should be replaced with the client that remotely called the method. The parameter is only replaced for client-to-server calls, and its type must derive from <a class="xref" href="DouglasDwyer.Imp.IImpClient.html">IImpClient</a>.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.GeneratorProxyBinder.html">GeneratorProxyBinder</a></h4>
+      <section><p>Represents a shared type binder that generates all remote shared types at runtime.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.IdentifiedCollection-1.html">IdentifiedCollection&lt;T&gt;</a></h4>
+      <section><p>Represents a two-way, thread-safe hashtable between <span class="xref">System.UInt16</span> keys and values of type T.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.ImpClient.html">ImpClient</a></h4>
+      <section><p>Represents a TCP client that can send shared interfaces across the network as references.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.ImpClient-1.html">ImpClient&lt;T&gt;</a></h4>
+      <section><p>Represents a TCP client that can send shared interfaces across the network as references.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.ImpPowerSerializer.html">ImpPowerSerializer</a></h4>
+      <section><p>Represents a serializer that can serialize/deserialize shared interface references as well as complex object value graphs.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.ImpServer.html">ImpServer</a></h4>
+      <section><p>Represents a TCP server that can send shared interfaces across the network as references.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.ImpServer-1.html">ImpServer&lt;T&gt;</a></h4>
+      <section><p>Represents a TCP server that can send shared interfaces across the network as references.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.LocalAttribute.html">LocalAttribute</a></h4>
+      <section><p>Indicates that a given member is local and should not be included in the shared interface definition for its declaring type.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.ProxyForAttribute.html">ProxyForAttribute</a></h4>
+      <section><p>Indicates that a given type should be utilized as the base type for remote interface implementations. Base types must inherit from their shared interface. Base types should be <code>abstract</code>; any members left unimplemented will be automatically implemented during proxy generation.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.ProxyType.html">ProxyType</a></h4>
+      <section><p>Stores information about a shared interface type.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.RemoteException.html">RemoteException</a></h4>
+      <section><p>Represents an exception that has been thrown by a method/property call executing on a remote host.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.RemoteImpClient.html">RemoteImpClient</a></h4>
+      <section><p>Acts as a proxy for an <a class="xref" href="DouglasDwyer.Imp.ImpClient.html">ImpClient</a> on a remote host.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.RemoteImpServer.html">RemoteImpServer</a></h4>
+      <section><p>Acts as a proxy for an <a class="xref" href="DouglasDwyer.Imp.ImpServer.html">ImpServer</a> on a remote host.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.RemoteMethodInvoker.html">RemoteMethodInvoker</a></h4>
+      <section><p>Allows for customizable method invocation on behalf of a remote <a class="xref" href="DouglasDwyer.Imp.IImpClient.html">IImpClient</a>.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.RemoteSharedObject.html">RemoteSharedObject</a></h4>
+      <section><p>This is the base class for all interface implementations that represent an object on a remote host. Custom remote interface implementations should inherit from this class.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.ShareAsAttribute.html">ShareAsAttribute</a></h4>
+      <section><p>Indicates that a type should be shared across the network using a given interface.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.SharedAttribute.html">SharedAttribute</a></h4>
+      <section><p>Indicates that this type should be shared across the network and that an interface for sharing should be automatically generated. If an interface for sharing already exists, use <a class="xref" href="DouglasDwyer.Imp.ShareAsAttribute.html">ShareAsAttribute</a> instead.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.UnreliableAttribute.html">UnreliableAttribute</a></h4>
+      <section><p>Indicates that remote calls to this method should be conducted over UDP. Unreliable methods may be faster than normal remote method invocations, but unreliable methods are not guaranteed to be called on the remote host. Unreliable methods occur without reference-tracking or awaiting return values, so unreliable methods must return void and cannot take shared types as arguments.</p>
+</section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="DouglasDwyer.Imp.IImpClient.html">IImpClient</a></h4>
+      <section><p>The base interface by which all <a class="xref" href="DouglasDwyer.Imp.ImpClient.html">ImpClient</a> objects are shared across the network.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.IImpClient-1.html">IImpClient&lt;T&gt;</a></h4>
+      <section><p>The base interface by which all <a class="xref" href="DouglasDwyer.Imp.ImpClient.html">ImpClient</a> objects are shared across the network.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.IImpServer.html">IImpServer</a></h4>
+      <section><p>The base interface by which all <a class="xref" href="DouglasDwyer.Imp.ImpServer.html">ImpServer</a> objects are shared across the network.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.IImpServer-1.html">IImpServer&lt;T&gt;</a></h4>
+      <section><p>The base interface by which all <a class="xref" href="DouglasDwyer.Imp.ImpServer-1.html">ImpServer&lt;T&gt;</a> objects are shared across the network.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.INetworkSerializer.html">INetworkSerializer</a></h4>
+      <section><p>Represents a serializer that can be utilized send shared objects across the network, preserving their reference identities.</p>
+</section>
+      <h4><a class="xref" href="DouglasDwyer.Imp.IProxyBinder.html">IProxyBinder</a></h4>
+      <section><p>Classes that implement <a class="xref" href="DouglasDwyer.Imp.IProxyBinder.html">IProxyBinder</a> provide the ability to identify and convert between local shared types, their shared interfaces, and remote shared types.</p>
+</section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

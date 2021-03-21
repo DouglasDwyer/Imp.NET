@@ -1,0 +1,474 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/Projects/Imp.NET/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.CallingClientAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.CallingClientAttribute.html",
+          "hash": "LgUm+fr2ffhg+rSloX7khg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.GeneratorProxyBinder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.GeneratorProxyBinder.html",
+          "hash": "ZosfP8HZpxZgMdNiA3w4PA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.IImpClient-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.IImpClient-1.html",
+          "hash": "+mJs7U1vu7gA02l+mpeQwQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.IImpClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.IImpClient.html",
+          "hash": "uErhjAAtB3zo/KFo/9LOfA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.IImpServer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.IImpServer-1.html",
+          "hash": "1OlyRBOHpyvFBNbg7ZxkHA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.IImpServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.IImpServer.html",
+          "hash": "UuWeREavIjMDwDt7fnRjMA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.INetworkSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.INetworkSerializer.html",
+          "hash": "cfCnRaaib47p7BzuZaY0EA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.IProxyBinder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.IProxyBinder.html",
+          "hash": "8fks6l6Gfcy4R6KCMmMCuw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.IdentifiedCollection-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.IdentifiedCollection-1.html",
+          "hash": "s3396v8L2b4hzoxgQpK4zg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.ImpClient-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.ImpClient-1.html",
+          "hash": "kE3h4/ZCuu1vAs4ozaMa6A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.ImpClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.ImpClient.html",
+          "hash": "Udodbe0EBXhiFdYnb4eCAA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.ImpPowerSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.ImpPowerSerializer.html",
+          "hash": "ampY0p4EQfA1pCmwmzX0BQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.ImpServer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.ImpServer-1.html",
+          "hash": "A1W/f4Xjb6lcsmFCWUeULQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.ImpServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.ImpServer.html",
+          "hash": "gi4N3xEl5U6e3ydGpunU1g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.LocalAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.LocalAttribute.html",
+          "hash": "mR7vXaj1bPDWs8zXrYGEJw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.ProxyForAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.ProxyForAttribute.html",
+          "hash": "4+EHRr3C2opKfW/bJDDqNA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.ProxyType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.ProxyType.html",
+          "hash": "oMF7OizQQ5ZwYR6fp2PyqQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.RemoteException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.RemoteException.html",
+          "hash": "WSdP7JIpa38XbIqNO7s9fQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.RemoteImpClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.RemoteImpClient.html",
+          "hash": "0Sxz/CZt/bSe5UZhGX+M9g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.RemoteImpServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.RemoteImpServer.html",
+          "hash": "NW3kN9+rj58wT1ZunvDP2A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.RemoteMethodInvoker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.RemoteMethodInvoker.html",
+          "hash": "gQzKvGxO1l9tDjjsE5nO/Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.RemoteSharedObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.RemoteSharedObject.html",
+          "hash": "e0EYOj+aIIzkcaDrAYWcxA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.ShareAsAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.ShareAsAttribute.html",
+          "hash": "P0e9ocF2p8ZsygPMoCc6SQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.SharedAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.SharedAttribute.html",
+          "hash": "9wflk3fNKuz5M7Y+NcxlWg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.UnreliableAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.UnreliableAttribute.html",
+          "hash": "U+jPLc+qvcV42htpWkxhpg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DouglasDwyer.Imp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DouglasDwyer.Imp.html",
+          "hash": "5+81fTIOA7BH62748Er1tw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "K9ScIImjKuBrWgDT7EfGNg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "k3sovTm0mYqkG5UXbk7TUQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "vDjr7U8LpXwA/zGnecKSuA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/rclasses.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/rclasses.html",
+          "hash": "Vvux4MYYlSeXRPSEKHr+Bw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/sclasses.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/sclasses.html",
+          "hash": "lviVknXFqMK7eNKsDNb2og=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/sourcegenerator.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/sourcegenerator.html",
+          "hash": "IKIOyQSmSFCQ+Y1cutyc9g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "VjJVPfvYzD1N85bjdWoKUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "oMJ/2wyuHB8EpfnK6S84rA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "WzOZWGgLM0eFdRC3elrICw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 6,
+          "skipped_file_count": 6
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 26,
+          "skipped_file_count": 26
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

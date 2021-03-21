@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Shared classes </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Shared classes ">
+    <meta name="generator" content="docfx 2.54.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="shared-classes">Shared classes</h1>
+
+<p>Shared classes are classes that can be marshalled by reference across the network. When they are passed as arguments to a remote method call, returned as the value of a remote property, or returned as the return value of a remote method, a reference to them is created on the remote host. This reference is in the form of a shared interface - each remote object may be interacted with by calling its interface methods, just as one would call a normal method. Any non-shared object, when sent across the network, will be serialized and passed by value.</p>
+<h3 id="declaring-a-class-as-shared">Declaring a class as shared</h3>
+<p>There are two ways to declare a class as shared. If the class and interface are both already defined, one can employ the <code>ShareAs</code> attribute to denote their relationship. If the class to be shared does not have an interface, it can be marked as <code>Shared</code>, and the Imp source generator will generate an interface for it.</p>
+<h4 id="the-shareas-attribute">The ShareAs attribute</h4>
+<p>Any type that implements an interface may be shared across the network using that interface. To mark a class as shared, add the following attribute to the output assembly of the target project:</p>
+<pre><code class="lang-csharp">[assembly: ShareAs(typeof(SharedClass),typeof(ISharedInterface)]
+</code></pre>
+<p>Now, when objects of <code>SharedClass</code> are sent to the remote host, the remote host will receive an <code>ISharedInterface</code> object. When the remote host calls a method on this remote object, the method will be invoked on the original <code>SharedClass</code> object.</p>
+<p>If source generators are unavailable, then the <code>ShareAs</code> attribute must be utilized for all shared types. In this case, the user must define both the classes and the interfaces that should be used in sharing.</p>
+<h4 id="the-shared-attribute">The Shared attribute</h4>
+<p>Any user-defined class may be shared across the network using a custom interface generated automatically at compile time. For the <code>Shared</code> attribute to work properly, the target version of C# must support source generators, and the Imp generator must be enabled. To mark a class as shared, mark it as <code>partial</code>, add the following attribute to it:</p>
+<pre><code class="lang-csharp">[Shared]
+public partial class SharedClass
+</code></pre>
+<p>This will automatically cause the Imp generator to create an interface called <code>ISharedClass</code> in the same namespace. To change the name/namespace of the interface, use the following attribute overload:</p>
+<pre><code class="lang-csharp">[Shared(&quot;SomeNamespace.ISharedInterface&quot;)]
+public partial class SomeClass
+</code></pre>
+<p>This will automatically cause the Imp generator to create an interface called <code>ISharedInterface</code> in <code>SomeNamespace</code>.</p>
+<h3 id="shared-class-behavior">Shared class behavior</h3>
+<p>Shared classes are the way in which the server and client interact. Method calls on remote shared interfaces allow the client and server to selectively expose remote behaviors to one another, which can be called at any given time. The following is an example shared class:</p>
+<pre><code class="lang-csharp">[Shared]
+public partial class SomeClass {
+	
+	public int Foo { get; set; }
+	
+	[Local]
+	public int Bar { get; set; }
+	
+	public void Test() {}
+	
+	public async Task AsyncTest() {}
+	
+	public async Task&lt;int&gt; GetBar() =&gt; Bar;
+	
+	[Unreliable]
+	public void UDPTest() {}
+}
+</code></pre>
+<p>When a client-side instance of this class is sent to the server, the server will receive an <code>ISomeClass</code> object. Using the interface object, the server can interact with each of <code>SomeClass</code>'s members. In this case, while all of the properties and methods will behave normally client-side, they each have a different behavior server-side.</p>
+<p>The server will be able to access <code>Foo</code> and <code>Test</code>, but because they are normal properties/methods, calls to them will be synchronous and blocking. The server-side code that calls <code>Foo</code> or <code>Test</code> will stop, wait until the client-side operation has completed, and then continue. Though Imp.NET does support synchronous operations like this, they are time-consuming and inefficient. As such, it is highly recommended to always use asynchronous operations.</p>
+<p>The server will not be able to access <code>Bar</code>, because it is marked as <code>Local</code>. Local members are not included in the automatically-generated interface definition.</p>
+<p>The server will be able to call both <code>AsyncTest</code> and <code>GetBar</code>, which will execute asynchronously. When the server calls either one of these methods, it will receive a <code>Task</code> object indicating that the remote method call is underway client-side. Once the client-side call finishes, the <code>Task</code> object will be updated to include the results of the operation.</p>
+<p>Finally, the server will be able to call <code>UDPTest</code>, which will also execute asynchronously - the server-side code will continue before the operation completes. This is because <code>UDPTest</code> is an unreliable method, meaning that Imp.NET will send the method invocation command over UDP, not TCP. UDP is slightly faster than TCP, with less overhead, but unreliable method calls are never guaranteed to execute remotely. As such, unreliable methods should be used for sending temporary data - like the position of a player in a game - that will quickly be overwritten with new data.</p>
+<p>When a remote method call is received, it is executed locally using a <code>TaskScheduler</code>. This means that the thread and synchronization context in which remote method calls execute can be precisely controlled. The default scheduler is used automatically.</p>
+<h3 id="shared-class-lifetime">Shared class lifetime</h3>
+<p>When a shared class is sent across the network, its reference is tracked by the sender. This means that, if the server sends an object to the client, that object will not be garbage collected until it is no longer used client-side or server-side. To accomplish this, Imp.NET employs reference counting - it tracks when an object is alive on a remote host, and waits until the remote interface is garbage collected to remove the original object.</p>
+<p>Note that this means Imp.NET does not support cyclical references in shared objects. If two shared objects cyclically reference each other, and go out of scope on both hosts, they will not be garbage collected, creating a memory leak. This memory leak will only be resolved when one of the hosts disconnects, and its object references are invalidated. To prevent memory leakage, avoid creating cyclical references, or clear/break any cyclical references before discarding shared objects.</p>
+<h3 id="shared-class-invalidation">Shared class invalidation</h3>
+<p>When a client disconnects from a server, all of the remote shared classes that the client and server received from one another are invalidated. Any calls to the remote interfaces' members will throw an exception, as the remote host is no longer available. Therefore, be certain to keep in mind that shared classes may become invalidated at any time during application runtime. Design with the expectation that shared classes may not last, and do not attempt to use them beyond their host's lifetime. This restriction does not apply to local members of remote proxy classes, which can be defined using a class marked with the <code>ProxyFor</code> attribute.</p>
+<h3 id="in-out-and-ref-keywords">In, out, and ref keywords</h3>
+<p>Because of Imp.NET's asynchronous nature, the <code>in</code>, <code>out</code>, and <code>ref</code> keywords are not supported as parameter modifiers. If a method containing one of these keywords is remotely invoked, an exception will be thrown.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/DouglasDwyer/Imp.NET/blob/main/docfx_project/articles/sclasses.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
