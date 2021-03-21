@@ -79,7 +79,7 @@
 <p>Now, when objects of <code>SharedClass</code> are sent to the remote host, the remote host will receive an <code>ISharedInterface</code> object. When the remote host calls a method on this remote object, the method will be invoked on the original <code>SharedClass</code> object.</p>
 <p>If source generators are unavailable, then the <code>ShareAs</code> attribute must be utilized for all shared types. In this case, the user must define both the classes and the interfaces that should be used in sharing.</p>
 <h4 id="the-shared-attribute">The Shared attribute</h4>
-<p>Any user-defined class may be shared across the network using a custom interface generated automatically at compile time. For the <code>Shared</code> attribute to work properly, the target version of C# must support source generators, and the Imp generator must be enabled. To mark a class as shared, mark it as <code>partial</code>, add the following attribute to it:</p>
+<p>Any user-defined class may be shared across the network using a custom interface generated automatically at compile time. For the <code>Shared</code> attribute to work properly, the target version of C# must support source generators, and the Imp generator must be enabled. To mark a class as shared, mark it as <code>partial</code>, and add the following attribute to it:</p>
 <pre><code class="lang-csharp">[Shared]
 public partial class SharedClass
 </code></pre>
@@ -89,7 +89,7 @@ public partial class SomeClass
 </code></pre>
 <p>This will automatically cause the Imp generator to create an interface called <code>ISharedInterface</code> in <code>SomeNamespace</code>.</p>
 <h3 id="shared-class-behavior">Shared class behavior</h3>
-<p>Shared classes are the way in which the server and client interact. Method calls on remote shared interfaces allow the client and server to selectively expose remote behaviors to one another, which can be called at any given time. The following is an example shared class:</p>
+<p>Shared classes are the way in which the server and client interact. Method calls on remote shared interfaces allow the client and server to selectively expose remote behaviors to one another, which can be called at any given time. The following is an example of a shared class:</p>
 <pre><code class="lang-csharp">[Shared]
 public partial class SomeClass {
 	

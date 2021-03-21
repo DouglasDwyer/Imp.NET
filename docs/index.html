@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>This is the HOMEPAGE. </title>
+    <title>Imp.NET </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="This is the HOMEPAGE. ">
+    <meta name="title" content="Imp.NET ">
     <meta name="generator" content="docfx 2.54.0.0">
     
     <link rel="shortcut icon" href="favicon.ico">
@@ -60,13 +60,38 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="this-is-the-homepage">This is the <strong>HOMEPAGE</strong>.</h1>
 
-<p>Refer to <a href="http://daringfireball.net/projects/markdown/">Markdown</a> for how to write markdown files.</p>
-<h2 id="quick-start-notes">Quick Start Notes:</h2>
-<ol>
-<li>Add images to the <em>images</em> folder if the file is referencing an image.</li>
-</ol>
+<p><a href="https://www.nuget.org/packages/DouglasDwyer.Imp"><img src="https://img.shields.io/nuget/v/DouglasDwyer.Imp" alt="Nuget"></a>
+<a href="https://www.nuget.org/packages/DouglasDwyer.Imp"><img src="https://img.shields.io/nuget/dt/DouglasDwyer.Imp" alt="Downloads"></a></p>
+<h1 id="impnet">Imp.NET</h1>
+<p>Imp.NET is a fast, high-level, object-oriented C# networking library that supports the invocation of remote methods through proxy interface objects. Imp.NET combines the power of the <code>System.Reflection.Emit</code> namespace with the flexibility of source generators to provide a seamless networking experience, without the hassle of network streams or pesky sockets. With Imp.NET, one writes networked code that looks identical to fully local code. Its fast and powerful features make it the perfect choice for any C# application.</p>
+<p>Imp.NET may optionally be used without its source generator.</p>
+<h3 id="features">Features</h3>
+<p>With Imp.NET, you can:</p>
+<ul>
+<li>Write networked code with remote method calls that looks exactly like normal/local code</li>
+<li>Send shared objects as method arguments across the network via interfaces, and remotely invoke methods/properties on them as though they are local objects</li>
+<li>Send non-shared objects as method arguments across the network by value using a serializer</li>
+<li>Pass any class that inherits from an interface, including library classes, across the network as a shared interface</li>
+<li>Call remote methods synchronously or asynchronously with the use of <code>Task</code>s and the <code>await</code> keyword</li>
+<li>Use UDP and the <code>Unreliable</code> attribute to send data across the network with less overhead</li>
+</ul>
+<h3 id="installation">Installation</h3>
+<p>Imp.NET can be obtained as a Nuget package. To import it into your project, either download DouglasDwyer.Imp from the Visual Studio package manager or run the command <code>Install-Package DouglasDwyer.Imp</code> using the package manager console.</p>
+<h3 id="getting-started">Getting started</h3>
+<p>Please see <a href="https://douglasdwyer.github.io/Imp.NET/articles/intro.html">getting started</a> for a complete guide on setting up an Imp.NET application.</p>
+<h3 id="example">Example</h3>
+<p>Imp.NET abstracts away the details of networking by automatically generating remote proxy classes that inherit from shared interfaces. In the following client-side example, a client connects to a server, then gets a remote representation of the server object, which is of the user-defined type <code>IChatServer</code>. Then, the client repeatedly sends messages read from the console to the server. Despite the fact that the code is executing client-side, the call to <code>SendMessage</code> executes on the server, as the <code>server</code> variable is a remote/server-owned object:</p>
+<pre><code class="lang-csharp">ChatClient client = new ChatClient();
+client.Connect(&quot;127.0.0.1&quot;, 10);
+
+IChatServer server = client.Server;
+while(true)
+{
+    server.SendMessage(Console.ReadLine());
+}
+</code></pre>
+<p>Thus, Imp.NET provides an incredibly simple way for clients and servers to interact. The user can define custom &quot;shared&quot; properties and methods. These members may then be accessed remotely, as though they existed in the local runtime.</p>
 </article>
           </div>
           

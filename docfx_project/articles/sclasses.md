@@ -19,7 +19,7 @@ If source generators are unavailable, then the `ShareAs` attribute must be utili
 
 #### The Shared attribute
 
-Any user-defined class may be shared across the network using a custom interface generated automatically at compile time. For the `Shared` attribute to work properly, the target version of C# must support source generators, and the Imp generator must be enabled. To mark a class as shared, mark it as `partial`, add the following attribute to it:
+Any user-defined class may be shared across the network using a custom interface generated automatically at compile time. For the `Shared` attribute to work properly, the target version of C# must support source generators, and the Imp generator must be enabled. To mark a class as shared, mark it as `partial`, and add the following attribute to it:
 ```csharp
 [Shared]
 public partial class SharedClass
@@ -33,7 +33,7 @@ This will automatically cause the Imp generator to create an interface called `I
 
 ### Shared class behavior
 
-Shared classes are the way in which the server and client interact. Method calls on remote shared interfaces allow the client and server to selectively expose remote behaviors to one another, which can be called at any given time. The following is an example shared class:
+Shared classes are the way in which the server and client interact. Method calls on remote shared interfaces allow the client and server to selectively expose remote behaviors to one another, which can be called at any given time. The following is an example of a shared class:
 
 ```csharp
 [Shared]
