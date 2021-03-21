@@ -26,7 +26,7 @@ With Imp.NET, you can:
 Imp.NET abstracts away the details of networking by automatically generating remote proxy classes that inherit from shared interfaces. First, the user defines shared local types - types whose methods and properties may be accessed across the network. Then, during runtime, an Imp.NET client application connects to an Imp.NET server application. These applications may send one another instances of shared local types. Shared local types each implement a shared interface, which defines the members that can be called remotely. When a shared object is received over the network, it is received as the shared interface type. The following client-side code example demonstrates remote method invocation. In the example, the remote server object (whose shared interface type is `IChatServer`) is retrieved, and the remote method `SendMessage` is invoked. Observe that the process is identical to calling normal methods:
 ```csharp
 ChatClient client = new ChatClient();
-client.Connect("127.0.0.1", 42069);
+client.Connect("127.0.0.1", 10);
 
 IChatServer server = client.Server;
 while(true)
