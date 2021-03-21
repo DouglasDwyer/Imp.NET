@@ -61,6 +61,16 @@ namespace DouglasDwyer.Imp
         /// </summary>
         [Local]
         public TaskScheduler RemoteTaskScheduler { get; set; }
+        /// <summary>
+        /// The maximum number of shared objects that this client will hold for the remote host. If the number of objects sent exceeds this threshold, the connection will be terminated.
+        /// </summary>
+        [Local]
+        public int MaximumHeldObjects { get; set; } = int.MaxValue;
+        /// <summary>
+        /// The maximum number of remote shared interfaces that this client will hold. If the number of objects received exceeds this threshold, the connection will be terminated.
+        /// </summary>
+        [Local]
+        public int MaximumRemoteObjects { get; set; } = int.MaxValue;
 
         internal IImpClient RemoteClient { get; private set; }
 
@@ -100,7 +110,7 @@ namespace DouglasDwyer.Imp
         /// <param name="client">The TCP connection this client is using to communicate.</param>
         /// <param name="server">The server that owns this client.</param>
         /// <param name="networkID">The network ID of this client.</param>
-        internal ImpClient(TcpClient client, ImpServer server, ushort networkID, UdpClient unreliableClient, IProxyBinder proxyBinder, ImpPowerSerializer serializer, TaskScheduler scheduler)
+        internal ImpClient(TcpClient client, ImpServer server, ushort networkID, int maxHeldObjects, int maxRemoteObjects, UdpClient unreliableClient, IProxyBinder proxyBinder, ImpPowerSerializer serializer, TaskScheduler scheduler)
         {
             Connected = true;
             LoadMethodCallbacks();
@@ -108,6 +118,8 @@ namespace DouglasDwyer.Imp
             Serializer.Client = this;
             RemoteTaskScheduler = scheduler;
             SharedTypeBinder = proxyBinder;
+            MaximumHeldObjects = maxHeldObjects;
+            MaximumRemoteObjects = maxRemoteObjects;
             Local = false;
             Server = server;
             NetworkID = networkID;
@@ -539,6 +551,10 @@ namespace DouglasDwyer.Imp
                 }
                 else
                 {
+                    if(RemoteSharedObjects.Count >= MaximumRemoteObjects)
+                    {
+                        throw new InvalidOperationException("The number of remote shared objects has exceeded the maximum allowed.");
+                    }
                     RemoteSharedObject obj = (RemoteSharedObject)Activator.CreateInstance(SharedTypeBinder.GetRemoteType(type), id, this);
                     RemoteSharedObjects[id] = new CountedObject<WeakReference<RemoteSharedObject>>(new WeakReference<RemoteSharedObject>(obj));
                     return obj;
@@ -560,6 +576,10 @@ namespace DouglasDwyer.Imp
                 }
                 else
                 {
+                    if(HeldObjects.Count >= MaximumHeldObjects)
+                    {
+                        throw new InvalidOperationException("The number of held shared objects has exceeded the maximum allowed.");
+                    }
                     ushort path = HeldObjects.Add(obj);
                     HeldObjectsData[path] = new CountedObject<object>(obj);
                     return path;

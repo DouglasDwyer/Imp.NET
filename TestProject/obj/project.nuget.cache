@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "JvP4MlD7+wpWkjzNJhw0NdTNr8jZGWjGZYgPwAuALkDYXAySsCMN1IWQZzLRXQlU7KAb9QBGenRYVHo2iqPjKA==",
+  "dgSpecHash": "z9uXTKcjpNps29hgSEYz7jVm+fppdKmGAYpdzu79xF8ioHnYbHXFDvslv8tpVC1o+mUrdtLJ5ZF4DsUMlLAckw==",
   "success": true,
   "projectFilePath": "D:\\Projects\\Imp.NET\\TestProject\\TestProject.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Douglas\\.nuget\\packages\\douglasdwyer.powerserializer\\1.0.0.2\\douglasdwyer.powerserializer.1.0.0.2.nupkg.sha512",
+    "C:\\Users\\Douglas\\.nuget\\packages\\douglasdwyer.powerserializer\\1.0.0.3\\douglasdwyer.powerserializer.1.0.0.3.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
   ],

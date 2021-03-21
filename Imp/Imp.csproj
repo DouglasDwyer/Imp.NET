@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,22 +6,39 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>Douglas Dwyer</Authors>
     <Company>Douglas Dwyer</Company>
-    <PackageId>Imp.NET</PackageId>
+    <PackageId>DouglasDwyer.Imp</PackageId>
     <Product>Imp.NET</Product>
     <Description>Imp.NET is a fast, high-level, object-oriented C# networking library that supports the invocation of remote methods through proxy interface objects.</Description>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>0.1.0.0</Version>
+    <Version>0.2.0.0</Version>
+    <AssemblyVersion>0.2.0.0</AssemblyVersion>
+    <FileVersion>0.2.0.0</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/DouglasDwyer/Imp.NET</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\Projects\Imp.NET\Imp\Imp.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Serialization\**" />
     <EmbeddedResource Remove="Serialization\**" />
     <None Remove="Serialization\**" />
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DouglasDwyer.PowerSerializer" Version="1.0.0.2" />
+    <PackageReference Include="DouglasDwyer.PowerSerializer" Version="1.0.0.3" />
     <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\ImpGenerator\bin\$(Configuration)\netstandard2.0\ImpGenerator.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
 </Project>

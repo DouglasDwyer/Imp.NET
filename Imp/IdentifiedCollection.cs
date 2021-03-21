@@ -19,6 +19,10 @@ namespace DouglasDwyer.Imp
         /// The set of values in this collection.
         /// </summary>
         public IEnumerable<T> Values => InternalDictionary.Values;
+        /// <summary>
+        /// The number of elements in this collection.
+        /// </summary>
+        public int Count => InternalDictionary.Count;
 
         private ConcurrentDictionary<ushort, T> InternalDictionary = new ConcurrentDictionary<ushort, T>();
         private ConcurrentDictionary<T, ushort> ReverseDictionary = new ConcurrentDictionary<T, ushort>();

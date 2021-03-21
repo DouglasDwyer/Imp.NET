@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "HcUJB3ls3/+PgfX1gBv993Kh85oofMPayWq/wE3ybHOh+cCN9+/EzqWdUS8PBABKcZ2SLJPfrNU+6Bxlju/J5A==",
+  "dgSpecHash": "1CJueWFWDQeZ0hV+nEjtq66JUbtWrfnWWvwE6Zbvjpln5KcpYHhRdfrVA60Ohaa7vWDNMk2CulCgSC8I9bkbRg==",
   "success": true,
   "projectFilePath": "D:\\Projects\\Imp.NET\\ImpGenerator\\ImpGenerator.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Douglas\\.nuget\\packages\\douglasdwyer.powerserializer\\1.0.0.2\\douglasdwyer.powerserializer.1.0.0.2.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\microsoft.codeanalysis\\3.8.0\\microsoft.codeanalysis.3.8.0.nupkg.sha512",
@@ -38,8 +37,8 @@
     "C:\\Users\\Douglas\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
-    "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.7.0\\system.reflection.emit.ilgeneration.4.7.0.nupkg.sha512",
+    "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\system.reflection.metadata\\5.0.0\\system.reflection.metadata.5.0.0.nupkg.sha512",

@@ -18,7 +18,7 @@ namespace DouglasDwyer.Imp
         /// <summary>
         /// Creates a new serializer that is not associated with a client.
         /// </summary>
-        public ImpPowerSerializer() : base() { }
+        public ImpPowerSerializer() : base(new FinalizerLimitedNameTypeResolver()) { }
 
         /// <summary>
         /// Creates a new serializer associated with the given client.

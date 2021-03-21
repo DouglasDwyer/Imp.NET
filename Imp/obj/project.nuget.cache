@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+w9xQ33sAu7gYW+e3Yrv0oRhZuXqoubccYlD3sZIHLwBaUOD0SyiVVXePnGeD9cKGsxX87Prra+iDfaItDPbnQ==",
+  "dgSpecHash": "lieLKsETE2DMfv1/3XgbeRsl9M4MWlNCRGcuac+IUGfre39S8y+DR5zxx1LSoETRlMpExdu4muGpWIxMRwAAxg==",
   "success": true,
   "projectFilePath": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Douglas\\.nuget\\packages\\douglasdwyer.powerserializer\\1.0.0.2\\douglasdwyer.powerserializer.1.0.0.2.nupkg.sha512",
+    "C:\\Users\\Douglas\\.nuget\\packages\\douglasdwyer.powerserializer\\1.0.0.3\\douglasdwyer.powerserializer.1.0.0.3.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\Douglas\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",

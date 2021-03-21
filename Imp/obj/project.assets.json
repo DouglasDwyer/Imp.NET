@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "DouglasDwyer.PowerSerializer/1.0.0.2": {
+      "DouglasDwyer.PowerSerializer/1.0.0.3": {
         "type": "package",
         "dependencies": {
           "System.Collections.Immutable": "5.0.0"
@@ -115,18 +115,17 @@
     }
   },
   "libraries": {
-    "DouglasDwyer.PowerSerializer/1.0.0.2": {
-      "sha512": "EAscVKP6W/BkujuMiTLgTpoG4TBCsW4hI21TopPoeg7N2BX7LkbYiq7r2dfgBvBRzZlCTPds/QaC9vx9F6oxdQ==",
+    "DouglasDwyer.PowerSerializer/1.0.0.3": {
+      "sha512": "ZB1+dQsZwmgqhw8QcnAeXggiO5HDQ2GCuwRNwyR/ovnlgC9fVMfdddDs/pRtQ5V+GTgMEcj/Zpcwys/vzNKOlQ==",
       "type": "package",
-      "path": "douglasdwyer.powerserializer/1.0.0.2",
+      "path": "douglasdwyer.powerserializer/1.0.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
-        "douglasdwyer.powerserializer.1.0.0.2.nupkg.sha512",
+        "douglasdwyer.powerserializer.1.0.0.3.nupkg.sha512",
         "douglasdwyer.powerserializer.nuspec",
-        "lib/netstandard2.0/DouglasDwyer.PowerSerializer.dll",
-        "lib/netstandard2.0/DouglasDwyer.PowerSerializer.xml"
+        "lib/netstandard2.0/DouglasDwyer.PowerSerializer.dll"
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
@@ -540,7 +539,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "DouglasDwyer.PowerSerializer >= 1.0.0.2",
+      "DouglasDwyer.PowerSerializer >= 1.0.0.3",
       "NETStandard.Library >= 2.0.3",
       "System.Reflection.Emit >= 4.7.0"
     ]
@@ -550,10 +549,10 @@
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "0.1.0",
+    "version": "0.2.0",
     "restore": {
       "projectUniqueName": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj",
-      "projectName": "Imp.NET",
+      "projectName": "DouglasDwyer.Imp",
       "projectPath": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj",
       "packagesPath": "C:\\Users\\Douglas\\.nuget\\packages\\",
       "outputPath": "D:\\Projects\\Imp.NET\\Imp\\obj\\",
@@ -593,7 +592,7 @@
         "dependencies": {
           "DouglasDwyer.PowerSerializer": {
             "target": "Package",
-            "version": "[1.0.0.2, )"
+            "version": "[1.0.0.3, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

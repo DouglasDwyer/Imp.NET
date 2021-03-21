@@ -26,7 +26,7 @@ namespace DouglasDwyer.Imp
         /// Returns a list of all the clients currently connected to this server.
         /// </summary>
         [Local]
-        public IEnumerable<IImpClient> ConnectedClients => ActiveClients.Values;
+        public IList<IImpClient> ConnectedClients => ActiveClients.Values.ToList();
         /// <summary>
         /// The default shared type binder utilized when creating new clients.
         /// </summary>
@@ -42,6 +42,21 @@ namespace DouglasDwyer.Imp
         /// </summary>
         [Local]
         public TaskScheduler DefaultRemoteTaskScheduler { get; set; }
+        /// <summary>
+        /// The maximum number of shared objects that each client should hold for its remote host. If the number of objects sent exceeds this threshold, the connection will be terminated.
+        /// </summary>
+        [Local]
+        public int DefaultMaximumHeldObjects { get; set; } = int.MaxValue;
+        /// <summary>
+        /// The maximum number of remote shared interfaces that each client should hold. If the number of objects received exceeds this threshold, the connection will be terminated.
+        /// </summary>
+        [Local]
+        public int DefaultMaximumRemoteObjects { get; set; } = int.MaxValue;
+        /// <summary>
+        /// The maximum number of clients that can be concurrently connected to the server.
+        /// </summary>
+        [Local]
+        public int MaximumConnectedClients { get; set; } = int.MaxValue;
 
         private IdentifiedCollection<IImpClient> ActiveClients = new IdentifiedCollection<IImpClient>();
         private TcpListener Listener;
@@ -150,18 +165,25 @@ namespace DouglasDwyer.Imp
             Listener.BeginAcceptTcpClient(AcceptTcpClient, null);
             try
             {
-                BinaryWriter writer = new BinaryWriter(client.GetStream());
-                BinaryReader reader = new BinaryReader(client.GetStream());//BadProxyBinder.Instance.GetRemoteClass(ShareAsAttribute.ProxyIndex[reader.ReadUInt16()]);
-                ImpClient kClient = null;
-                ActiveClients.Add(x =>
+                if (ActiveClients.Count >= MaximumConnectedClients)
                 {
-                    ushort networkID = (ushort)(x + 1);
-                    ImpPowerSerializer serializer = (ImpPowerSerializer)DefaultSerializer.Clone();
-                    kClient = new ImpClient(client, this, networkID, UnreliableListener, DefaultProxyBinder, serializer, DefaultRemoteTaskScheduler);
-                    CheckClientType(kClient.RemoteClient.GetType());
-                    return kClient.RemoteClient;
-                });
-                OnClientConnected(kClient.RemoteClient);
+                    client.Close();
+                }
+                else
+                {
+                    BinaryWriter writer = new BinaryWriter(client.GetStream());
+                    BinaryReader reader = new BinaryReader(client.GetStream());//BadProxyBinder.Instance.GetRemoteClass(ShareAsAttribute.ProxyIndex[reader.ReadUInt16()]);
+                    ImpClient kClient = null;
+                    ActiveClients.Add(x =>
+                    {
+                        ushort networkID = (ushort)(x + 1);
+                        ImpPowerSerializer serializer = (ImpPowerSerializer)DefaultSerializer.Clone();
+                        kClient = new ImpClient(client, this, networkID, DefaultMaximumHeldObjects, DefaultMaximumRemoteObjects, UnreliableListener, DefaultProxyBinder, serializer, DefaultRemoteTaskScheduler);
+                        CheckClientType(kClient.RemoteClient.GetType());
+                        return kClient.RemoteClient;
+                    });
+                    OnClientConnected(kClient.RemoteClient);
+                }
             }
             catch(Exception e)
             {
@@ -209,7 +231,7 @@ namespace DouglasDwyer.Imp
         /// Returns a list of all the clients currently connected to this server.
         /// </summary>
         [Local]
-        public new IEnumerable<T> ConnectedClients => base.ConnectedClients.Cast<T>();
+        public new IList<T> ConnectedClients => base.ConnectedClients.Cast<T>().ToList();
 
         /// <summary>
         /// Creates a new server bound to the specified port. The server will listen for connections on all IP addresses.

@@ -5,10 +5,10 @@
   },
   "projects": {
     "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj": {
-      "version": "0.1.0",
+      "version": "0.2.0",
       "restore": {
         "projectUniqueName": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj",
-        "projectName": "Imp.NET",
+        "projectName": "DouglasDwyer.Imp",
         "projectPath": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj",
         "packagesPath": "C:\\Users\\Douglas\\.nuget\\packages\\",
         "outputPath": "D:\\Projects\\Imp.NET\\Imp\\obj\\",
@@ -48,7 +48,7 @@
           "dependencies": {
             "DouglasDwyer.PowerSerializer": {
               "target": "Package",
-              "version": "[1.0.0.2, )"
+              "version": "[1.0.0.3, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",

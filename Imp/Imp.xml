@@ -1,0 +1,745 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Imp</name>
+    </assembly>
+    <members>
+        <member name="T:DouglasDwyer.Imp.CallingClientAttribute">
+            <summary>
+            Indicates that the value of this parameter should be replaced with the client that remotely called the method. The parameter is only replaced for client-to-server calls, and its type must derive from <see cref="T:DouglasDwyer.Imp.IImpClient"/>.
+            </summary>
+        </member>
+        <member name="T:DouglasDwyer.Imp.GeneratorProxyBinder">
+            <summary>
+            Represents a shared type binder that generates all remote shared types at runtime.
+            </summary>
+        </member>
+        <member name="F:DouglasDwyer.Imp.GeneratorProxyBinder.ProxyIndex">
+            <summary>
+            An indexed collection of all shared interfaces.
+            </summary>
+        </member>
+        <member name="F:DouglasDwyer.Imp.GeneratorProxyBinder.ProxyData">
+            <summary>
+            A list, ordered by index, containing data about each shared interface type.
+            </summary>
+        </member>
+        <member name="F:DouglasDwyer.Imp.GeneratorProxyBinder.LocalClassToInterface">
+            <summary>
+            A dictionary that contains bindings between local shared classes and their respective shared interfaces.
+            </summary>
+        </member>
+        <member name="F:DouglasDwyer.Imp.GeneratorProxyBinder.RemoteClassToInterface">
+            <summary>
+            A dictionary that contains bindings between remote shared classes and their respective shared interfaces.
+            </summary>
+        </member>
+        <member name="F:DouglasDwyer.Imp.GeneratorProxyBinder.RemoteInterfaceToClass">
+            <summary>
+            A dictionary that contains bindings between remote shared interfaces and their respective shared classes.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.GeneratorProxyBinder.GenerateProxies(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Generates remote proxies for all of the types in the given list, building the <see cref="F:DouglasDwyer.Imp.GeneratorProxyBinder.RemoteClassToInterface"/> and <see cref="F:DouglasDwyer.Imp.GeneratorProxyBinder.RemoteInterfaceToClass"/> arrays in the process.
+            </summary>
+            <param name="proxyTypes">A list containing all of the shared interfaces for which to generate proxies.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.IdentifiedCollection`1">
+            <summary>
+            Represents a two-way, thread-safe hashtable between <see cref="T:System.UInt16"/> keys and values of type T.
+            </summary>
+            <typeparam name="T">The type of object that this collection will store.</typeparam>
+        </member>
+        <member name="P:DouglasDwyer.Imp.IdentifiedCollection`1.Keys">
+            <summary>
+            The set of keys in this collection.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.IdentifiedCollection`1.Values">
+            <summary>
+            The set of values in this collection.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.IdentifiedCollection`1.Count">
+            <summary>
+            The number of elements in this collection.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.IdentifiedCollection`1.Item(System.UInt16)">
+            <summary>
+            Obtains a value using its ID.
+            </summary>
+            <param name="id">The ID of the value to obtain.</param>
+            <returns>The value with the specified ID.</returns>
+        </member>
+        <member name="P:DouglasDwyer.Imp.IdentifiedCollection`1.Item(`0)">
+            <summary>
+            Obtains the ID of a given value.
+            </summary>
+            <param name="item">The value with the ID to obtain.</param>
+            <returns>The ID of the specified value.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IdentifiedCollection`1.Add(`0)">
+            <summary>
+            Adds an item to the collection.
+            </summary>
+            <param name="item">The item to add.</param>
+            <returns>The ID of the object.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IdentifiedCollection`1.Add(System.Func{System.UInt16,`0})">
+            <summary>
+            Adds an item to the collection, allowing for creation of the object in a thread-safe manner.
+            </summary>
+            <param name="itemGenerator">A function that takes in the item's ID and returns the new item.</param>
+            <returns>The ID of the object.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IdentifiedCollection`1.Remove(System.UInt16)">
+            <summary>
+            Removes an object from the collection.
+            </summary>
+            <param name="id">The ID of the value to remove.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IdentifiedCollection`1.Remove(`0)">
+            <summary>
+            Removes an object from the collection.
+            </summary>
+            <param name="value">The value to remove.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IdentifiedCollection`1.TryGetValue(System.UInt16,`0@)">
+            <summary>
+            Attempts to obtain an object from the collection.
+            </summary>
+            <param name="id">The ID of the value to obtain.</param>
+            <param name="value">The obtained value.</param>
+            <returns>Whether the object was successfully obtained.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IdentifiedCollection`1.TryGetID(`0,System.UInt16@)">
+            <summary>
+            Attempts to obtain an object from the collection.
+            </summary>
+            <param name="value">The value with the ID to obtain.</param>
+            <param name="id">The ID of the given value.</param>
+            <returns>Whether the ID of the object was successfully obtained.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IdentifiedCollection`1.ContainsID(System.UInt16)">
+            <summary>
+            Returns whether the collection contains an object with the specified ID.
+            </summary>
+            <param name="id">The ID of the object to lookup.</param>
+            <returns>Whether an object with the given ID exists in the collection.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IdentifiedCollection`1.ContainsValue(`0)">
+            <summary>
+            Returns whether the collection contains the specified object.
+            </summary>
+            <param name="id">The object to lookup.</param>
+            <returns>Whether the given object exists in the collection.</returns>
+        </member>
+        <member name="T:DouglasDwyer.Imp.IImpClient">
+            <summary>
+            The base interface by which all <see cref="T:DouglasDwyer.Imp.ImpClient"/> objects are shared across the network.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.IImpClient.Server">
+            <summary>
+            The remote server object, or local server object if this is a server-owned client.
+            </summary>
+        </member>
+        <member name="T:DouglasDwyer.Imp.IImpClient`1">
+            <summary>
+            The base interface by which all <see cref="T:DouglasDwyer.Imp.ImpClient"/> objects are shared across the network.
+            </summary>
+            <typeparam name="T">The type of server that this client uses.</typeparam>
+        </member>
+        <member name="T:DouglasDwyer.Imp.IImpServer">
+            <summary>
+            The base interface by which all <see cref="T:DouglasDwyer.Imp.ImpServer"/> objects are shared across the network.
+            </summary>
+        </member>
+        <member name="T:DouglasDwyer.Imp.IImpServer`1">
+            <summary>
+            The base interface by which all <see cref="T:DouglasDwyer.Imp.ImpServer`1"/> objects are shared across the network.
+            </summary>
+            <typeparam name="T">The type of client that this server uses.</typeparam>
+        </member>
+        <member name="T:DouglasDwyer.Imp.ImpClient">
+            <summary>
+            Represents a TCP client that can send shared interfaces across the network as references.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpClient.Server">
+            <summary>
+            The remote server object, or local server object if this is a server-owned client.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpClient.Serializer">
+            <summary>
+            The serializer used to send objects across the network.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpClient.SharedTypeBinder">
+            <summary>
+            The binder used to generate remote interfaces for shared objects.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpClient.Local">
+            <summary>
+            Whether this object is a local, independent client or a server-owned object representing a connection to a remote host.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpClient.Connected">
+            <summary>
+            Whether this object has an active connection to a remote host.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpClient.NetworkID">
+            <summary>
+            The unique network ID of this client, used to identify this client from others connected to a <see cref="T:DouglasDwyer.Imp.ImpServer"/>.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpClient.RemoteTaskScheduler">
+            <summary>
+            Controls the scheduling of remote method/accessor calls. By default, this scheduler is created with the <see cref="T:System.Threading.SynchronizationContext"/> of the thread that creates the client.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpClient.MaximumHeldObjects">
+            <summary>
+            The maximum number of shared objects that this client will hold for the remote host. If the number of objects sent exceeds this threshold, the connection will be terminated.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpClient.MaximumRemoteObjects">
+            <summary>
+            The maximum number of remote shared interfaces that this client will hold. If the number of objects received exceeds this threshold, the connection will be terminated.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpClient.#ctor">
+            <summary>
+            Creates a new <see cref="T:DouglasDwyer.Imp.ImpClient"/>.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpClient.#ctor(System.Net.Sockets.TcpClient,DouglasDwyer.Imp.ImpServer,System.UInt16,System.Int32,System.Int32,System.Net.Sockets.UdpClient,DouglasDwyer.Imp.IProxyBinder,DouglasDwyer.Imp.ImpPowerSerializer,System.Threading.Tasks.TaskScheduler)">
+            <summary>
+            Creates a new server-owned <see cref="T:DouglasDwyer.Imp.ImpClient"/>.
+            </summary>
+            <param name="client">The TCP connection this client is using to communicate.</param>
+            <param name="server">The server that owns this client.</param>
+            <param name="networkID">The network ID of this client.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpClient.Connect(System.String,System.Int32)">
+            <summary>
+            Attempts to connect to an ImpServer using the specified IP address and port number.
+            </summary>
+            <param name="ip">The address to connect to.</param>
+            <param name="port">The port to connect to.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpClient.Connect(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Attempts to connect to an ImpServer using the specified IP address and port number.
+            </summary>
+            <param name="ip">The address to connect to.</param>
+            <param name="port">The port to connect to.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpClient.ConnectAsync(System.String,System.Int32)">
+            <summary>
+            Attempts to asynchronously connect to an ImpServer using the specified IP address and port number.
+            </summary>
+            <param name="ip">The address to connect to.</param>
+            <param name="port">The port to connect to.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object representing the current state of the operation.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpClient.ConnectAsync(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Attempts to asynchronously connect to an ImpServer using the specified IP address and port number.
+            </summary>
+            <param name="ip">The address to connect to.</param>
+            <param name="port">The port to connect to.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object representing the current state of the operation.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpClient.Disconnect">
+            <summary>
+            Disconnects from the remote host, ending communication between the server and the client.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpClient.OnNetworkError(System.Exception)">
+            <summary>
+            Called whenever this client is disconnected from the server due to an exception in networking code.
+            </summary>
+            <param name="exception">The exception that was thrown.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpClient.OnDisconnected">
+            <summary>
+            Called whenever this client disconnects from the server.
+            </summary>
+        </member>
+        <member name="T:DouglasDwyer.Imp.ImpClient`1">
+            <summary>
+            Represents a TCP client that can send shared interfaces across the network as references.
+            </summary>
+            <typeparam name="T">The shared interface type of the server to which this client will connect.</typeparam>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpClient`1.Server">
+            <summary>
+            The remote server object, or local server object if this is a server-owned client.
+            </summary>
+        </member>
+        <member name="T:DouglasDwyer.Imp.ImpPowerSerializer">
+            <summary>
+            Represents a serializer that can serialize/deserialize shared interface references as well as complex object value graphs.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpPowerSerializer.#ctor">
+            <summary>
+            Creates a new serializer that is not associated with a client.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpPowerSerializer.#ctor(DouglasDwyer.Imp.ImpClient)">
+            <summary>
+            Creates a new serializer associated with the given client.
+            </summary>
+            <param name="client">The client to employ when serializing shared interfaces.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpPowerSerializer.#ctor(DouglasDwyer.PowerSerializer.ITypeResolver)">
+            <summary>
+            Creates a new serializer that is not associated with a client.
+            </summary>
+            <param name="resolver">The type resolver to use during serialization.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpPowerSerializer.#ctor(DouglasDwyer.Imp.ImpClient,DouglasDwyer.PowerSerializer.ITypeResolver)">
+            <summary>
+            Creates a new serializer associated with the given client.
+            </summary>
+            <param name="client">The client to employ when serializing shared interfaces.</param>
+            <param name="resolver">The type resolver to use during serialization.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.ImpServer">
+            <summary>
+            Represents a TCP server that can send shared interfaces across the network as references.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpServer.ConnectedClients">
+            <summary>
+            Returns a list of all the clients currently connected to this server.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpServer.DefaultProxyBinder">
+            <summary>
+            The default shared type binder utilized when creating new clients.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpServer.DefaultSerializer">
+            <summary>
+            The default network serializer utilized when creating new clients.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpServer.DefaultRemoteTaskScheduler">
+            <summary>
+            The default remote task scheduler utilized when creating new clients.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpServer.DefaultMaximumHeldObjects">
+            <summary>
+            The maximum number of shared objects that each client should hold for its remote host. If the number of objects sent exceeds this threshold, the connection will be terminated.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpServer.DefaultMaximumRemoteObjects">
+            <summary>
+            The maximum number of remote shared interfaces that each client should hold. If the number of objects received exceeds this threshold, the connection will be terminated.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpServer.MaximumConnectedClients">
+            <summary>
+            The maximum number of clients that can be concurrently connected to the server.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer.#ctor(System.Int32)">
+            <summary>
+            Creates a new server bound to the specified port. The server will listen for connections on all IP addresses.
+            </summary>
+            <param name="port">The port on which to listen for incoming connections.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer.#ctor(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Creates a new server bound to the specified IP address and port.
+            </summary>
+            <param name="binding">The IP address on which to listen for incoming connections.</param>
+            <param name="port">The port on which to listen for incoming connections.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer.#ctor(System.Net.IPAddress,System.Int32,DouglasDwyer.Imp.INetworkSerializer,DouglasDwyer.Imp.IProxyBinder)">
+            <summary>
+            Creates a new server bound to the specified IP address and port. The server will employ the given serializer and shared type binder when creating new clients and sending interfaces across the network.
+            </summary>
+            <param name="binding">The IP address on which to listen for incoming connections.</param>
+            <param name="port">The port on which to listen for incoming connections.</param>
+            <param name="defaultSerializer">The default serializer that clients should use when sending interfaces across the network.</param>
+            <param name="binder">The default shared type binder that clients should use when sending interfaces across the network.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer.Start">
+            <summary>
+            Starts the server and begins listening for incoming connections/unreliable packets.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer.Stop">
+            <summary>
+            Stops the server, disconnects all connected clients, and ceases to listen for new connections or unreliable packets.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer.OnClientConnected(DouglasDwyer.Imp.IImpClient)">
+            <summary>
+            Called whenever a new client connects to the server.
+            </summary>
+            <param name="client">The client that has connected.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer.OnClientNetworkError(DouglasDwyer.Imp.IImpClient,System.Exception)">
+            <summary>
+            Called whenever a client is disconnected from the server due to an exception in networking code.
+            </summary>
+            <param name="client">The client that has been disconnected.</param>
+            <param name="exception">The exception that was thrown.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer.OnClientDisconnected(DouglasDwyer.Imp.IImpClient)">
+            <summary>
+            Called whenever a client disconnects from the server.
+            </summary>
+            <param name="client">The client that has been disconnected.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.ImpServer`1">
+            <summary>
+            Represents a TCP server that can send shared interfaces across the network as references.
+            </summary>
+            <typeparam name="T">The type of <see cref="T:DouglasDwyer.Imp.IImpClient"/> with which this server works. Clients whose shared interface does not derive from this type will not be able to connect.</typeparam>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ImpServer`1.ConnectedClients">
+            <summary>
+            Returns a list of all the clients currently connected to this server.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer`1.#ctor(System.Int32)">
+            <summary>
+            Creates a new server bound to the specified port. The server will listen for connections on all IP addresses.
+            </summary>
+            <param name="port">The port on which to listen for incoming connections.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer`1.#ctor(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Creates a new server bound to the specified IP address and port.
+            </summary>
+            <param name="binding">The IP address on which to listen for incoming connections.</param>
+            <param name="port">The port on which to listen for incoming connections.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer`1.#ctor(System.Net.IPAddress,System.Int32,DouglasDwyer.Imp.INetworkSerializer,DouglasDwyer.Imp.IProxyBinder)">
+            <summary>
+            Creates a new server bound to the specified IP address and port. The server will employ the given serializer and shared type binder when creating new clients and sending interfaces across the network.
+            </summary>
+            <param name="binding">The IP address on which to listen for incoming connections.</param>
+            <param name="port">The port on which to listen for incoming connections.</param>
+            <param name="defaultSerializer">The default serializer that clients should use when sending interfaces across the network.</param>
+            <param name="binder">The default shared type binder that clients should use when sending interfaces across the network.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer`1.OnClientConnected(`0)">
+            <summary>
+            Called whenever a new client connects to the server.
+            </summary>
+            <param name="client">The client that has connected.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer`1.OnClientNetworkError(`0,System.Exception)">
+            <summary>
+            Called whenever a client is disconnected from the server due to an exception in networking code.
+            </summary>
+            <param name="client">The client that has been disconnected.</param>
+            <param name="exception">The exception that was thrown.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ImpServer`1.OnClientDisconnected(`0)">
+            <summary>
+            Called whenever a client disconnects from the server.
+            </summary>
+            <param name="client">The client that has been disconnected.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.INetworkSerializer">
+            <summary>
+            Represents a serializer that can be utilized send shared objects across the network, preserving their reference identities.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.INetworkSerializer.Client">
+            <summary>
+            The client to which this serializer belongs.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.INetworkSerializer.Serialize(System.Object)">
+            <summary>
+            Serializes an object to a byte array.
+            </summary>
+            <param name="obj">The object to serialize.</param>
+            <returns>A byte-based representation of the object.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.INetworkSerializer.Deserialize(System.Byte[])">
+            <summary>
+            Deserializes an object from a byte array.
+            </summary>
+            <param name="data">The byte-based representation of the object.</param>
+            <returns>The deserialized object.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.INetworkSerializer.Deserialize``1(System.Byte[])">
+            <summary>
+            Deserializes an object from a byte array.
+            </summary>
+            <typeparam name="T">The type of the deserialized object.</typeparam>
+            <param name="data">The byte-based representation of the object.</param>
+            <returns>The deserialized object.</returns>
+        </member>
+        <member name="T:DouglasDwyer.Imp.IProxyBinder">
+            <summary>
+            Classes that implement <see cref="T:DouglasDwyer.Imp.IProxyBinder"/> provide the ability to identify and convert between local shared types, their shared interfaces, and remote shared types.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IProxyBinder.GetDataForProxy(System.Type)">
+            <summary>
+             Obtains the proxy data for the given shared interface type.
+            </summary>
+            <param name="proxyInterface">The interface type to identify.</param>
+            <returns>An object containing sharing data about the type.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IProxyBinder.GetDataForSharedType(System.Type)">
+            <summary>
+            Obtains the proxy data for the given shared class.
+            </summary>
+            <param name="sharedType">The shared class to identify.</param>
+            <returns>An object containing sharing data about the type.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IProxyBinder.GetProxyTypes">
+            <summary>
+            Returns a list of all the shared proxy interfaces that this binder supports.
+            </summary>
+            <returns>A list of shared interfaces.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IProxyBinder.GetRemoteType(System.Type)">
+            <summary>
+            Returns the remote type that represents the given shared interface.
+            </summary>
+            <param name="id">The interface implemented by the remote type.</param>
+            <returns>The remote type.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IProxyBinder.GetProxyForRemoteType(System.Type)">
+            <summary>
+            Returns the shared interface represented by the given remote class.
+            </summary>
+            <param name="id">The remote type which implements the interface.</param>
+            <returns>The shared interface.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IProxyBinder.GetProxyForLocalType(System.Type)">
+            <summary>
+            Returns the shared interface that represents the given local shared class.
+            </summary>
+            <param name="localType">The shared class which implements the interface.</param>
+            <returns>The shared interface.</returns>
+        </member>
+        <member name="M:DouglasDwyer.Imp.IProxyBinder.IsSharedType(System.Type)">
+            <summary>
+            Returns whether a given type is shared.
+            </summary>
+            <param name="sharedType">The type to check.</param>
+            <returns>Whether the given type is a local shared class, shared interface, or remote proxy class.</returns>
+        </member>
+        <member name="T:DouglasDwyer.Imp.LocalAttribute">
+            <summary>
+            Indicates that a given member is local and should not be included in the shared interface definition for its declaring type.
+            </summary>
+        </member>
+        <member name="T:DouglasDwyer.Imp.ProxyForAttribute">
+            <summary>
+            Indicates that a given type should be utilized as the base type for remote interface implementations. Base types must inherit from their shared interface. Base types should be <c>abstract</c>; any members left unimplemented will be automatically implemented during proxy generation.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ProxyForAttribute.InterfaceType">
+            <summary>
+            The interface for which this base class acts as a remote proxy.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ProxyForAttribute.#ctor(System.Type)">
+            <summary>
+            Indicates that the given type should be utilized as the base type for remote interface implementations. Base types must inherit from their shared interface. Base types should be <c>abstract</c>; any members left unimplemented will be automatically implemented during proxy generation.
+            </summary>
+            <param name="interfaceType">The interface for which this class acts as a remote proxy.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.ProxyType">
+            <summary>
+            Stores information about a shared interface type.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ProxyType.InterfaceID">
+            <summary>
+            The ID of this interface to be used in cross-network identification.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ProxyType.InterfaceType">
+            <summary>
+            The interface that should be shared.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ProxyType.RemoteBaseType">
+            <summary>
+            The remote base type that should be inherited when generating a remote proxy class for this interface.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ProxyType.Methods">
+            <summary>
+            All of the methods that can be called on this interface.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ProxyType.Properties">
+            <summary>
+            All of the properties that can be accessed on this interface.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ProxyType.#ctor(System.UInt16,System.Type,System.Type)">
+            <summary>
+            Creates a new <see cref="T:DouglasDwyer.Imp.ProxyType"/> with the specified ID and type data.
+            </summary>
+            <param name="id">The ID of this shared interface.</param>
+            <param name="mainType">The interface to share.</param>
+            <param name="remoteBaseType">The remote base type that should be inherited when generating a remote proxy class.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.RemoteException">
+            <summary>
+            Represents an exception that has been thrown by a method/property call executing on a remote host.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.RemoteException.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new remote exception with the given message and stack trace from the remote host.
+            </summary>
+            <param name="remoteMessage">The original message, as thrown on the remote host.</param>
+            <param name="remoteStackTrace">The original message, as thrown on the remote host.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.RemoteException.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates a new remote exception with the given message and stack trace from the remote host.
+            </summary>
+            <param name="remoteMessage">The original message, as thrown on the remote host.</param>
+            <param name="remoteStackTrace">The original message, as thrown on the remote host.</param>
+            <param name="source">The name of the application or object that caused this error, as thrown on the remote host.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.RemoteImpClient">
+            <summary>
+            Acts as a proxy for an <see cref="T:DouglasDwyer.Imp.ImpClient"/> on a remote host.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.RemoteImpClient.#ctor(System.UInt16,DouglasDwyer.Imp.ImpClient)">
+            <summary>
+            Creates a new remote shared object with the given ID and host.
+            </summary>
+            <param name="path">The ID of the remote object.</param>
+            <param name="host">The client that owns this object.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.RemoteImpServer">
+            <summary>
+            Acts as a proxy for an <see cref="T:DouglasDwyer.Imp.ImpServer"/> on a remote host.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.RemoteImpServer.#ctor(System.UInt16,DouglasDwyer.Imp.ImpClient)">
+            <summary>
+            Creates a new remote shared object with the given ID and host.
+            </summary>
+            <param name="path">The ID of the remote object.</param>
+            <param name="host">The client that owns this object.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.RemoteMethodInvoker">
+            <summary>
+            Allows for customizable method invocation on behalf of a remote <see cref="T:DouglasDwyer.Imp.IImpClient"/>.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.RemoteMethodInvoker.Method">
+            <summary>
+            The method that this invoker will invoke.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.RemoteMethodInvoker.#ctor(System.Reflection.MethodInfo)">
+            <summary>
+            Creates a new invoker for the specified method. The invoker will examine the method's signature to determine whether the method should execute synchronously or asynchronously.
+            </summary>
+            <param name="method">The method that this invoker should call.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.RemoteMethodInvoker.Invoke(DouglasDwyer.Imp.IImpClient,DouglasDwyer.Imp.ImpClient,System.Object,System.Object[],System.Type[])">
+            <summary>
+            Asynchronously invokes the given method using the <paramref name="caller"/>'s task scheduler, returning a <see cref="T:System.Threading.Tasks.Task"/> that represents the state of the operation.
+            </summary>
+            <param name="client">The remote client that is calling this method.</param>
+            <param name="caller">The host client of the remote client.</param>
+            <param name="target">The object to invoke the method on.</param>
+            <param name="args">The arguments to provide to the method.</param>
+            <param name="genericArguments">The generic type arguments to utilize in the method's signature, or null if the method is not generic.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that represents the current state of the method.</returns>
+        </member>
+        <member name="T:DouglasDwyer.Imp.RemoteSharedObject">
+            <summary>
+            This is the base class for all interface implementations that represent an object on a remote host. Custom remote interface implementations should inherit from this class.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.RemoteSharedObject.ObjectID">
+            <summary>
+            The ID of this object used to identify on the remote host.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.RemoteSharedObject.HostClient">
+            <summary>
+            The client that owns this object.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.RemoteSharedObject.#ctor(System.UInt16,DouglasDwyer.Imp.ImpClient)">
+            <summary>
+            Creates a new remote shared object with the given ID and host.
+            </summary>
+            <param name="path">The ID of the remote object.</param>
+            <param name="host">The client that owns this object.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.ShareAsAttribute">
+            <summary>
+            Indicates that a type should be shared across the network using a given interface.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ShareAsAttribute.TypeToShare">
+            <summary>
+            The type that should be shared.
+            </summary>
+        </member>
+        <member name="P:DouglasDwyer.Imp.ShareAsAttribute.InterfaceBinding">
+            <summary>
+            The interface under which the type should be shared.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ShareAsAttribute.#ctor(System.Type)">
+            <summary>
+            Indicates that this type should be shared across the network using a given interface. 
+            </summary>
+            <param name="interfaceBinding">The interface under which this type should be shared.</param>
+        </member>
+        <member name="M:DouglasDwyer.Imp.ShareAsAttribute.#ctor(System.Type,System.Type)">
+            <summary>
+            Indicates that a type should be shared across the network using a given interface.
+            </summary>
+            <param name="typeToShare">The type that should be shared.</param>
+            <param name="interfaceBinding">The interface under which the type should be shared.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.SharedAttribute">
+            <summary>
+            Indicates that this type should be shared across the network and that an interface for sharing should be automatically generated. If an interface for sharing already exists, use <see cref="T:DouglasDwyer.Imp.ShareAsAttribute"/> instead.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.SharedAttribute.#ctor">
+            <summary>
+            Indicates that this type should be shared across the network and that an interface for sharing should be automatically generated. If an interface for sharing already exists, use <see cref="T:DouglasDwyer.Imp.ShareAsAttribute"/> instead.
+            </summary>
+        </member>
+        <member name="M:DouglasDwyer.Imp.SharedAttribute.#ctor(System.String)">
+            <summary>
+            Indicates that this type should be shared across the network and that an interface for sharing should be automatically generated. If an interface for sharing already exists, use <see cref="T:DouglasDwyer.Imp.ShareAsAttribute"/> instead.
+            </summary>
+            <param name="interfaceName">The namespace-qualified name of the interface to generate.</param>
+        </member>
+        <member name="T:DouglasDwyer.Imp.UnreliableAttribute">
+            <summary>
+            Indicates that remote calls to this method should be conducted over UDP. Unreliable methods may be faster than normal remote method invocations, but unreliable methods are not guaranteed to be called on the remote host. Unreliable methods occur without reference-tracking or awaiting return values, so unreliable methods must return void and cannot take shared types as arguments.
+            </summary>
+        </member>
+    </members>
+</doc>
