@@ -13,10 +13,10 @@ Imp.NET can be obtained as a Nuget package. To import it into your project, eith
 ### Features
 
 - Write networked code with remote method calls that looks exactly like normal/local code
-- Send shared objects across the network as interfaces and remotely invoke methods/properties on them as though they are local objects
-- Any class that inherits from an interface, including library classes, may be marked as shared and passed by reference across the network
-- Objects may be sent across the network as method/property arguments, and can be passed by value using a serializer in addition to passing by reference
-- Remote method calls may occur synchronously or asynchronously with the use of `Task`s and the `await` keyword
+- Send shared objects as method arguments across the network via interfaces, and remotely invoke methods/properties on them as though they are local objects
+- Send non-shared objects as method arguments across the network by value using a serializer
+- Pass any class that inherits from an interface, including library classes, across the network as a shared interface
+- Call remote methods synchronously or asynchronously with the use of `Task`s and the `await` keyword
 - Use UDP and the `Unreliable` attribute to send data across the network with less overhead
 
 ### Overview
