@@ -12,7 +12,7 @@ Imp.NET can be obtained as a Nuget package. To import it into your project, eith
 
 ### Features
 
-- Write networked code with remote method calls that looks exactly like normal, local code
+- Write networked code with remote method calls that looks exactly like normal/local code
 - Send shared objects across the network as interfaces and remotely invoke methods/properties on them as though they are local objects
 - Any class that inherits from an interface, including library classes, may be marked as shared and passed by reference across the network
 - Objects may be sent across the network as method/property arguments, and can be passed by value using a serializer in addition to passing by reference
