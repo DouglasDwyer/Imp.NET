@@ -1,2 +1,6 @@
-- name: Introduction
+- name: Getting started
   href: intro.md
+- name: Shared classes
+  href: sclasses.md
+- name: Remote shared classes
+  href: rclasses.md
