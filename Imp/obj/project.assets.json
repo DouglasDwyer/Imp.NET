@@ -549,7 +549,7 @@
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.0.1",
     "restore": {
       "projectUniqueName": "D:\\Projects\\Imp.NET\\Imp\\Imp.csproj",
       "projectName": "DouglasDwyer.Imp",

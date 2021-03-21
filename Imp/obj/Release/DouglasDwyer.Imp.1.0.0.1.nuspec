@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>DouglasDwyer.Imp</id>
+    <version>1.0.0.1</version>
+    <authors>Douglas Dwyer</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://github.com/DouglasDwyer/Imp.NET</projectUrl>
+    <description>Imp.NET is a fast, high-level, object-oriented C# networking library that supports the invocation of remote methods through proxy interface objects.</description>
+    <releaseNotes>Fixed documentation for release</releaseNotes>
+    <tags>networking csharp network object-oriented object-oriented-programming csharp-sourcegenerator</tags>
+    <repository type="Github" url="https://github.com/DouglasDwyer/Imp.NET" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="DouglasDwyer.PowerSerializer" version="1.0.0.3" exclude="Build,Analyzers" />
+        <dependency id="System.Reflection.Emit" version="4.7.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\Projects\Imp.NET\Imp\bin\Release\netstandard2.0\Imp.dll" target="lib\netstandard2.0\Imp.dll" />
+    <file src="D:\Projects\Imp.NET\Imp\bin\Release\netstandard2.0\Imp.xml" target="lib\netstandard2.0\Imp.xml" />
+    <file src="D:\Projects\Imp.NET\LICENSE" target="LICENSE" />
+    <file src="D:\Projects\Imp.NET\ImpGenerator\bin\Release\netstandard2.0\ImpGenerator.dll" target="analyzers\dotnet\cs\ImpGenerator.dll" />
+  </files>
+</package>

@@ -74,7 +74,7 @@
 <p>There are two ways to declare a class as shared. If the class and interface are both already defined, one can employ the <code>ShareAs</code> attribute to denote their relationship. If the class to be shared does not have an interface, it can be marked as <code>Shared</code>, and the Imp source generator will generate an interface for it.</p>
 <h4 id="the-shareas-attribute">The ShareAs attribute</h4>
 <p>Any type that implements an interface may be shared across the network using that interface. To mark a class as shared, add the following attribute to the output assembly of the target project:</p>
-<pre><code class="lang-csharp">[assembly: ShareAs(typeof(SharedClass),typeof(ISharedInterface)]
+<pre><code class="lang-csharp">[assembly: ShareAs(typeof(SharedClass),typeof(ISharedInterface))]
 </code></pre>
 <p>Now, when objects of <code>SharedClass</code> are sent to the remote host, the remote host will receive an <code>ISharedInterface</code> object. When the remote host calls a method on this remote object, the method will be invoked on the original <code>SharedClass</code> object.</p>
 <p>If source generators are unavailable, then the <code>ShareAs</code> attribute must be utilized for all shared types. In this case, the user must define both the classes and the interfaces that should be used in sharing.</p>

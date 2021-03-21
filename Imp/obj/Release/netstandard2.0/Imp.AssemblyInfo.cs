@@ -15,11 +15,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Imp.NET is a fast, high-level, object-oriented C# networking library that support" +
     "s the invocation of remote methods through proxy interface objects.")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0.1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Imp.NET")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Imp")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.1")]
 [assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/DouglasDwyer/Imp.NET")]
 [assembly: System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 

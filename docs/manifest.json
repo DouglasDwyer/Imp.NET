@@ -324,7 +324,7 @@
           "hash": "VsVtfqh+CZ0Zr0KcfsyiKQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -348,7 +348,7 @@
           "hash": "vDjr7U8LpXwA/zGnecKSuA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -369,10 +369,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/sclasses.html",
-          "hash": "AjDAtNzkHTYqyjtvTn1fyw=="
+          "hash": "d7ZLRCg2l2S+WXUMqrETwg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {

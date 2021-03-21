@@ -10,7 +10,7 @@ There are two ways to declare a class as shared. If the class and interface are 
 
 Any type that implements an interface may be shared across the network using that interface. To mark a class as shared, add the following attribute to the output assembly of the target project:
 ```csharp
-[assembly: ShareAs(typeof(SharedClass),typeof(ISharedInterface)]
+[assembly: ShareAs(typeof(SharedClass),typeof(ISharedInterface))]
 ```
 
 Now, when objects of `SharedClass` are sent to the remote host, the remote host will receive an `ISharedInterface` object. When the remote host calls a method on this remote object, the method will be invoked on the original `SharedClass` object.
